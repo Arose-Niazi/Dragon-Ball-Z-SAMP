@@ -1,2 +1,23 @@
 # Auto detect text files and perform LF normalization
+# Auto detect text files and perform LF normalization
 * text=auto
+
+#Pawn Files
+
+
+gamemodes/*.pwn linguist-detectable=true
+gamemodes/*.inc linguist-detectable=true
+filterscripts/*.pwn linguist-detectable=true
+filterscripts/*.pwn linguist-detectable=true
+scriptfiles/*.sql linguist-detectable=true
+*.inc linguist-language=Pawn
+
+*.html linguist-vendored
+pawno/* -linguist-vendored
+include/* -linguist-vendored
+plugins/* -linguist-vendored
+scriptfiles/geoip.* -linguist-vendored
+
+logs/* linguist-documentation
+
+*.sql linguist-language=SQL
