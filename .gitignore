@@ -1,0 +1,12 @@
+# Claude Code local tooling (not part of the gamemode)
+.claude/
+
+# OS / editor cruft
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# Local build/runtime artifacts you may not want to commit
+# (this repo intentionally tracks prebuilt .amx and server binaries, so they are NOT ignored)
+crashinfo.txt
