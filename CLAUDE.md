@@ -81,7 +81,8 @@ sscanf2 · foreach · Pawn.RakNet · crashdetect · CustomModels component (0.3D
 - **Owners/staff:** config-seeded flag / DB role. The legacy hardcoded owner names
   (`dumb_ass`, `Sasuke_Uchiha`, `Xeeshan`) and the `/iamownerheresetmelevel10`
   backdoor are **removed** — never reintroduce name-based auth.
-- **`allow_037_clients`:** true — 0.3.7 clients connect but see stock-skin fallbacks.
+- **`allow_037_clients`:** false — **0.3DL clients only** (custom skins depend on DL;
+  0.3.7 clients are rejected).
 - **Secrets:** never commit real secrets. `config.json` ships a placeholder rcon
   password (`CHANGE_ME_dbz_rcon_2026`) — rotate before any public deploy. Never copy
   Mini-Missions' committed secrets.

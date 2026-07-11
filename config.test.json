@@ -29,7 +29,7 @@
     "max_players": 20,
     "name": "Dragon Ball Z | LOCAL TEST",
     "network": {
-        "allow_037_clients": true,
+        "allow_037_clients": false,
         "port": 7778,
         "use_lan_mode": true
     },

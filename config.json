@@ -50,9 +50,9 @@
     },
     "max_bots": 0,
     "max_players": 50,
-    "name": "Dragon Ball Z | open.mp 0.3DL | Ki, Transformations & Dragon Balls",
+    "name": "Dragon Ball Z | 0.3DL | Ki, Transformations & Dragon Balls",
     "network": {
-        "allow_037_clients": true,
+        "allow_037_clients": false,
         "port": 7777,
         "stream_radius": 300.0,
         "stream_rate": 1000,
