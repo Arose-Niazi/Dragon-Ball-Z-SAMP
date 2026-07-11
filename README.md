@@ -38,7 +38,7 @@ Originally *Dragon Ball Z Deathmatch* by **Sasino97**; rebuilt and maintained by
 | Ki | stored as player *money* (hack) | real `Ki` variable + `progress2` HUD bar |
 | Skins | stock GTA skins only | **0.3DL custom models** (Goku, Android 16, …) |
 | Dragon Balls / Radar | stock pickups | custom objects (planned) |
-| Persistence | `y_ini` flat files | **SQLite** (open.mp Databases) |
+| Persistence | `y_ini` flat files | **MySQL** (async, R41 plugin) |
 | Security | hardcoded owner names + backdoor | config-driven roles, no backdoors |
 
 ---
@@ -126,15 +126,19 @@ Dragon-Ball-Z-SAMP/  (openmp branch)
 
 ---
 
-## 🗺️ Roadmap
+## 🗺️ Roadmap — all milestones complete ✅
 
-1. ✅ **Milestone 1** — compiling + booting open.mp scaffold (Pawn.CMD, custom-model registration).
-2. Accounts — SQLite persistence, register/login, admin + VIP.
-3. Real Ki subsystem + progress2 HUD bar.
-4. Combat mechanics + keypress shortcuts.
-5. Custom character skins (CustomModels + artwork).
-6. Custom Dragon Ball + Radar objects.
-7. Polish — full English translation, security hardening, test/prod configs.
+1. ✅ **Scaffold** — compiling + booting open.mp server (Pawn.CMD, custom-model registration).
+2. ✅ **Accounts** — MySQL persistence, register/login (SHA256+salt), admin ladder + VIP, moderation (config-driven owners, no backdoors).
+3. ✅ **Real Ki** — `gKi` stat + progress2 HUD bar (money hack removed); 14-character class selection + battlegrounds.
+4. ✅ **Combat + keypress shortcuts** — attacks, transforms, fusion, fly, regen, self-destruct, absorb, charge.
+5. ✅ **Custom skins** — CustomModels + artwork pipeline (Goku + Android 16 shipped; [drop-in for more](./models/README.md)).
+6. ✅ **Dragon Balls** — 7 collectible balls + radar + `/wish` Shenron.
+7. ✅ **Polish** — English throughout, security hardening, test/prod configs.
+
+> Set your MySQL credentials in `gamemodes/DBZ/stuff/db_config.inc` and your owner
+> nick(s) in `gamemodes/DBZ/stuff/server_vars.inc`. The server boots and runs even
+> without a database (unsaved guest mode) so you can test immediately.
 
 See [`CLAUDE.md`](./CLAUDE.md) for build conventions and recorded design decisions.
 

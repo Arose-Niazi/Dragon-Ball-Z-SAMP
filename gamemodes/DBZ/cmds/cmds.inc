@@ -13,6 +13,27 @@ CMD:ping(playerid)
     return 1;
 }
 
+CMD:cmds(playerid)
+{
+    SendClientMessage(playerid, COLOR_YELLOW, "==== Dragon Ball Z Commands ====");
+    SendClientMessage(playerid, COLOR_WHITE,  "Combat: /att /trans /fus /fly /rig /kill /absorb /wish /power");
+    SendClientMessage(playerid, COLOR_WHITE,  "Info:   /keys /cmds /help /admins /vips");
+    if (HasAdmin(playerid, 1))
+        SendClientMessage(playerid, COLOR_ADMIN, "Staff:  /acmds");
+    return 1;
+}
+
+CMD:help(playerid)
+{
+    SendClientMessage(playerid, COLOR_YELLOW, "==== How to play Dragon Ball Z ====");
+    SendClientMessage(playerid, COLOR_WHITE,  "1. Pick a character at class selection, then choose a battleground.");
+    SendClientMessage(playerid, COLOR_WHITE,  "2. Hold MMB to charge Ki; press FIRE to launch your energy attack.");
+    SendClientMessage(playerid, COLOR_WHITE,  "3. Press the ACTION key to transform, Y to fly, N to self-destruct.");
+    SendClientMessage(playerid, COLOR_WHITE,  "4. Collect all 7 Dragon Balls, then /wish to summon Shenron!");
+    SendClientMessage(playerid, COLOR_GREY,   "See /keys for the full shortcut list and /cmds for all commands.");
+    return 1;
+}
+
 CMD:keys(playerid)
 {
     SendClientMessage(playerid, COLOR_YELLOW,    "==== DBZ ACTION SHORTCUTS (no typing needed!) ====");

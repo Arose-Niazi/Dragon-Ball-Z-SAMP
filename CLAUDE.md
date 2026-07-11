@@ -56,20 +56,28 @@ Run locally: `omp-server.exe` (Windows) / `./omp-server` (Linux) from the repo r
 open.mp (framework) · QAWNO (Pawn 3.10) · **Pawn.CMD** (commands, not zcmd) ·
 sscanf2 · foreach · Pawn.RakNet · crashdetect · CustomModels component (0.3DL skins/objects).
 
-## Migration — Milestones
+## Migration — Milestones (all complete ✅)
 
 1. ✅ **Scaffold** — compiling + booting open.mp server, Pawn.CMD, custom-model registration.
-2. Accounts — SQLite persistence, register/login, admin/VIP.
-3. Real Ki — drop the Ki-as-money hack → `gKi` var + `progress2` HUD bar.
-4. Combat + **keypress shortcuts** (OnPlayerKeyStateChange).
-5. Custom skins — CustomModels + artwork; ship Goku/Android16, stock fallbacks + web-sourced models.
-6. Custom objects — 7 Dragon Balls + Radar.
-7. Polish — translate Italian, security sweep, test/prod configs.
+2. ✅ **Accounts** — MySQL persistence, register/login (SHA256+salt), admin/VIP, moderation.
+3. ✅ **Real Ki** — `gKi` var + `progress2` HUD bar; 14-char class selection + battlegrounds.
+4. ✅ **Combat + keypress shortcuts** (OnPlayerKeyStateChange) — attacks/transform/fusion/fly/regen/kill/absorb/charge.
+5. ✅ **Custom skins** — CustomModels + artwork; Goku/Android16 shipped, stock fallbacks, `SetPlayerSkinMapped` (see `models/README.md`).
+6. ✅ **Dragon Balls** — 7 balls + radar (`balls_mask`) + `/wish`.
+7. ✅ **Polish** — English throughout, security (config owners, fresh secrets), test/prod configs.
+
+### Module map (`gamemodes/DBZ/`)
+`stuff/{defines,colors,skins,dialog_ids,ranks,server_vars,db_config}` ·
+`players/{data,perms,characters,ki,combat,spawn,movement,database,accounts,timers,dialogs}` ·
+`world/{battlegrounds,dragonballs}` · `cmds/{admin,moderation,combat_cmds,cmds}`.
 
 ## Recorded Decisions (Milestone 0)
 
 - **Location:** `openmp` branch of this repo; legacy 0.3z moved to `legacy/`.
-- **Persistence:** open.mp **SQLite** (Databases component) — in-process, no server.
+- **Persistence:** **MySQL** (maddinat0r R41 plugin; async `mysql_pquery` + cache API).
+  Credentials in `gamemodes/DBZ/stuff/db_config.inc` (`LOCAL_DB` toggle). Connection
+  failure is non-fatal (guest mode) so the server boots without a DB. Requires
+  `log-core` + `libmariadb` (bundled).
 - **Owners/staff:** config-seeded flag / DB role. The legacy hardcoded owner names
   (`dumb_ass`, `Sasuke_Uchiha`, `Xeeshan`) and the `/iamownerheresetmelevel10`
   backdoor are **removed** — never reintroduce name-based auth.
