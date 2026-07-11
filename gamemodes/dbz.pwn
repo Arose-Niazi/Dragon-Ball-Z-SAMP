@@ -121,14 +121,18 @@ public OnGameModeInit()
     SetWorldTime(12);
 
     // ---- 0.3DL custom character models (baseid 4 = humanoid skeleton) ----
-    AddCharModel(4, SKIN_CUSTOM_GOKU,      "Goku.dff",      "Goku.txd");
-    AddCharModel(4, SKIN_CUSTOM_ANDROID16, "16Fighter.dff", "16Fighter.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOKU,        "Goku.dff",       "Goku.txd");
+    AddCharModel(4, SKIN_CUSTOM_ANDROID16,   "16Fighter.dff",  "16Fighter.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA,      "Vegeta.dff",     "Vegeta.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ,  "VegetaSSJ.dff",  "VegetaSSJ.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ2, "VegetaSSJ2.dff", "VegetaSSJ2.txd");
 
     // ---- Class selection: 14 DBZ characters (classid == character index) ----
     for (new i = 0; i < MAX_CHARACTERS; i++)
     {
         new skin = gChar[i][cSkin];
         if (i == 0)  skin = SKIN_CUSTOM_GOKU;        // Goku custom model
+        if (i == 1)  skin = SKIN_CUSTOM_VEGETA;      // Vegeta custom model
         if (i == 10) skin = SKIN_CUSTOM_ANDROID16;   // Android 16 custom model
         AddPlayerClass(skin, -249.0, 6.0, 117.0, 0.0);
     }

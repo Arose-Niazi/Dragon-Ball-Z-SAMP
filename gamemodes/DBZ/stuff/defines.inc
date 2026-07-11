@@ -14,6 +14,9 @@
 // ---------------------------------------------------------------------------
 #define SKIN_CUSTOM_GOKU        20000
 #define SKIN_CUSTOM_ANDROID16   20010
+#define SKIN_CUSTOM_VEGETA      20020
+#define SKIN_CUSTOM_VEGETA_SSJ  20021
+#define SKIN_CUSTOM_VEGETA_SSJ2 20022
 
 // ---------------------------------------------------------------------------
 //  Default class-selection / spawn camera (classic SA-MP Los Santos spot).

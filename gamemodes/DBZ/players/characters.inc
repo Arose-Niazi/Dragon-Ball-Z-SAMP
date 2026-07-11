@@ -87,6 +87,9 @@ SetPlayerSkinMapped(playerid, skin)
     {
         case GOKU0:     return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU);
         case ANDROID16: return SetPlayerSkin(playerid, SKIN_CUSTOM_ANDROID16);
+        case VEGETA0:   return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA);
+        case VEGETA1:   return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_SSJ);
+        case VEGETA2:   return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_SSJ2);
     }
     return SetPlayerSkin(playerid, skin);
 }
