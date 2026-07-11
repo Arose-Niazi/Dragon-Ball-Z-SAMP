@@ -39,6 +39,10 @@ COPY --chown=samp:samp omp-server /samp/omp-server
 RUN chmod +x /samp/omp-server && \
     echo "✓ Using local omp-server binary"
 
+# Copy log-core runtime (required by the mysql plugin) from root
+COPY --chown=samp:samp log-core.so /samp/
+COPY --chown=samp:samp log-core2.so /samp/
+
 # Copy plugins (Linux .so files only, no .dll files)
 COPY --chown=samp:samp plugins/*.so /samp/plugins/
 

@@ -18,6 +18,10 @@
  *   ---------------------------------------------------------------------------
  */
 
+// Toggle the MySQL credential set in DBZ/stuff/db_config.inc
+// (comment out to use the remote / production credentials instead).
+#define LOCAL_DB
+
 #include <open.mp>
 #include <Pawn.RakNet>
 
@@ -29,6 +33,7 @@
 
 #include <Pawn.CMD>
 #include <sscanf2>
+#include <a_mysql>
 
 // ---------------------------------------------------------------------------
 //  DBZ modules  (WINDOWS_COMPILER toggles the include path separator)
@@ -38,7 +43,9 @@
     #include "DBZ\stuff\colors"
     #include "DBZ\stuff\dialog_ids"
     #include "DBZ\stuff\server_vars"
+    #include "DBZ\stuff\db_config"
     #include "DBZ\players\data"
+    #include "DBZ\players\database"
     #include "DBZ\textdraws\connect"
     #include "DBZ\cmds\cmds"
 #else
@@ -46,7 +53,9 @@
     #include "DBZ/stuff/colors"
     #include "DBZ/stuff/dialog_ids"
     #include "DBZ/stuff/server_vars"
+    #include "DBZ/stuff/db_config"
     #include "DBZ/players/data"
+    #include "DBZ/players/database"
     #include "DBZ/textdraws/connect"
     #include "DBZ/cmds/cmds"
 #endif
@@ -68,6 +77,7 @@ main()
 public OnGameModeInit()
 {
     SetGameModeText(GAMEMODE_NAME);
+    ConnectDatabase();
     ShowPlayerMarkers(PLAYER_MARKERS_MODE_GLOBAL);
     ShowNameTags(true);
     EnableStuntBonusForAll(false);
@@ -88,6 +98,10 @@ public OnGameModeInit()
 
 public OnGameModeExit()
 {
+    if (gDBConnected)
+    {
+        mysql_close(g_SQL);
+    }
     return 1;
 }
 

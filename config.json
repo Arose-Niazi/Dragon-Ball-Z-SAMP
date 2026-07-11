@@ -60,7 +60,7 @@
     },
     "password": "",
     "pawn": {
-        "legacy_plugins": ["crashdetect"],
+        "legacy_plugins": ["crashdetect", "mysql"],
         "main_scripts": ["dbz"],
         "side_scripts": []
     },
