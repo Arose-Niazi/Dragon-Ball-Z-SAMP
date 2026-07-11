@@ -26,29 +26,25 @@ enum E_PLAYER_DATA
     bool:pJailed,
     pJailTime,
     pWarns,
+    bool:pSword,                // wish rewards (persist)
+    bool:pKnife,
+    bool:pBazooka,
     // --- runtime only ---
     bool:pLoggedIn,
     pLoginTries,
     pIP[46],
-    pSalt[33]
+    pSalt[33],
+    // --- combat / movement runtime ---
+    bool:pFused,
+    bool:pFlying,
+    bool:pCharging,
+    pFlyTimer,
+    pChargeTimer,
+    pLastAttack,
+    Text3D:pLabel,
+    PlayerBar:pKiBar
 }
 new gPlayer[MAX_PLAYERS][E_PLAYER_DATA];
-
-// ---------------------------------------------------------------------------
-//  Class-selection roster (custom 0.3DL slots where art exists, else closest
-//  stock GTA skin). Full DBZ character data lives in DBZ/players/characters.inc.
-// ---------------------------------------------------------------------------
-new const gClassSkins[] =
-{
-    SKIN_CUSTOM_GOKU,       // 0  Goku       (custom model)
-    96,                     // 1  Vegeta     (stock fallback)
-    217,                    // 2  Trunks     (stock fallback)
-    176,                    // 3  Gohan      (stock fallback)
-    SKIN_CUSTOM_ANDROID16,  // 4  Android 16 (custom model)
-    121,                    // 5  Krillin    (stock fallback)
-    204,                    // 6  Yamcha     (stock fallback)
-    81                      // 7  Tien       (stock fallback)
-};
 
 ResetPlayerData(playerid)
 {
@@ -71,9 +67,20 @@ ResetPlayerData(playerid)
     gPlayer[playerid][pJailed]      = false;
     gPlayer[playerid][pJailTime]    = 0;
     gPlayer[playerid][pWarns]       = 0;
+    gPlayer[playerid][pSword]       = false;
+    gPlayer[playerid][pKnife]       = false;
+    gPlayer[playerid][pBazooka]     = false;
     gPlayer[playerid][pLoggedIn]    = false;
     gPlayer[playerid][pLoginTries]  = 0;
     gPlayer[playerid][pIP][0]       = EOS;
     gPlayer[playerid][pSalt][0]     = EOS;
+    gPlayer[playerid][pFused]       = false;
+    gPlayer[playerid][pFlying]      = false;
+    gPlayer[playerid][pCharging]    = false;
+    gPlayer[playerid][pFlyTimer]    = 0;
+    gPlayer[playerid][pChargeTimer] = 0;
+    gPlayer[playerid][pLastAttack]  = 0;
+    gPlayer[playerid][pLabel]       = Text3D:INVALID_3DTEXT_ID;
+    gPlayer[playerid][pKiBar]       = INVALID_PLAYER_BAR_ID;
     return 1;
 }

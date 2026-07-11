@@ -215,6 +215,9 @@ public OnAccountLoad(playerid)
     cache_get_value_name_int(0, "jailed", tmp);       gPlayer[playerid][pJailed] = bool:(tmp != 0);
     cache_get_value_name_int(0, "jail_time",    gPlayer[playerid][pJailTime]);
     cache_get_value_name_int(0, "warns",        gPlayer[playerid][pWarns]);
+    cache_get_value_name_int(0, "dsword", tmp);   gPlayer[playerid][pSword]   = bool:(tmp != 0);
+    cache_get_value_name_int(0, "dknife", tmp);   gPlayer[playerid][pKnife]   = bool:(tmp != 0);
+    cache_get_value_name_int(0, "dbazooka", tmp); gPlayer[playerid][pBazooka] = bool:(tmp != 0);
 
     gPlayer[playerid][pLoggedIn] = true;
     ApplyOwnerSeed(playerid);
@@ -233,37 +236,16 @@ SavePlayerData(playerid)
 
     new query[512];
     mysql_format(g_SQL, query, sizeof(query),
-        "UPDATE `accounts` SET `admin_level`=%d,`vip_level`=%d,`is_owner`=%d,`score`=%d,`kills`=%d,`deaths`=%d,`character_id`=%d,`transform`=%d,`ki`=%f,`ki_max`=%f,`health_max`=%f,`balls_mask`=%d,`dragon_radar`=%d,`banned`=%d,`jailed`=%d,`jail_time`=%d,`warns`=%d,`last_login`=NOW(),`last_ip`='%e' WHERE `id`=%d",
+        "UPDATE `accounts` SET `admin_level`=%d,`vip_level`=%d,`is_owner`=%d,`score`=%d,`kills`=%d,`deaths`=%d,`character_id`=%d,`transform`=%d,`ki`=%f,`ki_max`=%f,`health_max`=%f,`balls_mask`=%d,`dragon_radar`=%d,`banned`=%d,`jailed`=%d,`jail_time`=%d,`warns`=%d,`dsword`=%d,`dknife`=%d,`dbazooka`=%d,`last_login`=NOW(),`last_ip`='%e' WHERE `id`=%d",
         gPlayer[playerid][pAdminLevel], gPlayer[playerid][pVipLevel], _:gPlayer[playerid][pIsOwner],
         gPlayer[playerid][pScore], gPlayer[playerid][pKills], gPlayer[playerid][pDeaths],
         gPlayer[playerid][pCharacter], gPlayer[playerid][pTransform],
         gPlayer[playerid][pKi], gPlayer[playerid][pKiMax], gPlayer[playerid][pHealthMax],
         gPlayer[playerid][pBallsMask], _:gPlayer[playerid][pDragonRadar], _:gPlayer[playerid][pBanned],
         _:gPlayer[playerid][pJailed], gPlayer[playerid][pJailTime], gPlayer[playerid][pWarns],
+        _:gPlayer[playerid][pSword], _:gPlayer[playerid][pKnife], _:gPlayer[playerid][pBazooka],
         gPlayer[playerid][pIP], gPlayer[playerid][pDBID]);
     mysql_pquery(g_SQL, query);
     return 1;
 }
 
-// ---------------------------------------------------------------------------
-//  Central dialog dispatcher (auth cases; extended by later milestones)
-// ---------------------------------------------------------------------------
-public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
-{
-    switch (dialogid)
-    {
-        case DIALOG_REGISTER:
-        {
-            if (!response) { DelayedKick(playerid); return 1; }
-            Account_Register(playerid, inputtext);
-            return 1;
-        }
-        case DIALOG_LOGIN:
-        {
-            if (!response) { DelayedKick(playerid); return 1; }
-            Account_Login(playerid, inputtext);
-            return 1;
-        }
-    }
-    return 0;
-}

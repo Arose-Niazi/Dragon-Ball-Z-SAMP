@@ -15,10 +15,10 @@ CMD:ping(playerid)
 
 CMD:keys(playerid)
 {
-    SendClientMessage(playerid, COLOR_YELLOW, "==== DBZ ACTION SHORTCUTS ====");
-    SendClientMessage(playerid, COLOR_WHITE,  "These key combos go live in Milestone 4 (no more typing to fight!):");
-    SendClientMessage(playerid, COLOR_LIGHTBLUE, " FIRE - energy attack   |   MMB (hold) - charge Ki   |   SUB - transform");
-    SendClientMessage(playerid, COLOR_LIGHTBLUE, " Y - toggle fly   |   CROUCH - regen   |   NO (hold) - self-destruct");
-    SendClientMessage(playerid, COLOR_GREY,   "Commands (/att, /fly, /transform ...) will still work as a fallback.");
+    SendClientMessage(playerid, COLOR_YELLOW,    "==== DBZ ACTION SHORTCUTS (no typing needed!) ====");
+    SendClientMessage(playerid, COLOR_LIGHTBLUE, " FIRE - energy attack    |   MMB (hold) - charge Ki    |   ALT - small ki blast");
+    SendClientMessage(playerid, COLOR_LIGHTBLUE, " ACTION key - transform  |   Y - toggle flight         |   CROUCH - regenerate");
+    SendClientMessage(playerid, COLOR_LIGHTBLUE, " N - self-destruct       |   Fly: FIRE=up, AIM=down, SPRINT=fast, WALK=slow");
+    SendClientMessage(playerid, COLOR_GREY,      "Commands still work too: /att /trans /fus /fly /rig /kill /absorb /wish /power");
     return 1;
 }
