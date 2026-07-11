@@ -42,20 +42,32 @@
     #include "DBZ\stuff\defines"
     #include "DBZ\stuff\colors"
     #include "DBZ\stuff\dialog_ids"
+    #include "DBZ\stuff\ranks"
     #include "DBZ\stuff\server_vars"
     #include "DBZ\stuff\db_config"
     #include "DBZ\players\data"
+    #include "DBZ\players\perms"
     #include "DBZ\players\database"
+    #include "DBZ\players\accounts"
+    #include "DBZ\players\timers"
+    #include "DBZ\cmds\admin"
+    #include "DBZ\cmds\moderation"
     #include "DBZ\textdraws\connect"
     #include "DBZ\cmds\cmds"
 #else
     #include "DBZ/stuff/defines"
     #include "DBZ/stuff/colors"
     #include "DBZ/stuff/dialog_ids"
+    #include "DBZ/stuff/ranks"
     #include "DBZ/stuff/server_vars"
     #include "DBZ/stuff/db_config"
     #include "DBZ/players/data"
+    #include "DBZ/players/perms"
     #include "DBZ/players/database"
+    #include "DBZ/players/accounts"
+    #include "DBZ/players/timers"
+    #include "DBZ/cmds/admin"
+    #include "DBZ/cmds/moderation"
     #include "DBZ/textdraws/connect"
     #include "DBZ/cmds/cmds"
 #endif
@@ -78,6 +90,8 @@ public OnGameModeInit()
 {
     SetGameModeText(GAMEMODE_NAME);
     ConnectDatabase();
+    SetTimer("SecondTimer", 1000, true);
+    SetTimer("AutoSaveTimer", 240000, true);
     ShowPlayerMarkers(PLAYER_MARKERS_MODE_GLOBAL);
     ShowNameTags(true);
     EnableStuntBonusForAll(false);
@@ -108,11 +122,19 @@ public OnGameModeExit()
 // ===========================================================================
 public OnPlayerConnect(playerid)
 {
-    // Reset runtime data (persistent account loading arrives in Milestone 2).
     ResetPlayerData(playerid);
 
     SendClientMessage(playerid, COLOR_YELLOW, "{FFFF00}Welcome to {33AA33}Dragon Ball Z{FFFF00} - the open.mp / 0.3DL rebuild!");
     SendClientMessage(playerid, COLOR_WHITE,  "Type {33AA33}/keys{FFFFFF} for the action shortcuts, or {33AA33}/ping{FFFFFF} to test the server.");
+
+    Account_Check(playerid);
+    return 1;
+}
+
+public OnPlayerDisconnect(playerid, reason)
+{
+    SavePlayerData(playerid);
+    ResetPlayerData(playerid);
     return 1;
 }
 
@@ -127,5 +149,6 @@ public OnPlayerRequestClass(playerid, classid)
 public OnPlayerSpawn(playerid)
 {
     SetPlayerHealth(playerid, 100.0);
+    ReapplyJail(playerid);
     return 1;
 }

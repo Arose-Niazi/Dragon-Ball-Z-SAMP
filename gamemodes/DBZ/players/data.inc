@@ -1,6 +1,4 @@
-/*  DBZ / players / data.inc  —  per-player data + class roster
- *  Expanded in Milestone 2 (accounts/persistence) and Milestone 3 (real Ki).
- */
+/*  DBZ / players / data.inc  —  per-player data + class roster  */
 #if defined _dbz_data_included
     #endinput
 #endif
@@ -8,18 +6,37 @@
 
 enum E_PLAYER_DATA
 {
-    bool:pLoggedIn,
+    // --- persistent (mirrors the `accounts` table) ---
+    pDBID,                      // accounts.id (0 = not registered/loaded)
+    pName[MAX_PLAYER_NAME],
     pAdminLevel,
     pVipLevel,
-    Float:pKi,          // real Ki resource (replaces the legacy Ki-as-money hack)
+    bool:pIsOwner,
+    pScore,                     // Dragon Points (DP)
+    pKills,
+    pDeaths,
+    pCharacter,                 // selected DBZ character index (into gCharacters)
+    pTransform,                 // current transform tier
+    Float:pKi,                  // real Ki (replaces the legacy money hack)
     Float:pKiMax,
-    pCharacter          // which DBZ character/class the player selected
+    Float:pHealthMax,
+    pBallsMask,                 // 7-bit mask of collected Dragon Balls
+    bool:pDragonRadar,
+    bool:pBanned,
+    bool:pJailed,
+    pJailTime,
+    pWarns,
+    // --- runtime only ---
+    bool:pLoggedIn,
+    pLoginTries,
+    pIP[46],
+    pSalt[33]
 }
 new gPlayer[MAX_PLAYERS][E_PLAYER_DATA];
 
 // ---------------------------------------------------------------------------
-//  Class-selection roster.  Custom 0.3DL slots where art exists, else the
-//  closest stock GTA skin as a fallback (swappable later with one line).
+//  Class-selection roster (custom 0.3DL slots where art exists, else closest
+//  stock GTA skin). Full DBZ character data lives in DBZ/players/characters.inc.
 // ---------------------------------------------------------------------------
 new const gClassSkins[] =
 {
@@ -35,11 +52,28 @@ new const gClassSkins[] =
 
 ResetPlayerData(playerid)
 {
-    gPlayer[playerid][pLoggedIn]   = false;
-    gPlayer[playerid][pAdminLevel] = 0;
-    gPlayer[playerid][pVipLevel]   = 0;
-    gPlayer[playerid][pKi]         = 100.0;
-    gPlayer[playerid][pKiMax]      = 100.0;
-    gPlayer[playerid][pCharacter]  = 0;
+    gPlayer[playerid][pDBID]        = 0;
+    gPlayer[playerid][pName][0]     = EOS;
+    gPlayer[playerid][pAdminLevel]  = 0;
+    gPlayer[playerid][pVipLevel]    = 0;
+    gPlayer[playerid][pIsOwner]     = false;
+    gPlayer[playerid][pScore]       = 0;
+    gPlayer[playerid][pKills]       = 0;
+    gPlayer[playerid][pDeaths]      = 0;
+    gPlayer[playerid][pCharacter]   = 0;
+    gPlayer[playerid][pTransform]   = 0;
+    gPlayer[playerid][pKi]          = 100.0;
+    gPlayer[playerid][pKiMax]       = 100.0;
+    gPlayer[playerid][pHealthMax]   = 100.0;
+    gPlayer[playerid][pBallsMask]   = 0;
+    gPlayer[playerid][pDragonRadar] = false;
+    gPlayer[playerid][pBanned]      = false;
+    gPlayer[playerid][pJailed]      = false;
+    gPlayer[playerid][pJailTime]    = 0;
+    gPlayer[playerid][pWarns]       = 0;
+    gPlayer[playerid][pLoggedIn]    = false;
+    gPlayer[playerid][pLoginTries]  = 0;
+    gPlayer[playerid][pIP][0]       = EOS;
+    gPlayer[playerid][pSalt][0]     = EOS;
     return 1;
 }
