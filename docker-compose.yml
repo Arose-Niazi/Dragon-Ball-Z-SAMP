@@ -1,0 +1,22 @@
+# Development Docker Compose (original)
+# For production, use: docker-compose -f docker-compose.prod.yml up
+
+services:
+  samp:
+    container_name: minimissions
+    build: .
+    tty: true
+    volumes:
+      - ./:/samp
+    ports:
+      - "8192:8192/udp"
+      
+  db:
+    container_name: minimissions_db
+    image: mariadb:10.3.32
+    tty: true
+    ports:
+      - 3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: isthissafeornot532
+      MARIADB_DATABASE: mini_missions

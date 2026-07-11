@@ -1,0 +1,1973 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[10:46:34] Error: Your password must be changed from the default password, please change it.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[10:47:23] filterscripts = ""  (string)
+[10:47:23] 
+[10:47:23] Server Plugins
+[10:47:23] --------------
+[10:47:23]  Loaded 0 plugins.
+
+[10:47:23] 
+[10:47:23] Filterscripts
+[10:47:23] ---------------
+[10:47:23]   Loaded 0 filterscripts.
+
+[10:47:23] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[10:47:23] 
+-----------------NOW RUNNING------------------
+
+[10:47:23]        Dragonball Z Deathmatch 4.0z by Sasino     
+[10:47:23] 
+----------------------------------------------
+
+[10:47:23] Number of vehicle models: 0
+[10:49:43] Incoming connection: 127.0.0.1:60897
+[10:49:44] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[10:50:09] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Tenkaichi Tournament.
+[10:51:47] ~b~Sasuke_Uchiha ~r~is KO.
+[10:51:47] [death] Sasuke_Uchiha died 54
+[10:52:01] INFO: {FF0000}Sasuke_Uchiha {FFFF00}è spawnato nel battleground {33AA33}Salone.
+[10:52:15] [QUIT]Sasuke_Uchiha has left the server.
+[10:52:15] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[15:51:29] filterscripts = ""  (string)
+[15:51:29] 
+[15:51:29] Server Plugins
+[15:51:29] --------------
+[15:51:29]  Loaded 0 plugins.
+
+[15:51:29] 
+[15:51:29] Filterscripts
+[15:51:29] ---------------
+[15:51:29]   Loaded 0 filterscripts.
+
+[15:51:29] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[15:51:29] 
+-----------------NOW RUNNING------------------
+
+[15:51:29]        Dragonball Z Deathmatch 4.0z by Sasino     
+[15:51:29] 
+----------------------------------------------
+
+[15:51:29] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[15:52:01] filterscripts = ""  (string)
+[15:52:01] 
+[15:52:01] Server Plugins
+[15:52:01] --------------
+[15:52:01]  Loaded 0 plugins.
+
+[15:52:01] 
+[15:52:01] Filterscripts
+[15:52:01] ---------------
+[15:52:01]   Loaded 0 filterscripts.
+
+[15:52:01] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[15:52:01] 
+-----------------NOW RUNNING------------------
+
+[15:52:01]        Dragonball Z Deathmatch 4.0z by Sasino     
+[15:52:01] 
+----------------------------------------------
+
+[15:52:01] Number of vehicle models: 0
+[15:52:26] Incoming connection: 192.168.1.1:58213
+[15:52:26] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[15:52:38] INFO: {FF0000}Sasuke_Uchiha {FFFF00}è spawnato nel battleground {33AA33}Salone.
+[15:54:26] ~b~Sasuke_Uchiha ~r~is KO.
+[15:54:26] [death] Sasuke_Uchiha died 255
+[15:54:35] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Underwater.
+[15:54:52] ~b~Sasuke_Uchiha ~r~is KO.
+[15:54:52] [death] Sasuke_Uchiha died 255
+[15:55:03] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}BRIDGE.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[18:23:55] filterscripts = ""  (string)
+[18:23:55] 
+[18:23:55] Server Plugins
+[18:23:55] --------------
+[18:23:55]  Loaded 0 plugins.
+
+[18:23:55] 
+[18:23:55] Filterscripts
+[18:23:55] ---------------
+[18:23:55]   Loaded 0 filterscripts.
+
+[18:23:55] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[18:23:55] 
+-----------------NOW RUNNING------------------
+
+[18:23:55]        Dragonball Z Deathmatch 4.0z by Sasino     
+[18:23:55] 
+----------------------------------------------
+
+[18:23:55] Number of vehicle models: 0
+[18:25:05] Incoming connection: 192.168.1.1:49494
+[18:25:05] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[18:25:33] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Casino.
+[18:29:44] ~b~Sasuke_Uchiha ~r~is KO.
+[18:29:44] [death] Sasuke_Uchiha died 255
+[18:30:02] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Tenkaichi Tournament.
+[18:32:29] ~b~Sasuke_Uchiha ~r~is KO.
+[18:32:29] [death] Sasuke_Uchiha died 255
+[18:32:47] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Training Zone.
+[18:57:47] [QUIT]Sasuke_Uchiha has left the server.
+[18:57:47] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[22:05:53] filterscripts = ""  (string)
+[22:05:53] 
+[22:05:53] Server Plugins
+[22:05:53] --------------
+[22:05:53]  Loaded 0 plugins.
+
+[22:05:53] 
+[22:05:53] Filterscripts
+[22:05:53] ---------------
+[22:05:53]   Loaded 0 filterscripts.
+
+[22:05:53] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[22:05:53] 
+-----------------NOW RUNNING------------------
+
+[22:05:53]        Dragonball Z Deathmatch 4.0z by Sasino     
+[22:05:53] 
+----------------------------------------------
+
+[22:05:53] Number of vehicle models: 0
+[22:06:14] Incoming connection: 192.168.1.1:59161
+[22:06:15] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[22:06:22] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[22:08:24] ~b~Sasuke_Uchiha ~r~is KO.
+[22:08:24] [death] Sasuke_Uchiha died 54
+[22:08:37] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Casino.
+[22:13:52] Incoming connection: 192.168.1.1:59726
+[22:13:53] [join] dumb_ass has joined the server (1:192.168.1.1)
+[22:14:02] INFO: {FF0000}dumb_ass {FFFF00}is spawned in {33AA33}Abandoned Village.
+[22:21:37] ~b~dumb_ass ~r~was defeated by ~b~Sasuke_Uchiha.
+[22:21:37] [death] dumb_ass died 255
+[22:21:52] INFO: {FF0000}dumb_ass {FFFF00}is spawned in {33AA33}Underwater.
+[22:22:32] [QUIT]Sasuke_Uchiha has left the server.
+[22:22:32] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[22:17:35] filterscripts = ""  (string)
+[22:17:35] 
+[22:17:35] Server Plugins
+[22:17:35] --------------
+[22:17:35]  Loaded 0 plugins.
+
+[22:17:35] 
+[22:17:35] Filterscripts
+[22:17:35] ---------------
+[22:17:35]   Loaded 0 filterscripts.
+
+[22:17:35] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[22:17:35] 
+-----------------NOW RUNNING------------------
+
+[22:17:35]        Dragonball Z Deathmatch 4.0z by Sasino     
+[22:17:35] 
+----------------------------------------------
+
+[22:17:35] Number of vehicle models: 0
+[22:18:46] Incoming connection: 127.0.0.1:60648
+[22:18:47] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[22:19:03] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[22:20:17] ~b~Sasuke_Uchiha ~r~ K.O.
+[22:20:17] [death] Sasuke_Uchiha died 54
+[22:20:29] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Salone.
+[22:20:42] ~b~Sasuke_Uchiha ~r~ K.O.
+[22:20:42] [death] Sasuke_Uchiha died 54
+[22:20:50] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Salone.
+[22:23:59] ~b~Sasuke_Uchiha ~r~ K.O.
+[22:23:59] [death] Sasuke_Uchiha died 255
+[22:24:10] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[22:27:01] ~b~Sasuke_Uchiha ~r~ K.O.
+[22:27:01] [death] Sasuke_Uchiha died 54
+[22:27:12] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[22:27:46] ~b~Sasuke_Uchiha ~r~ K.O.
+[22:27:46] [death] Sasuke_Uchiha died 54
+[22:27:54] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Tenkaichi Tournament.
+[22:29:47] ~b~Sasuke_Uchiha ~r~ K.O.
+[22:29:47] [death] Sasuke_Uchiha died 54
+[22:34:25] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[22:34:25] [part] Sasuke_Uchiha has left the server (0:1)
+[22:34:50] Incoming connection: 192.168.1.1:2698
+[22:34:51] [join] dumb_Ass has joined the server (0:192.168.1.1)
+[22:34:58] INFO: {FF0000}dumb_Ass {FFFF00}is spawned in {33AA33}BRIDGE.
+[22:35:48] dumb_Ass(0) Has Left The Server(Quit).
+[22:35:48] [part] dumb_Ass has left the server (0:1)
+[22:35:57] --- Server Shutting Down.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[17:54:00] filterscripts = ""  (string)
+[17:54:00] 
+[17:54:00] Server Plugins
+[17:54:00] --------------
+[17:54:00]  Loaded 0 plugins.
+
+[17:54:00] 
+[17:54:00] Filterscripts
+[17:54:00] ---------------
+[17:54:00]   Loaded 0 filterscripts.
+
+[17:54:00] Script[gamemodes/dbz.amx]: Run time error 19: "File or function is not found"
+[17:54:00] Number of vehicle models: 0
+[17:54:23] --- Server Shutting Down.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[17:55:34] filterscripts = ""  (string)
+[17:55:34] 
+[17:55:34] Server Plugins
+[17:55:34] --------------
+[17:55:34]  Loading plugin: streamer
+[17:55:34] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[17:55:34]   Loaded.
+[17:55:34]  Loading plugin: sscanf
+[17:55:34] 
+
+[17:55:34]  ===============================
+
+[17:55:34]       sscanf plugin loaded.     
+
+[17:55:34]    (c) 2009 Alex "Y_Less" Cole
+
+[17:55:34]    0.3d-R2 500 Players "dnee"
+
+[17:55:34]  ===============================
+
+[17:55:34]   Loaded.
+[17:55:34]  Loading plugin: Whirlpool
+[17:55:34]  
+[17:55:34]  ==================
+[17:55:34]  
+[17:55:34]   Whirlpool loaded
+[17:55:34]  
+[17:55:34]  ==================
+[17:55:34]  
+[17:55:34]   Loaded.
+[17:55:34]  Loading plugin: nativechecker
+[17:55:34]   Loaded.
+[17:55:34]  Loaded 4 plugins.
+
+[17:55:34] 
+[17:55:34] Filterscripts
+[17:55:34] ---------------
+[17:55:34]   Loaded 0 filterscripts.
+
+[17:55:34]  
+[17:55:34]  
+[17:55:34]  
+[17:55:34]  ======================================= 
+[17:55:34]  |                                     | 
+[17:55:34]  |        YSI version 3.09.0684        | 
+[17:55:34]  |        By Alex "Y_Less" Cole        | 
+[17:55:34]  |                                     | 
+[17:55:34]  ======================================= 
+[17:55:34]  
+[17:55:34]  
+[17:55:34]  
+[17:55:34] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[17:55:34] 
+-----------------NOW RUNNING------------------
+
+[17:55:34]        Dragonball Z Deathmatch 4.0z by Sasino     
+[17:55:34] 
+----------------------------------------------
+
+[17:55:34] Number of vehicle models: 0
+[17:55:35]  
+[17:55:35]  ========================================== 
+[17:55:35]  |                                        | 
+[17:55:35]  |  A new version (v<html>
+  ) of YSI is  | 
+[17:55:35]  |            available from:             | 
+[17:55:35]  |                                        | 
+[17:55:35]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[17:55:35]  |                                        | 
+[17:55:35]  ========================================== 
+[17:55:35]  
+[17:56:00] Incoming connection: 127.0.0.1:59089
+[17:56:01] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[17:56:12] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[17:56:35] ~b~Sasuke_Uchiha ~r~ K.O.
+[17:56:35] [death] Sasuke_Uchiha died 54
+[17:56:46] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[17:57:22] ~b~Sasuke_Uchiha ~r~ K.O.
+[17:57:22] [death] Sasuke_Uchiha died 54
+[17:57:33] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[17:57:33] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[18:06:50] filterscripts = ""  (string)
+[18:06:50] 
+[18:06:50] Server Plugins
+[18:06:50] --------------
+[18:06:50]  Loading plugin: streamer
+[18:06:50] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:06:50]   Loaded.
+[18:06:50]  Loading plugin: sscanf
+[18:06:50] 
+
+[18:06:50]  ===============================
+
+[18:06:50]       sscanf plugin loaded.     
+
+[18:06:50]    (c) 2009 Alex "Y_Less" Cole
+
+[18:06:50]    0.3d-R2 500 Players "dnee"
+
+[18:06:50]  ===============================
+
+[18:06:50]   Loaded.
+[18:06:50]  Loading plugin: Whirlpool
+[18:06:50]  
+[18:06:50]  ==================
+[18:06:50]  
+[18:06:50]   Whirlpool loaded
+[18:06:50]  
+[18:06:50]  ==================
+[18:06:50]  
+[18:06:50]   Loaded.
+[18:06:50]  Loading plugin: nativechecker
+[18:06:50]   Loaded.
+[18:06:50]  Loaded 4 plugins.
+
+[18:06:50] 
+[18:06:50] Filterscripts
+[18:06:50] ---------------
+[18:06:50]   Loaded 0 filterscripts.
+
+[18:06:50]  
+[18:06:50]  
+[18:06:50]  
+[18:06:50]  ======================================= 
+[18:06:50]  |                                     | 
+[18:06:50]  |        YSI version 3.09.0684        | 
+[18:06:50]  |        By Alex "Y_Less" Cole        | 
+[18:06:50]  |                                     | 
+[18:06:50]  ======================================= 
+[18:06:50]  
+[18:06:50]  
+[18:06:50]  
+[18:06:50] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[18:06:50] 
+-----------------NOW RUNNING------------------
+
+[18:06:50]        Dragonball Z Deathmatch 4.0z by Sasino     
+[18:06:50] 
+----------------------------------------------
+
+[18:06:50] Number of vehicle models: 0
+[18:06:51]  
+[18:06:51]  ========================================== 
+[18:06:51]  |                                        | 
+[18:06:51]  |  A new version (v<html>
+  ) of YSI is  | 
+[18:06:51]  |            available from:             | 
+[18:06:51]  |                                        | 
+[18:06:51]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[18:06:51]  |                                        | 
+[18:06:51]  ========================================== 
+[18:06:51]  
+[18:07:11] Incoming connection: 192.168.1.1:52652
+[18:07:11] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[18:09:07] filterscripts = ""  (string)
+[18:09:07] 
+[18:09:07] Server Plugins
+[18:09:07] --------------
+[18:09:07]  Loading plugin: streamer
+[18:09:07] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:09:07]   Loaded.
+[18:09:07]  Loading plugin: sscanf
+[18:09:07] 
+
+[18:09:07]  ===============================
+
+[18:09:07]       sscanf plugin loaded.     
+
+[18:09:07]    (c) 2009 Alex "Y_Less" Cole
+
+[18:09:07]    0.3d-R2 500 Players "dnee"
+
+[18:09:07]  ===============================
+
+[18:09:07]   Loaded.
+[18:09:07]  Loading plugin: Whirlpool
+[18:09:07]  
+[18:09:07]  ==================
+[18:09:07]  
+[18:09:07]   Whirlpool loaded
+[18:09:07]  
+[18:09:07]  ==================
+[18:09:07]  
+[18:09:07]   Loaded.
+[18:09:07]  Loading plugin: nativechecker
+[18:09:07]   Loaded.
+[18:09:07]  Loaded 4 plugins.
+
+[18:09:07] 
+[18:09:07] Filterscripts
+[18:09:07] ---------------
+[18:09:07]   Loaded 0 filterscripts.
+
+[18:09:07]  
+[18:09:07]  
+[18:09:07]  
+[18:09:07]  ======================================= 
+[18:09:07]  |                                     | 
+[18:09:07]  |        YSI version 3.09.0684        | 
+[18:09:07]  |        By Alex "Y_Less" Cole        | 
+[18:09:07]  |                                     | 
+[18:09:07]  ======================================= 
+[18:09:07]  
+[18:09:07]  
+[18:09:07]  
+[18:09:07] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[18:09:07] 
+-----------------NOW RUNNING------------------
+
+[18:09:07]        Dragonball Z Deathmatch 4.0z by Sasino     
+[18:09:07] 
+----------------------------------------------
+
+[18:09:07] Number of vehicle models: 0
+[18:09:08]  
+[18:09:08]  ========================================== 
+[18:09:08]  |                                        | 
+[18:09:08]  |  A new version (v<html>
+  ) of YSI is  | 
+[18:09:08]  |            available from:             | 
+[18:09:08]  |                                        | 
+[18:09:08]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[18:09:08]  |                                        | 
+[18:09:08]  ========================================== 
+[18:09:08]  
+[18:09:11] Incoming connection: 192.168.1.1:52904
+[18:09:11] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[18:12:46] filterscripts = ""  (string)
+[18:12:46] 
+[18:12:46] Server Plugins
+[18:12:46] --------------
+[18:12:46]  Loading plugin: streamer
+[18:12:46] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:12:46]   Loaded.
+[18:12:46]  Loading plugin: sscanf
+[18:12:46] 
+
+[18:12:46]  ===============================
+
+[18:12:46]       sscanf plugin loaded.     
+
+[18:12:46]    (c) 2009 Alex "Y_Less" Cole
+
+[18:12:46]    0.3d-R2 500 Players "dnee"
+
+[18:12:46]  ===============================
+
+[18:12:46]   Loaded.
+[18:12:46]  Loading plugin: Whirlpool
+[18:12:46]  
+[18:12:46]  ==================
+[18:12:46]  
+[18:12:46]   Whirlpool loaded
+[18:12:46]  
+[18:12:46]  ==================
+[18:12:46]  
+[18:12:46]   Loaded.
+[18:12:46]  Loading plugin: nativechecker
+[18:12:46]   Loaded.
+[18:12:46]  Loaded 4 plugins.
+
+[18:12:46] 
+[18:12:46] Filterscripts
+[18:12:46] ---------------
+[18:12:46]   Loaded 0 filterscripts.
+
+[18:12:46]  
+[18:12:46]  
+[18:12:46]  
+[18:12:46]  ======================================= 
+[18:12:46]  |                                     | 
+[18:12:46]  |        YSI version 3.09.0684        | 
+[18:12:46]  |        By Alex "Y_Less" Cole        | 
+[18:12:46]  |                                     | 
+[18:12:46]  ======================================= 
+[18:12:46]  
+[18:12:46]  
+[18:12:46]  
+[18:12:46] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[18:12:46] 
+-----------------NOW RUNNING------------------
+
+[18:12:46]        Dragonball Z Deathmatch 4.0z by Sasino     
+[18:12:46] 
+----------------------------------------------
+
+[18:12:46] Number of vehicle models: 0
+[18:12:48] Incoming connection: 192.168.1.1:60812
+[18:12:48] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[18:12:53]  
+[18:12:53]  ========================================== 
+[18:12:53]  |                                        | 
+[18:12:53]  |  A new version (v<html>
+  ) of YSI is  | 
+[18:12:53]  |            available from:             | 
+[18:12:53]  |                                        | 
+[18:12:53]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[18:12:53]  |                                        | 
+[18:12:53]  ========================================== 
+[18:12:53]  
+[18:14:35] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[18:14:35] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[18:14:53] filterscripts = ""  (string)
+[18:14:53] 
+[18:14:53] Server Plugins
+[18:14:53] --------------
+[18:14:53]  Loading plugin: streamer
+[18:14:53] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:14:53]   Loaded.
+[18:14:53]  Loading plugin: sscanf
+[18:14:53] 
+
+[18:14:53]  ===============================
+
+[18:14:53]       sscanf plugin loaded.     
+
+[18:14:53]    (c) 2009 Alex "Y_Less" Cole
+
+[18:14:53]    0.3d-R2 500 Players "dnee"
+
+[18:14:53]  ===============================
+
+[18:14:53]   Loaded.
+[18:14:53]  Loading plugin: Whirlpool
+[18:14:53]  
+[18:14:53]  ==================
+[18:14:53]  
+[18:14:53]   Whirlpool loaded
+[18:14:53]  
+[18:14:53]  ==================
+[18:14:53]  
+[18:14:53]   Loaded.
+[18:14:53]  Loading plugin: nativechecker
+[18:14:53]   Loaded.
+[18:14:53]  Loaded 4 plugins.
+
+[18:14:53] 
+[18:14:53] Filterscripts
+[18:14:53] ---------------
+[18:14:53]   Loaded 0 filterscripts.
+
+[18:14:53]  
+[18:14:53]  
+[18:14:53]  
+[18:14:53]  ======================================= 
+[18:14:53]  |                                     | 
+[18:14:53]  |        YSI version 3.09.0684        | 
+[18:14:53]  |        By Alex "Y_Less" Cole        | 
+[18:14:53]  |                                     | 
+[18:14:53]  ======================================= 
+[18:14:53]  
+[18:14:53]  
+[18:14:53]  
+[18:14:53] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[18:14:53] 
+-----------------NOW RUNNING------------------
+
+[18:14:53]        Dragonball Z Deathmatch 4.0z by Sasino     
+[18:14:53] 
+----------------------------------------------
+
+[18:14:53] Number of vehicle models: 0
+[18:14:54]  
+[18:14:54]  ========================================== 
+[18:14:54]  |                                        | 
+[18:14:54]  |  A new version (v<html>
+  ) of YSI is  | 
+[18:14:54]  |            available from:             | 
+[18:14:54]  |                                        | 
+[18:14:54]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[18:14:54]  |                                        | 
+[18:14:54]  ========================================== 
+[18:14:54]  
+[18:15:15] Incoming connection: 127.0.0.1:60929
+[18:15:15] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[18:15:31] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Training Zone.
+[18:15:47] ~b~Sasuke_Uchiha ~r~ K.O.
+[18:15:47] [death] Sasuke_Uchiha died 54
+[18:16:17] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Area 51.
+[18:17:17] ~b~Sasuke_Uchiha ~r~ K.O.
+[18:17:17] [death] Sasuke_Uchiha died 255
+[18:17:28] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[18:21:30] Incoming connection: 192.168.1.1:1561
+[18:21:32] [join] BPSCrash has joined the server (1:192.168.1.1)
+[18:22:08] INFO: {FF0000}BPSCrash {FFFF00}is spawned in {33AA33}Abandoned Village.
+[18:24:21] (null)
+[18:24:21] BPSCrash(1) Has Left The Server(Quit).
+[18:24:21] [part] BPSCrash has left the server (1:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[18:25:11] filterscripts = ""  (string)
+[18:25:11] 
+[18:25:11] Server Plugins
+[18:25:11] --------------
+[18:25:11]  Loading plugin: streamer
+[18:25:11] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:25:11]   Loaded.
+[18:25:11]  Loading plugin: sscanf
+[18:25:11] 
+
+[18:25:11]  ===============================
+
+[18:25:11]       sscanf plugin loaded.     
+
+[18:25:11]    (c) 2009 Alex "Y_Less" Cole
+
+[18:25:11]    0.3d-R2 500 Players "dnee"
+
+[18:25:11]  ===============================
+
+[18:25:11]   Loaded.
+[18:25:11]  Loading plugin: Whirlpool
+[18:25:11]  
+[18:25:11]  ==================
+[18:25:11]  
+[18:25:11]   Whirlpool loaded
+[18:25:11]  
+[18:25:11]  ==================
+[18:25:11]  
+[18:25:11]   Loaded.
+[18:25:11]  Loading plugin: nativechecker
+[18:25:11]   Loaded.
+[18:25:11]  Loaded 4 plugins.
+
+[18:25:11] 
+[18:25:11] Filterscripts
+[18:25:11] ---------------
+[18:25:11]   Loaded 0 filterscripts.
+
+[18:25:11]  
+[18:25:11]  
+[18:25:11]  
+[18:25:11]  ======================================= 
+[18:25:11]  |                                     | 
+[18:25:11]  |        YSI version 3.09.0684        | 
+[18:25:11]  |        By Alex "Y_Less" Cole        | 
+[18:25:11]  |                                     | 
+[18:25:11]  ======================================= 
+[18:25:11]  
+[18:25:11]  
+[18:25:11]  
+[18:25:11] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[18:25:11] 
+-----------------NOW RUNNING------------------
+
+[18:25:11]        Dragonball Z Deathmatch 4.0z by Sasino     
+[18:25:11] 
+----------------------------------------------
+
+[18:25:11] Number of vehicle models: 0
+[18:25:11] Incoming connection: 127.0.0.1:56297
+[18:25:12] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[18:25:12]  
+[18:25:12]  ========================================== 
+[18:25:12]  |                                        | 
+[18:25:12]  |  A new version (v<html>
+  ) of YSI is  | 
+[18:25:12]  |            available from:             | 
+[18:25:12]  |                                        | 
+[18:25:12]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[18:25:12]  |                                        | 
+[18:25:12]  ========================================== 
+[18:25:12]  
+[18:25:18] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[18:25:55] ~b~Sasuke_Uchiha ~r~ K.O.
+[18:25:55] [death] Sasuke_Uchiha died 54
+[18:26:02] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[18:27:26] <SERIOUS COMMAND USED!> Sasuke_Uchiha(0) has used /iamownerheresetmelevel10 - he is now top admin.
+[18:30:47] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[18:30:47] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[19:10:56] filterscripts = ""  (string)
+[19:10:56] 
+[19:10:56] Server Plugins
+[19:10:56] --------------
+[19:10:56]  Loading plugin: streamer
+[19:10:56] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[19:10:56]   Loaded.
+[19:10:56]  Loading plugin: sscanf
+[19:10:56] 
+
+[19:10:56]  ===============================
+
+[19:10:56]       sscanf plugin loaded.     
+
+[19:10:56]    (c) 2009 Alex "Y_Less" Cole
+
+[19:10:56]    0.3d-R2 500 Players "dnee"
+
+[19:10:56]  ===============================
+
+[19:10:56]   Loaded.
+[19:10:56]  Loading plugin: Whirlpool
+[19:10:56]  
+[19:10:56]  ==================
+[19:10:56]  
+[19:10:56]   Whirlpool loaded
+[19:10:56]  
+[19:10:56]  ==================
+[19:10:56]  
+[19:10:56]   Loaded.
+[19:10:56]  Loading plugin: nativechecker
+[19:10:56]   Loaded.
+[19:10:56]  Loaded 4 plugins.
+
+[19:10:56] 
+[19:10:56] Filterscripts
+[19:10:56] ---------------
+[19:10:56]   Loaded 0 filterscripts.
+
+[19:10:56]  
+[19:10:56]  
+[19:10:56]  
+[19:10:56]  ======================================= 
+[19:10:56]  |                                     | 
+[19:10:56]  |        YSI version 3.09.0684        | 
+[19:10:56]  |        By Alex "Y_Less" Cole        | 
+[19:10:56]  |                                     | 
+[19:10:56]  ======================================= 
+[19:10:56]  
+[19:10:56]  
+[19:10:56]  
+[19:10:56] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[19:10:56] 
+-----------------NOW RUNNING------------------
+
+[19:10:56]        Dragonball Z Deathmatch 4.0z by Sasino     
+[19:10:56] 
+----------------------------------------------
+
+[19:10:56] Number of vehicle models: 0
+[19:11:03]  
+[19:11:03]  ========================================== 
+[19:11:03]  |                                        | 
+[19:11:03]  |  A new version (v<html>
+  ) of YSI is  | 
+[19:11:03]  |            available from:             | 
+[19:11:03]  |                                        | 
+[19:11:03]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[19:11:03]  |                                        | 
+[19:11:03]  ========================================== 
+[19:11:03]  
+[19:11:25] Incoming connection: 127.0.0.1:58579
+[19:11:26] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[19:11:37] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[19:18:51] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[19:18:51] [part] Sasuke_Uchiha has left the server (0:1)
+[19:19:53] Incoming connection: 127.0.0.1:59574
+[19:19:53] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[19:20:00] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[19:23:05] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[19:23:05] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[19:30:42] filterscripts = ""  (string)
+[19:30:42] 
+[19:30:42] Server Plugins
+[19:30:42] --------------
+[19:30:42]  Loading plugin: streamer
+[19:30:42] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[19:30:42]   Loaded.
+[19:30:42]  Loading plugin: sscanf
+[19:30:42] 
+
+[19:30:42]  ===============================
+
+[19:30:42]       sscanf plugin loaded.     
+
+[19:30:42]    (c) 2009 Alex "Y_Less" Cole
+
+[19:30:42]    0.3d-R2 500 Players "dnee"
+
+[19:30:42]  ===============================
+
+[19:30:42]   Loaded.
+[19:30:42]  Loading plugin: Whirlpool
+[19:30:42]  
+[19:30:42]  ==================
+[19:30:42]  
+[19:30:42]   Whirlpool loaded
+[19:30:42]  
+[19:30:42]  ==================
+[19:30:42]  
+[19:30:42]   Loaded.
+[19:30:42]  Loading plugin: nativechecker
+[19:30:42]   Loaded.
+[19:30:42]  Loaded 4 plugins.
+
+[19:30:42] 
+[19:30:42] Filterscripts
+[19:30:42] ---------------
+[19:30:42]   Loaded 0 filterscripts.
+
+[19:30:42]  
+[19:30:42]  
+[19:30:42]  
+[19:30:42]  ======================================= 
+[19:30:42]  |                                     | 
+[19:30:42]  |        YSI version 3.09.0684        | 
+[19:30:42]  |        By Alex "Y_Less" Cole        | 
+[19:30:42]  |                                     | 
+[19:30:42]  ======================================= 
+[19:30:42]  
+[19:30:42]  
+[19:30:42]  
+[19:30:42] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[19:30:42] 
+-----------------NOW RUNNING------------------
+
+[19:30:42]        Dragonball Z Deathmatch 4.0z by Sasino     
+[19:30:42] 
+----------------------------------------------
+
+[19:30:42] Number of vehicle models: 0
+[19:30:44]  
+[19:30:44]  ========================================== 
+[19:30:44]  |                                        | 
+[19:30:44]  |  A new version (v<html>
+  ) of YSI is  | 
+[19:30:44]  |            available from:             | 
+[19:30:44]  |                                        | 
+[19:30:44]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[19:30:44]  |                                        | 
+[19:30:44]  ========================================== 
+[19:30:44]  
+[19:34:07] Incoming connection: 192.168.1.1:53274
+[19:34:07] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[19:34:23] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[19:35:35] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[19:35:35] (null)
+[19:35:35] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[19:35:35] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[20:00:56] filterscripts = ""  (string)
+[20:00:56] 
+[20:00:56] Server Plugins
+[20:00:56] --------------
+[20:00:56]  Loading plugin: streamer
+[20:00:56] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:00:56]   Loaded.
+[20:00:56]  Loading plugin: sscanf
+[20:00:56] 
+
+[20:00:56]  ===============================
+
+[20:00:56]       sscanf plugin loaded.     
+
+[20:00:56]    (c) 2009 Alex "Y_Less" Cole
+
+[20:00:56]    0.3d-R2 500 Players "dnee"
+
+[20:00:56]  ===============================
+
+[20:00:56]   Loaded.
+[20:00:56]  Loading plugin: Whirlpool
+[20:00:56]  
+[20:00:56]  ==================
+[20:00:56]  
+[20:00:56]   Whirlpool loaded
+[20:00:56]  
+[20:00:56]  ==================
+[20:00:56]  
+[20:00:56]   Loaded.
+[20:00:56]  Loading plugin: nativechecker
+[20:00:56]   Loaded.
+[20:00:56]  Loaded 4 plugins.
+
+[20:00:56] 
+[20:00:56] Filterscripts
+[20:00:56] ---------------
+[20:00:56]   Loaded 0 filterscripts.
+
+[20:00:56]  
+[20:00:56]  
+[20:00:56]  
+[20:00:56]  ======================================= 
+[20:00:56]  |                                     | 
+[20:00:56]  |        YSI version 3.09.0684        | 
+[20:00:56]  |        By Alex "Y_Less" Cole        | 
+[20:00:56]  |                                     | 
+[20:00:56]  ======================================= 
+[20:00:56]  
+[20:00:56]  
+[20:00:56]  
+[20:00:56] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[20:00:56] 
+-----------------NOW RUNNING------------------
+
+[20:00:56]        Dragonball Z Deathmatch 4.0z by Sasino     
+[20:00:56] 
+----------------------------------------------
+
+[20:00:56] Number of vehicle models: 0
+[20:01:00]  
+[20:01:00]  ========================================== 
+[20:01:00]  |                                        | 
+[20:01:00]  |  A new version (v<html>
+  ) of YSI is  | 
+[20:01:00]  |            available from:             | 
+[20:01:00]  |                                        | 
+[20:01:00]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[20:01:00]  |                                        | 
+[20:01:00]  ========================================== 
+[20:01:00]  
+[20:01:17] Incoming connection: 192.168.1.1:57374
+[20:01:17] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[20:01:28] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[20:05:44] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[20:07:47] ~b~Sasuke_Uchiha ~r~ K.O.
+[20:07:47] [death] Sasuke_Uchiha died 54
+[20:08:23] ~b~Sasuke_Uchiha ~r~ K.O.
+[20:08:23] [death] Sasuke_Uchiha died 54
+[20:08:28] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Skyscraper.
+[20:10:02] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[20:11:54] ~b~Sasuke_Uchiha ~r~ K.O.
+[20:11:54] [death] Sasuke_Uchiha died 255
+[20:12:07] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}BRIDGE.
+[20:12:33] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[20:12:33] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[20:12:33] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[20:12:33] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[12:50:15] filterscripts = ""  (string)
+[12:50:15] 
+[12:50:15] Server Plugins
+[12:50:15] --------------
+[12:50:15]  Loading plugin: streamer
+[12:50:15] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[12:50:15]   Loaded.
+[12:50:15]  Loading plugin: sscanf
+[12:50:15] 
+
+[12:50:15]  ===============================
+
+[12:50:15]       sscanf plugin loaded.     
+
+[12:50:15]    (c) 2009 Alex "Y_Less" Cole
+
+[12:50:15]    0.3d-R2 500 Players "dnee"
+
+[12:50:15]  ===============================
+
+[12:50:15]   Loaded.
+[12:50:15]  Loading plugin: Whirlpool
+[12:50:15]  
+[12:50:15]  ==================
+[12:50:15]  
+[12:50:15]   Whirlpool loaded
+[12:50:15]  
+[12:50:15]  ==================
+[12:50:15]  
+[12:50:15]   Loaded.
+[12:50:15]  Loading plugin: nativechecker
+[12:50:15]   Loaded.
+[12:50:15]  Loaded 4 plugins.
+
+[12:50:15] 
+[12:50:15] Filterscripts
+[12:50:15] ---------------
+[12:50:15]   Loaded 0 filterscripts.
+
+[12:50:15]  
+[12:50:15]  
+[12:50:15]  
+[12:50:15]  ======================================= 
+[12:50:15]  |                                     | 
+[12:50:15]  |        YSI version 3.09.0684        | 
+[12:50:15]  |        By Alex "Y_Less" Cole        | 
+[12:50:15]  |                                     | 
+[12:50:15]  ======================================= 
+[12:50:15]  
+[12:50:15]  
+[12:50:15]  
+[12:50:15] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[12:50:15] 
+-----------------NOW RUNNING------------------
+
+[12:50:15]        Dragonball Z Deathmatch 4.0z by Sasino     
+[12:50:15] 
+----------------------------------------------
+
+[12:50:15] Number of vehicle models: 0
+[12:50:16]  
+[12:50:16]  ========================================== 
+[12:50:16]  |                                        | 
+[12:50:16]  |  A new version (v<html>
+  ) of YSI is  | 
+[12:50:16]  |            available from:             | 
+[12:50:16]  |                                        | 
+[12:50:16]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[12:50:16]  |                                        | 
+[12:50:16]  ========================================== 
+[12:50:16]  
+[12:50:38] Incoming connection: 192.168.1.1:56383
+[12:50:38] [join] AVENGER has joined the server (0:192.168.1.1)
+[12:50:51] INFO: {FF0000}AVENGER {FFFF00}is spawned in {33AA33}Abandoned Village.
+[12:53:07] --- Server Shutting Down.
+[12:53:07] [part] AVENGER has left the server (0:0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[12:53:57] filterscripts = ""  (string)
+[12:53:57] 
+[12:53:57] Server Plugins
+[12:53:57] --------------
+[12:53:57]  Loading plugin: streamer
+[12:53:57] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[12:53:57]   Loaded.
+[12:53:57]  Loading plugin: sscanf
+[12:53:57] 
+
+[12:53:57]  ===============================
+
+[12:53:57]       sscanf plugin loaded.     
+
+[12:53:57]    (c) 2009 Alex "Y_Less" Cole
+
+[12:53:57]    0.3d-R2 500 Players "dnee"
+
+[12:53:57]  ===============================
+
+[12:53:57]   Loaded.
+[12:53:57]  Loading plugin: Whirlpool
+[12:53:57]  
+[12:53:57]  ==================
+[12:53:57]  
+[12:53:57]   Whirlpool loaded
+[12:53:57]  
+[12:53:57]  ==================
+[12:53:57]  
+[12:53:57]   Loaded.
+[12:53:57]  Loading plugin: nativechecker
+[12:53:57]   Loaded.
+[12:53:57]  Loaded 4 plugins.
+
+[12:53:57] 
+[12:53:57] Filterscripts
+[12:53:57] ---------------
+[12:53:57]   Loaded 0 filterscripts.
+
+[12:53:57]  
+[12:53:57]  
+[12:53:57]  
+[12:53:57]  ======================================= 
+[12:53:57]  |                                     | 
+[12:53:57]  |        YSI version 3.09.0684        | 
+[12:53:57]  |        By Alex "Y_Less" Cole        | 
+[12:53:57]  |                                     | 
+[12:53:57]  ======================================= 
+[12:53:57]  
+[12:53:57]  
+[12:53:57]  
+[12:53:57] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[12:53:57] 
+-----------------NOW RUNNING------------------
+
+[12:53:57]        Dragonball Z Deathmatch 4.0z by Sasino     
+[12:53:57] 
+----------------------------------------------
+
+[12:53:57] Number of vehicle models: 0
+[12:53:58]  
+[12:53:58]  ========================================== 
+[12:53:58]  |                                        | 
+[12:53:58]  |  A new version (v<html>
+  ) of YSI is  | 
+[12:53:58]  |            available from:             | 
+[12:53:58]  |                                        | 
+[12:53:58]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[12:53:58]  |                                        | 
+[12:53:58]  ========================================== 
+[12:53:58]  
+[12:54:17] Incoming connection: 192.168.1.1:52703
+[12:54:17] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[12:54:26] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[12:58:37] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[12:59:24] filterscripts = ""  (string)
+[12:59:24] 
+[12:59:24] Server Plugins
+[12:59:24] --------------
+[12:59:24]  Loading plugin: streamer
+[12:59:24] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[12:59:24]   Loaded.
+[12:59:24]  Loading plugin: sscanf
+[12:59:24] 
+
+[12:59:24]  ===============================
+
+[12:59:24]       sscanf plugin loaded.     
+
+[12:59:24]    (c) 2009 Alex "Y_Less" Cole
+
+[12:59:24]    0.3d-R2 500 Players "dnee"
+
+[12:59:24]  ===============================
+
+[12:59:24]   Loaded.
+[12:59:24]  Loading plugin: Whirlpool
+[12:59:24]  
+[12:59:24]  ==================
+[12:59:24]  
+[12:59:24]   Whirlpool loaded
+[12:59:24]  
+[12:59:24]  ==================
+[12:59:24]  
+[12:59:24]   Loaded.
+[12:59:24]  Loading plugin: nativechecker
+[12:59:24]   Loaded.
+[12:59:24]  Loaded 4 plugins.
+
+[12:59:24] 
+[12:59:24] Filterscripts
+[12:59:24] ---------------
+[12:59:24]   Loaded 0 filterscripts.
+
+[12:59:24]  
+[12:59:24]  
+[12:59:24]  
+[12:59:24]  ======================================= 
+[12:59:24]  |                                     | 
+[12:59:24]  |        YSI version 3.09.0684        | 
+[12:59:24]  |        By Alex "Y_Less" Cole        | 
+[12:59:24]  |                                     | 
+[12:59:24]  ======================================= 
+[12:59:24]  
+[12:59:24]  
+[12:59:24]  
+[12:59:24] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[12:59:24] 
+-----------------NOW RUNNING------------------
+
+[12:59:24]        Dragonball Z Deathmatch 4.0z by Sasino     
+[12:59:24] 
+----------------------------------------------
+
+[12:59:24] Number of vehicle models: 0
+[12:59:25]  
+[12:59:25]  ========================================== 
+[12:59:25]  |                                        | 
+[12:59:25]  |  A new version (v<html>
+  ) of YSI is  | 
+[12:59:25]  |            available from:             | 
+[12:59:25]  |                                        | 
+[12:59:25]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[12:59:25]  |                                        | 
+[12:59:25]  ========================================== 
+[12:59:25]  
+[12:59:25] Incoming connection: 192.168.1.1:58175
+[12:59:25] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[12:59:35] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[13:01:51] filterscripts = ""  (string)
+[13:01:51] 
+[13:01:51] Server Plugins
+[13:01:51] --------------
+[13:01:51]  Loading plugin: streamer
+[13:01:51] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[13:01:51]   Loaded.
+[13:01:51]  Loading plugin: sscanf
+[13:01:51] 
+
+[13:01:51]  ===============================
+
+[13:01:51]       sscanf plugin loaded.     
+
+[13:01:51]    (c) 2009 Alex "Y_Less" Cole
+
+[13:01:51]    0.3d-R2 500 Players "dnee"
+
+[13:01:51]  ===============================
+
+[13:01:51]   Loaded.
+[13:01:51]  Loading plugin: Whirlpool
+[13:01:51]  
+[13:01:51]  ==================
+[13:01:51]  
+[13:01:51]   Whirlpool loaded
+[13:01:51]  
+[13:01:51]  ==================
+[13:01:51]  
+[13:01:51]   Loaded.
+[13:01:51]  Loading plugin: nativechecker
+[13:01:51]   Loaded.
+[13:01:51]  Loaded 4 plugins.
+
+[13:01:51] 
+[13:01:51] Filterscripts
+[13:01:51] ---------------
+[13:01:51]   Loaded 0 filterscripts.
+
+[13:01:51]  
+[13:01:51]  
+[13:01:51]  
+[13:01:51]  ======================================= 
+[13:01:51]  |                                     | 
+[13:01:51]  |        YSI version 3.09.0684        | 
+[13:01:51]  |        By Alex "Y_Less" Cole        | 
+[13:01:51]  |                                     | 
+[13:01:51]  ======================================= 
+[13:01:51]  
+[13:01:51]  
+[13:01:51]  
+[13:01:51] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[13:01:51] 
+-----------------NOW RUNNING------------------
+
+[13:01:51]        Dragonball Z Deathmatch 4.0z by Sasino     
+[13:01:51] 
+----------------------------------------------
+
+[13:01:51] Number of vehicle models: 0
+[13:01:52]  
+[13:01:52]  ========================================== 
+[13:01:52]  |                                        | 
+[13:01:52]  |  A new version (v<html>
+  ) of YSI is  | 
+[13:01:52]  |            available from:             | 
+[13:01:52]  |                                        | 
+[13:01:52]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[13:01:52]  |                                        | 
+[13:01:52]  ========================================== 
+[13:01:52]  
+[13:01:52] Incoming connection: 192.168.1.1:49154
+[13:01:52] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[13:02:02] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[13:06:14] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[13:10:31] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[13:13:28] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[13:13:28] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[13:13:28] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[13:13:28] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[20:49:11] filterscripts = ""  (string)
+[20:49:11] 
+[20:49:11] Server Plugins
+[20:49:11] --------------
+[20:49:11]  Loading plugin: streamer
+[20:49:11] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:49:11]   Loaded.
+[20:49:11]  Loading plugin: sscanf
+[20:49:11] 
+
+[20:49:11]  ===============================
+
+[20:49:11]       sscanf plugin loaded.     
+
+[20:49:11]    (c) 2009 Alex "Y_Less" Cole
+
+[20:49:11]    0.3d-R2 500 Players "dnee"
+
+[20:49:11]  ===============================
+
+[20:49:11]   Loaded.
+[20:49:11]  Loading plugin: Whirlpool
+[20:49:11]  
+[20:49:11]  ==================
+[20:49:11]  
+[20:49:11]   Whirlpool loaded
+[20:49:11]  
+[20:49:11]  ==================
+[20:49:11]  
+[20:49:11]   Loaded.
+[20:49:11]  Loading plugin: nativechecker
+[20:49:11]   Loaded.
+[20:49:11]  Loaded 4 plugins.
+
+[20:49:11] 
+[20:49:11] Filterscripts
+[20:49:11] ---------------
+[20:49:11]   Loaded 0 filterscripts.
+
+[20:49:11]  
+[20:49:11]  
+[20:49:11]  
+[20:49:11]  ======================================= 
+[20:49:11]  |                                     | 
+[20:49:11]  |        YSI version 3.09.0684        | 
+[20:49:11]  |        By Alex "Y_Less" Cole        | 
+[20:49:11]  |                                     | 
+[20:49:11]  ======================================= 
+[20:49:11]  
+[20:49:11]  
+[20:49:11]  
+[20:49:11] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[20:49:11] 
+-----------------NOW RUNNING------------------
+
+[20:49:11]        Dragonball Z Deathmatch 4.0z by Sasino     
+[20:49:11] 
+----------------------------------------------
+
+[20:49:11] Number of vehicle models: 0
+[20:49:13]  
+[20:49:13]  ========================================== 
+[20:49:13]  |                                        | 
+[20:49:13]  |  A new version (v<html>
+  ) of YSI is  | 
+[20:49:13]  |            available from:             | 
+[20:49:13]  |                                        | 
+[20:49:13]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[20:49:13]  |                                        | 
+[20:49:13]  ========================================== 
+[20:49:13]  
+[20:49:40] Incoming connection: 192.168.1.1:57175
+[20:49:40] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[20:50:01] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[20:51:12] --- Server Shutting Down.
+[20:51:12] [part] Sasuke_Uchiha has left the server (0:0)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[20:51:14] filterscripts = ""  (string)
+[20:51:14] 
+[20:51:14] Server Plugins
+[20:51:14] --------------
+[20:51:14]  Loading plugin: streamer
+[20:51:14] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:51:14]   Loaded.
+[20:51:14]  Loading plugin: sscanf
+[20:51:14] 
+
+[20:51:14]  ===============================
+
+[20:51:14]       sscanf plugin loaded.     
+
+[20:51:14]    (c) 2009 Alex "Y_Less" Cole
+
+[20:51:14]    0.3d-R2 500 Players "dnee"
+
+[20:51:14]  ===============================
+
+[20:51:14]   Loaded.
+[20:51:14]  Loading plugin: Whirlpool
+[20:51:14]  
+[20:51:14]  ==================
+[20:51:14]  
+[20:51:14]   Whirlpool loaded
+[20:51:14]  
+[20:51:14]  ==================
+[20:51:14]  
+[20:51:14]   Loaded.
+[20:51:14]  Loading plugin: nativechecker
+[20:51:14]   Loaded.
+[20:51:14]  Loaded 4 plugins.
+
+[20:51:14] 
+[20:51:14] Filterscripts
+[20:51:14] ---------------
+[20:51:14]   Loaded 0 filterscripts.
+
+[20:51:14]  
+[20:51:14]  
+[20:51:14]  
+[20:51:14]  ======================================= 
+[20:51:14]  |                                     | 
+[20:51:14]  |        YSI version 3.09.0684        | 
+[20:51:14]  |        By Alex "Y_Less" Cole        | 
+[20:51:14]  |                                     | 
+[20:51:14]  ======================================= 
+[20:51:14]  
+[20:51:14]  
+[20:51:14]  
+[20:51:14] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[20:51:14] 
+-----------------NOW RUNNING------------------
+
+[20:51:14]        Dragonball Z Deathmatch 4.0z by Sasino     
+[20:51:14] 
+----------------------------------------------
+
+[20:51:14] Number of vehicle models: 0
+[20:51:15]  
+[20:51:15]  ========================================== 
+[20:51:15]  |                                        | 
+[20:51:15]  |  A new version (v<html>
+  ) of YSI is  | 
+[20:51:15]  |            available from:             | 
+[20:51:15]  |                                        | 
+[20:51:15]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[20:51:15]  |                                        | 
+[20:51:15]  ========================================== 
+[20:51:15]  
+[20:51:43] Incoming connection: 192.168.1.1:57132
+[20:51:43] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[20:51:58] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Tenkaichi Tournament.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[20:53:33] filterscripts = ""  (string)
+[20:53:33] 
+[20:53:33] Server Plugins
+[20:53:33] --------------
+[20:53:33]  Loading plugin: streamer
+[20:53:33] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:53:33]   Loaded.
+[20:53:33]  Loading plugin: sscanf
+[20:53:33] 
+
+[20:53:33]  ===============================
+
+[20:53:33]       sscanf plugin loaded.     
+
+[20:53:33]    (c) 2009 Alex "Y_Less" Cole
+
+[20:53:33]    0.3d-R2 500 Players "dnee"
+
+[20:53:33]  ===============================
+
+[20:53:33]   Loaded.
+[20:53:33]  Loading plugin: Whirlpool
+[20:53:33]  
+[20:53:33]  ==================
+[20:53:33]  
+[20:53:33]   Whirlpool loaded
+[20:53:33]  
+[20:53:33]  ==================
+[20:53:33]  
+[20:53:33]   Loaded.
+[20:53:33]  Loading plugin: nativechecker
+[20:53:33]   Loaded.
+[20:53:33]  Loaded 4 plugins.
+
+[20:53:33] 
+[20:53:33] Filterscripts
+[20:53:33] ---------------
+[20:53:33]   Loaded 0 filterscripts.
+
+[20:53:33]  
+[20:53:33]  
+[20:53:33]  
+[20:53:33]  ======================================= 
+[20:53:33]  |                                     | 
+[20:53:33]  |        YSI version 3.09.0684        | 
+[20:53:33]  |        By Alex "Y_Less" Cole        | 
+[20:53:33]  |                                     | 
+[20:53:33]  ======================================= 
+[20:53:33]  
+[20:53:33]  
+[20:53:33]  
+[20:53:33] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[20:53:33] 
+-----------------NOW RUNNING------------------
+
+[20:53:33]        Dragonball Z Deathmatch 4.0z by Sasino     
+[20:53:33] 
+----------------------------------------------
+
+[20:53:33] Number of vehicle models: 0
+[20:53:35] Incoming connection: 192.168.1.1:58924
+[20:53:36] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[20:53:43]  
+[20:53:43]  ========================================== 
+[20:53:43]  |                                        | 
+[20:53:43]  |  A new version (v<html>
+  ) of YSI is  | 
+[20:53:43]  |            available from:             | 
+[20:53:43]  |                                        | 
+[20:53:43]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[20:53:43]  |                                        | 
+[20:53:43]  ========================================== 
+[20:53:43]  
+[20:53:45] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[20:56:10] ~b~Sasuke_Uchiha ~r~ K.O.
+[20:56:10] [death] Sasuke_Uchiha died 54
+[20:56:14] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[21:54:04] filterscripts = ""  (string)
+[21:54:04] 
+[21:54:04] Server Plugins
+[21:54:04] --------------
+[21:54:04]  Loading plugin: streamer
+[21:54:04] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[21:54:04]   Loaded.
+[21:54:04]  Loading plugin: sscanf
+[21:54:04] 
+
+[21:54:04]  ===============================
+
+[21:54:04]       sscanf plugin loaded.     
+
+[21:54:04]    (c) 2009 Alex "Y_Less" Cole
+
+[21:54:04]    0.3d-R2 500 Players "dnee"
+
+[21:54:04]  ===============================
+
+[21:54:04]   Loaded.
+[21:54:04]  Loading plugin: Whirlpool
+[21:54:04]  
+[21:54:04]  ==================
+[21:54:04]  
+[21:54:04]   Whirlpool loaded
+[21:54:04]  
+[21:54:04]  ==================
+[21:54:04]  
+[21:54:04]   Loaded.
+[21:54:04]  Loading plugin: nativechecker
+[21:54:04]   Loaded.
+[21:54:04]  Loaded 4 plugins.
+
+[21:54:04] 
+[21:54:04] Filterscripts
+[21:54:04] ---------------
+[21:54:04]   Loaded 0 filterscripts.
+
+[21:54:04]  
+[21:54:04]  
+[21:54:04]  
+[21:54:04]  ======================================= 
+[21:54:04]  |                                     | 
+[21:54:04]  |        YSI version 3.09.0684        | 
+[21:54:04]  |        By Alex "Y_Less" Cole        | 
+[21:54:04]  |                                     | 
+[21:54:04]  ======================================= 
+[21:54:04]  
+[21:54:04]  
+[21:54:04]  
+[21:54:04] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[21:54:04] 
+-----------------NOW RUNNING------------------
+
+[21:54:04]        Dragonball Z Deathmatch 4.0z by Sasino     
+[21:54:04] 
+----------------------------------------------
+
+[21:54:04] Number of vehicle models: 0
+[21:54:06]  
+[21:54:06]  ========================================== 
+[21:54:06]  |                                        | 
+[21:54:06]  |  A new version (v<html>
+  ) of YSI is  | 
+[21:54:06]  |            available from:             | 
+[21:54:06]  |                                        | 
+[21:54:06]  |     www.y-less.com/YSI/YSI_1.0.zip     | 
+[21:54:06]  |                                        | 
+[21:54:06]  ========================================== 
+[21:54:06]  
+[21:54:25] Incoming connection: 192.168.1.1:59971
+[21:54:25] [join] Sasuke_Uchiha has joined the server (0:192.168.1.1)
+[21:54:35] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[21:58:46] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:02:58] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:07:11] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:11:23] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:15:36] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:19:48] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:20:15] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:20:15] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[22:20:15] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[22:20:15] [part] Sasuke_Uchiha has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[16:40:27] filterscripts = ""  (string)
+[16:40:27] 
+[16:40:27] Server Plugins
+[16:40:27] --------------
+[16:40:27]  Loading plugin: streamer
+[16:40:28] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[16:40:28]   Loaded.
+[16:40:28]  Loading plugin: sscanf
+[16:40:28] 
+
+[16:40:28]  ===============================
+
+[16:40:28]       sscanf plugin loaded.     
+
+[16:40:28]    (c) 2009 Alex "Y_Less" Cole
+
+[16:40:28]    0.3d-R2 500 Players "dnee"
+
+[16:40:28]  ===============================
+
+[16:40:28]   Loaded.
+[16:40:28]  Loading plugin: Whirlpool
+[16:40:28]  
+[16:40:28]  ==================
+[16:40:28]  
+[16:40:28]   Whirlpool loaded
+[16:40:28]  
+[16:40:28]  ==================
+[16:40:28]  
+[16:40:28]   Loaded.
+[16:40:28]  Loading plugin: nativechecker
+[16:40:28]   Loaded.
+[16:40:28]  Loaded 4 plugins.
+
+[16:40:28] 
+[16:40:28] Filterscripts
+[16:40:28] ---------------
+[16:40:28]   Loaded 0 filterscripts.
+
+[16:40:28]  
+[16:40:28]  
+[16:40:28]  
+[16:40:28]  ======================================= 
+[16:40:28]  |                                     | 
+[16:40:28]  |        YSI version 3.09.0684        | 
+[16:40:28]  |        By Alex "Y_Less" Cole        | 
+[16:40:28]  |                                     | 
+[16:40:28]  ======================================= 
+[16:40:28]  
+[16:40:28]  
+[16:40:28]  
+[16:40:28] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[16:40:28] 
+-----------------NOW RUNNING------------------
+
+[16:40:28]        Dragonball Z Deathmatch 4.0z by Sasino     
+[16:40:28] 
+----------------------------------------------
+
+[16:40:28] Number of vehicle models: 0
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3z, (C)2005-2014 SA-MP Team
+
+[00:40:07] filterscripts = ""  (string)
+[00:40:07] 
+[00:40:07] Server Plugins
+[00:40:07] --------------
+[00:40:07]  Loading plugin: streamer
+[00:40:07] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[00:40:07]   Loaded.
+[00:40:07]  Loading plugin: sscanf
+[00:40:07] 
+
+[00:40:07]  ===============================
+
+[00:40:07]       sscanf plugin loaded.     
+
+[00:40:07]    (c) 2009 Alex "Y_Less" Cole
+
+[00:40:07]    0.3d-R2 500 Players "dnee"
+
+[00:40:07]  ===============================
+
+[00:40:07]   Loaded.
+[00:40:07]  Loading plugin: Whirlpool
+[00:40:07]  
+[00:40:07]  ==================
+[00:40:07]  
+[00:40:07]   Whirlpool loaded
+[00:40:07]  
+[00:40:07]  ==================
+[00:40:07]  
+[00:40:07]   Loaded.
+[00:40:07]  Loading plugin: nativechecker
+[00:40:07]   Loaded.
+[00:40:07]  Loaded 4 plugins.
+
+[00:40:07] 
+[00:40:07] Filterscripts
+[00:40:07] ---------------
+[00:40:07]   Loaded 0 filterscripts.
+
+[00:40:07]  
+[00:40:07]  
+[00:40:07]  
+[00:40:07]  ======================================= 
+[00:40:07]  |                                     | 
+[00:40:07]  |        YSI version 3.09.0684        | 
+[00:40:07]  |        By Alex "Y_Less" Cole        | 
+[00:40:07]  |                                     | 
+[00:40:07]  ======================================= 
+[00:40:07]  
+[00:40:07]  
+[00:40:07]  
+[00:40:07] AllowAdminTeleport() : function is deprecated. Please see OnPlayerClickMap()
+[00:40:07] 
+-----------------NOW RUNNING------------------
+
+[00:40:07]        Dragonball Z Deathmatch 4.0z by Sasino     
+[00:40:07] 
+----------------------------------------------
+
+[00:40:07] Number of vehicle models: 0
+[00:40:27] Incoming connection: 127.0.0.1:59734
+[00:40:27] [join] Sasuke_Uchiha has joined the server (0:127.0.0.1)
+[00:40:54] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[00:45:04] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[00:46:57] ~b~Sasuke_Uchiha ~r~ K.O.
+[00:46:57] [death] Sasuke_Uchiha died 255
+[00:47:14] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Salone.
+[00:47:27] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[00:47:31] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[00:47:58] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[00:47:58] ~b~Sasuke_Uchiha ~r~ K.O.
+[00:47:58] [death] Sasuke_Uchiha died 255
+[00:48:05] INFO: {FF0000}Sasuke_Uchiha {FFFF00}is spawned in {33AA33}Abandoned Village.
+[00:48:59] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[00:48:59] <AUTO - SAVED> Stats for account: Sasuke_Uchiha(0) has been saved automatically.
+[00:48:59] Sasuke_Uchiha(0) Has Left The Server(Quit).
+[00:48:59] [part] Sasuke_Uchiha has left the server (0:1)

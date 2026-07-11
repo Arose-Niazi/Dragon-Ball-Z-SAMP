@@ -1,12 +1,29 @@
-# Claude Code local tooling (not part of the gamemode)
+# Claude Code local tooling (not part of the project)
 .claude/
+
+# open.mp / server runtime artifacts
+log.txt
+server_log.txt
+crashinfo.txt
+*.crashinfo
+logs/*
+!logs/.gitkeep
+saves/*.db
+saves/*.db-journal
+scriptfiles/*.db
+scriptfiles/*.db-journal
+
+# Compiled debug symbols (kept out to slim the repo)
+*.pdb
+
+# Secrets / local environment
+.env
 
 # OS / editor cruft
 Thumbs.db
 Desktop.ini
+.DS_Store
+*/.DS_Store
 *.swp
 *~
-
-# Local build/runtime artifacts you may not want to commit
-# (this repo intentionally tracks prebuilt .amx and server binaries, so they are NOT ignored)
-crashinfo.txt
+.vscode/PythonImportHelper-v2-Completion.json

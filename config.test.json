@@ -1,0 +1,48 @@
+{
+    "announce": false,
+    "artwork": {
+        "cdn": "",
+        "enable": true,
+        "models_path": "models"
+    },
+    "chat_input_filter": true,
+    "enable_query": true,
+    "game": {
+        "gravity": 0.008,
+        "lag_compensation_mode": 1,
+        "mode": "Dragon Ball Z (TEST)",
+        "use_all_animations": true,
+        "use_player_ped_anims": true,
+        "use_stunt_bonuses": false,
+        "weather": 1
+    },
+    "language": "English",
+    "logging": {
+        "enable": true,
+        "log_chat": true,
+        "log_deaths": true,
+        "timestamp_format": "[%Y-%m-%dT%H:%M:%S%z]",
+        "use_prefix": true,
+        "use_timestamp": true
+    },
+    "max_bots": 0,
+    "max_players": 20,
+    "name": "Dragon Ball Z | LOCAL TEST",
+    "network": {
+        "allow_037_clients": true,
+        "port": 7778,
+        "use_lan_mode": true
+    },
+    "password": "",
+    "pawn": {
+        "legacy_plugins": ["crashdetect"],
+        "main_scripts": ["dbz"],
+        "side_scripts": []
+    },
+    "rcon": {
+        "enable": true,
+        "password": "test_only_change_me"
+    },
+    "sleep": 5.0,
+    "use_dyn_ticks": true
+}
