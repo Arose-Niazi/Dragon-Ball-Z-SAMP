@@ -23,6 +23,12 @@ stock bool:IsOwnerName(const name[])
 }
 
 // ---------------------------------------------------------------------------
+//  Feature locks (flip when the content is ready)
+// ---------------------------------------------------------------------------
+new bool:gTransformsLocked = true;   // transformations + fusion disabled until
+                                     // per-form models are sourced and wired
+
+// ---------------------------------------------------------------------------
 //  Jail location (interior 6 - police cell)
 // ---------------------------------------------------------------------------
 #define JAIL_X          264.6288

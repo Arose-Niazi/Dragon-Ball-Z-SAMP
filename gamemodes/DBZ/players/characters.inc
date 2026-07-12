@@ -43,6 +43,28 @@ new const gChar[MAX_CHARACTERS][E_CHAR] =
     {CELL,        FIGHT_STYLE_GRABKICK, "CELL",       COLOR_VIOLET,    "~p~", false, true,  false, 6, 110, 92, 160}
 };
 
+// Locked characters: hidden from class selection until good models are found.
+new const bool:gCharLocked[MAX_CHARACTERS] =
+{
+    false,  // Goku
+    false,  // Vegeta
+    false,  // Trunks
+    false,  // Gohan
+    false,  // Mr. Satan
+    false,  // Videl
+    true,   // Krillin  — LOCKED (no model yet)
+    false,  // Yamcha
+    true,   // Tien     — LOCKED (no model yet)
+    false,  // Android 16
+    false,  // Piccolo
+    false   // Cell
+};
+
+// class-selection slot -> character index (locked characters are skipped,
+// so classid no longer equals character index; filled in OnGameModeInit)
+new gClassToChar[MAX_CHARACTERS];
+new gClassCount = 0;
+
 // character indices (readability)
 #define CHAR_GOKU       0
 #define CHAR_VEGETA     1

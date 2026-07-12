@@ -54,6 +54,7 @@
     #include "DBZ\players\ki"
     #include "DBZ\players\progression"
     #include "DBZ\players\damage"
+    #include "DBZ\players\training"
     #include "DBZ\players\combat"
     #include "DBZ\players\spawn"
     #include "DBZ\players\movement"
@@ -61,7 +62,6 @@
     #include "DBZ\world\battlegrounds"
     #include "DBZ\world\dragonballs"
     #include "DBZ\world\bulma"
-    #include "DBZ\players\training"
     #include "DBZ\players\timers"
     #include "DBZ\cmds\admin"
     #include "DBZ\cmds\moderation"
@@ -85,6 +85,7 @@
     #include "DBZ/players/ki"
     #include "DBZ/players/progression"
     #include "DBZ/players/damage"
+    #include "DBZ/players/training"
     #include "DBZ/players/combat"
     #include "DBZ/players/spawn"
     #include "DBZ/players/movement"
@@ -92,7 +93,6 @@
     #include "DBZ/world/battlegrounds"
     #include "DBZ/world/dragonballs"
     #include "DBZ/world/bulma"
-    #include "DBZ/players/training"
     #include "DBZ/players/timers"
     #include "DBZ/cmds/admin"
     #include "DBZ/cmds/moderation"
@@ -132,10 +132,23 @@ public OnGameModeInit()
 
     // ---- 0.3DL custom character models (baseid 4 = humanoid skeleton) ----
     AddCharModel(4, SKIN_CUSTOM_GOKU,        "Goku.dff",        "Goku.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOKU_V2,     "GokuV2.dff",      "GokuV2.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOKU_V3,     "GokuV3.dff",      "GokuV3.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOKU_V4,     "GokuV4.dff",      "GokuV4.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOKU_V5,     "GokuV5.dff",      "GokuV5.txd");
     AddCharModel(4, SKIN_CUSTOM_ANDROID16,   "16Fighter.dff",   "16Fighter.txd");
     AddCharModel(4, SKIN_CUSTOM_VEGETA,      "Vegeta.dff",      "Vegeta.txd");
-    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ,  "VegetaSSJ.dff",   "VegetaSSJ.txd");
-    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ2, "VegetaSSJ2.dff",  "VegetaSSJ2.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_V2,   "VegetaV2.dff",    "VegetaV2.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_V3,   "VegetaV3.dff",    "VegetaV3.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_V4,   "VegetaV4.dff",    "VegetaV4.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_V5,   "VegetaV5.dff",    "VegetaV5.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOHAN,       "Gohan.dff",       "Gohan.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOHAN_V2,    "GohanV2.dff",     "GohanV2.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOHAN_V3,    "GohanV3.dff",     "GohanV3.txd");
+    AddCharModel(4, SKIN_CUSTOM_TRUNKS,      "Trunks.dff",      "Trunks.txd");
+    AddCharModel(4, SKIN_CUSTOM_TRUNKS_V2,   "TrunksV2.dff",    "TrunksV2.txd");
+    AddCharModel(4, SKIN_CUSTOM_TRUNKS_V3,   "TrunksV3.dff",    "TrunksV3.txd");
+    AddCharModel(4, SKIN_CUSTOM_BULMA,       "Bulma.dff",       "Bulma.txd");
     AddCharModel(4, SKIN_CUSTOM_SATAN,       "Satan.dff",       "Satan.txd");
     AddCharModel(4, SKIN_CUSTOM_VIDEL,       "Videl.dff",       "Videl.txd");
     AddCharModel(4, SKIN_CUSTOM_VIDEL2,      "Videl2.dff",      "Videl2.txd");
@@ -149,12 +162,15 @@ public OnGameModeInit()
     AddCharModel(4, SKIN_CUSTOM_PICCOLO2,    "Piccolo2.dff",    "Piccolo2.txd");
     AddCharModel(4, SKIN_CUSTOM_CELL,        "Cell.dff",        "Cell.txd");
 
-    // ---- Class selection: 12 DBZ characters (classid == character index) ----
+    // ---- Class selection: unlocked characters only (classid -> character map) ----
+    gClassCount = 0;
     for (new i = 0; i < MAX_CHARACTERS; i++)
     {
+        if (gCharLocked[i]) continue;
         new skin = gChar[i][cSkin];
         if (gSkinVariants[i][0] != 0) skin = gSkinVariants[i][0];   // custom preview
         AddPlayerClass(skin, -249.0, 6.0, 117.0, 0.0);
+        gClassToChar[gClassCount++] = i;
     }
 
     CreateDragonBalls();
@@ -211,14 +227,15 @@ public OnPlayerDisconnect(playerid, reason)
 
 public OnPlayerRequestClass(playerid, classid)
 {
-    gPlayer[playerid][pCharacter] = classid;
+    new ch = (classid >= 0 && classid < gClassCount) ? gClassToChar[classid] : 0;
+    gPlayer[playerid][pCharacter] = ch;
     SetPlayerPos(playerid, -249.0, 6.0, 117.0);
     SetPlayerFacingAngle(playerid, 0.0);
     SetPlayerCameraPos(playerid, -249.0, 9.0, 117.0);
     SetPlayerCameraLookAt(playerid, -249.0, 6.0, 117.0);
 
-    new gt[32];
-    format(gt, sizeof(gt), "%s%s", gChar[classid][cGt], gChar[classid][cLabel]);
+    new gt[48];
+    format(gt, sizeof(gt), "%s%s~n~~w~Lv.%d", gChar[ch][cGt], gChar[ch][cLabel], GetCharLevel(playerid, ch));
     GameTextForPlayer(playerid, gt, 3000, 1);
     return 1;
 }
@@ -282,6 +299,12 @@ public OnPlayerDeath(playerid, killerid, WEAPON:reason)
 public OnPlayerEnterRaceCheckpoint(playerid)
 {
     Training_OnRaceCP(playerid);
+    return 1;
+}
+
+public OnPlayerEnterCheckpoint(playerid)
+{
+    Training_OnGroundCP(playerid);
     return 1;
 }
 

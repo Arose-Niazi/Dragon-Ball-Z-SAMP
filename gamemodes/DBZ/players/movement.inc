@@ -52,7 +52,8 @@ public FlyTimer(playerid)
     new KEY:keys, ud, lr;
     GetPlayerKeys(playerid, keys, ud, lr);
 
-    new Float:speed = 0.35;
+    // flight speed improves with training: +1% per character level (2x at 100)
+    new Float:speed = 0.35 * (1.0 + float(GetCharLevel(playerid)) / 100.0);
     if (keys & KEY_SPRINT)      speed *= 3.0;    // boost
     else if (keys & KEY_WALK)   speed *= 0.35;   // slow
 

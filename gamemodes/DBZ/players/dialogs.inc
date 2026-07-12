@@ -34,7 +34,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         }
         case DIALOG_TRAIN:
         {
-            if (response) Training_Start(playerid, listitem + 1);
+            if (response) Training_PickType(playerid, listitem);
+            return 1;
+        }
+        case DIALOG_TRAIN_TIER:
+        {
+            if (response) Training_PickTier(playerid, listitem);
+            else ShowTrainingDialog(playerid);
             return 1;
         }
         case DIALOG_MOVES:

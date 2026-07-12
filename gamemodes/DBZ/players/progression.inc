@@ -117,18 +117,18 @@ new const gSkinSlotLevel[5]    = {1, 5, 15, 25, 35};
 // Alt skin variants per character (custom model ids for the BASE form; 0 = none)
 new const gSkinVariants[MAX_CHARACTERS][5] =
 {
-    {SKIN_CUSTOM_GOKU,    0, 0, 0, 0},                                                                  // Goku
-    {SKIN_CUSTOM_VEGETA,  0, 0, 0, 0},                                                                  // Vegeta
-    {0, 0, 0, 0, 0},                                                                                    // Trunks (stock until model)
-    {0, 0, 0, 0, 0},                                                                                    // Gohan  (stock until model)
-    {SKIN_CUSTOM_SATAN,   0, 0, 0, 0},                                                                  // Mr. Satan
-    {SKIN_CUSTOM_VIDEL,   SKIN_CUSTOM_VIDEL2, SKIN_CUSTOM_VIDEL3, SKIN_CUSTOM_VIDEL4, SKIN_CUSTOM_VIDEL5}, // Videl
-    {0, 0, 0, 0, 0},                                                                                    // Krillin (stock until model)
-    {SKIN_CUSTOM_YAMCHA,  SKIN_CUSTOM_YAMCHA2, SKIN_CUSTOM_YAMCHA3, 0, 0},                              // Yamcha
-    {0, 0, 0, 0, 0},                                                                                    // Tien (stock until model)
-    {SKIN_CUSTOM_ANDROID16, 0, 0, 0, 0},                                                                // Android 16
-    {SKIN_CUSTOM_PICCOLO, SKIN_CUSTOM_PICCOLO2, 0, 0, 0},                                               // Piccolo
-    {SKIN_CUSTOM_CELL,    0, 0, 0, 0}                                                                   // Cell
+    {SKIN_CUSTOM_GOKU,   SKIN_CUSTOM_GOKU_V2,   SKIN_CUSTOM_GOKU_V3,   SKIN_CUSTOM_GOKU_V4,   SKIN_CUSTOM_GOKU_V5},   // Goku (End-of-Z outfits)
+    {SKIN_CUSTOM_VEGETA, SKIN_CUSTOM_VEGETA_V2, SKIN_CUSTOM_VEGETA_V3, SKIN_CUSTOM_VEGETA_V4, SKIN_CUSTOM_VEGETA_V5}, // Vegeta (SSJ/SSJ2/God/Blue looks)
+    {SKIN_CUSTOM_TRUNKS, SKIN_CUSTOM_TRUNKS_V2, SKIN_CUSTOM_TRUNKS_V3, 0, 0},                                        // Trunks
+    {SKIN_CUSTOM_GOHAN,  SKIN_CUSTOM_GOHAN_V2,  SKIN_CUSTOM_GOHAN_V3,  0, 0},                                        // Gohan
+    {SKIN_CUSTOM_SATAN,  0, 0, 0, 0},                                                                                // Mr. Satan
+    {SKIN_CUSTOM_VIDEL,  SKIN_CUSTOM_VIDEL2, SKIN_CUSTOM_VIDEL3, SKIN_CUSTOM_VIDEL4, SKIN_CUSTOM_VIDEL5},            // Videl
+    {0, 0, 0, 0, 0},                                                                                                 // Krillin (LOCKED)
+    {SKIN_CUSTOM_YAMCHA, SKIN_CUSTOM_YAMCHA2, SKIN_CUSTOM_YAMCHA3, 0, 0},                                            // Yamcha
+    {0, 0, 0, 0, 0},                                                                                                 // Tien (LOCKED)
+    {SKIN_CUSTOM_ANDROID16, 0, 0, 0, 0},                                                                             // Android 16
+    {SKIN_CUSTOM_PICCOLO, SKIN_CUSTOM_PICCOLO2, 0, 0, 0},                                                            // Piccolo
+    {SKIN_CUSTOM_CELL,   0, 0, 0, 0}                                                                                 // Cell
 };
 
 // ---------------------------------------------------------------------------
@@ -218,10 +218,9 @@ SetPlayerSkinMapped(playerid, skin)
     }
 
     // Transform-form skins with dedicated custom models.
+    // (Transformations are currently locked; Cell's Super Perfect shares his model.)
     switch (skin)
     {
-        case VEGETA1:    return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_SSJ);
-        case VEGETA2:    return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_SSJ2);
         case CELL_SUPER: return SetPlayerSkin(playerid, SKIN_CUSTOM_CELL);
     }
     return SetPlayerSkin(playerid, skin);
@@ -281,10 +280,13 @@ AnnounceLevelUnlocks(playerid, ch, lvl)
         if (gSkinSlotLevel[v] == lvl && gSkinVariants[ch][v] != 0)
             SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: new appearance - pick it with /skins!");
 
-    if ((ch == CHAR_CELL && lvl == 25) || (ch != CHAR_CELL && (lvl == 10 || lvl == 20 || lvl == 35)))
-        SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: a new TRANSFORMATION - use /trans!");
-    if (lvl == 30 && (ch == CHAR_GOKU || ch == CHAR_VEGETA))
-        SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: FUSION - use /fus!");
+    if (!gTransformsLocked)
+    {
+        if ((ch == CHAR_CELL && lvl == 25) || (ch != CHAR_CELL && (lvl == 10 || lvl == 20 || lvl == 35)))
+            SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: a new TRANSFORMATION - use /trans!");
+        if (lvl == 30 && (ch == CHAR_GOKU || ch == CHAR_VEGETA))
+            SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: FUSION - use /fus!");
+    }
     if (lvl == 10 && ch == CHAR_TRUNKS)
         SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: Trunks' sword - equipped on spawn!");
     if (lvl == 15 && ch == CHAR_GOKU)

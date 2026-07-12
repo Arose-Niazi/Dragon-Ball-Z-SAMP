@@ -12,7 +12,7 @@
 #define BULMA_X     2002.766113
 #define BULMA_Y     1532.768798
 #define BULMA_Z     34.918472
-#define BULMA_SKIN  93          // stock fallback until a Bulma model is added
+#define BULMA_SKIN  SKIN_CUSTOM_BULMA   // DBFZ Bulma custom model
 
 new gBulmaActor = INVALID_ACTOR_ID;
 new gRadarPart[5];

@@ -18,6 +18,7 @@ static FireStep(playerid, Float:dist, model, Float:visRadius, Float:dmg)
     new Float:bx, Float:by, Float:bz;
     CreateExplosionEx(playerid, dist, model, visRadius, bx, by, bz);
     DealDamageAt(playerid, bx, by, bz, dmg);
+    Training_OnBlast(playerid, bx, by, bz);     // power-strike targets
     return 1;
 }
 
@@ -239,6 +240,9 @@ DoKaioken(playerid)
 // ---------------------------------------------------------------------------
 DoTransform(playerid)
 {
+    if (gTransformsLocked)
+        return SendClientMessage(playerid, COLOR_GREY, "Transformations are being remastered with proper form models - locked for now. Your training still counts!");
+
     new skin, color, lbl[24], ki, count;
     GetFormInfo(playerid, gPlayer[playerid][pTransform], skin, color, lbl, ki, count);
     if (count <= 1)
@@ -285,6 +289,9 @@ DoTransform(playerid)
 
 DoFusion(playerid)
 {
+    if (gTransformsLocked)
+        return SendClientMessage(playerid, COLOR_GREY, "Fusion is being remastered with proper models - locked for now.");
+
     new ch = gPlayer[playerid][pCharacter];
     if (ch != CHAR_GOKU && ch != CHAR_VEGETA)
         return SendClientMessage(playerid, COLOR_GREY, "Only Goku and Vegeta can fuse.");
