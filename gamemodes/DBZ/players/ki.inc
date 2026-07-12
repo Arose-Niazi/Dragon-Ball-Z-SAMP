@@ -60,17 +60,24 @@ GiveKi(playerid, Float:amount)
     return 1;
 }
 
+// Videl: Ki Efficiency — everything costs 25% less.
+stock Float:AdjustKiCost(playerid, Float:cost)
+{
+    if (gPlayer[playerid][pCharacter] == CHAR_VIDEL) return cost * 0.75;
+    return cost;
+}
+
 // Androids pay no Ki (always "have" it and never spend).
 stock bool:HasKi(playerid, Float:cost)
 {
     if (IsAndroid(playerid)) return true;
-    return (gPlayer[playerid][pKi] >= cost);
+    return (gPlayer[playerid][pKi] >= AdjustKiCost(playerid, cost));
 }
 
 SpendKi(playerid, Float:cost)
 {
     if (IsAndroid(playerid)) return 1;
-    GiveKi(playerid, -cost);
+    GiveKi(playerid, -AdjustKiCost(playerid, cost));
     return 1;
 }
 

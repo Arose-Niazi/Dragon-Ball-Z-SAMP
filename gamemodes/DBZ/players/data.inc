@@ -22,6 +22,7 @@ enum E_PLAYER_DATA
     Float:pHealthMax,
     pBallsMask,                 // 7-bit mask of collected Dragon Balls
     bool:pDragonRadar,
+    pRadarParts,                // 5-bit mask of collected radar parts (Bulma crafting)
     bool:pBanned,
     bool:pJailed,
     pJailTime,
@@ -42,7 +43,14 @@ enum E_PLAYER_DATA
     pChargeTimer,
     pLastAttack,
     Text3D:pLabel,
-    PlayerBar:pKiBar
+    PlayerBar:pKiBar,
+    // --- progression / abilities runtime ---
+    pLastHitBy,                 // last player who damaged us (kill attribution)
+    pLastHitTick,               // when (staleness window)
+    pLastDamagedTick,           // for Piccolo out-of-combat regen
+    pKaiokenUntil,              // unix time Kaioken expires (Goku)
+    pAbsorbCd,                  // seconds left on absorb cooldown (Cell)
+    pTrainCd                    // seconds left on training cooldown
 }
 new gPlayer[MAX_PLAYERS][E_PLAYER_DATA];
 
@@ -82,5 +90,12 @@ ResetPlayerData(playerid)
     gPlayer[playerid][pLastAttack]  = 0;
     gPlayer[playerid][pLabel]       = Text3D:INVALID_3DTEXT_ID;
     gPlayer[playerid][pKiBar]       = INVALID_PLAYER_BAR_ID;
+    gPlayer[playerid][pRadarParts]  = 0;
+    gPlayer[playerid][pLastHitBy]   = INVALID_PLAYER_ID;
+    gPlayer[playerid][pLastHitTick] = 0;
+    gPlayer[playerid][pLastDamagedTick] = 0;
+    gPlayer[playerid][pKaiokenUntil]= 0;
+    gPlayer[playerid][pAbsorbCd]    = 0;
+    gPlayer[playerid][pTrainCd]     = 0;
     return 1;
 }

@@ -49,6 +49,37 @@ public SecondTimer()
             if (gPlayer[i][pJailTime] <= 0)
                 UnjailPlayer(i);
         }
+
+        // ability cooldowns
+        if (gPlayer[i][pAbsorbCd] > 0) gPlayer[i][pAbsorbCd]--;
+        if (gPlayer[i][pTrainCd] > 0)  gPlayer[i][pTrainCd]--;
+
+        // Goku: Kaioken wears off
+        if (gPlayer[i][pKaiokenUntil] != 0 && gPlayer[i][pKaiokenUntil] <= gettime())
+        {
+            gPlayer[i][pKaiokenUntil] = 0;
+            new skin, color, lbl[24], ki, count;
+            GetFormInfo(i, gPlayer[i][pTransform], skin, color, lbl, ki, count);
+            SetPlayerColor(i, color);
+            GameTextForPlayer(i, "~w~Kaioken faded...", 1500, 3);
+        }
+
+        // Piccolo: Namekian regeneration — heal when out of combat for 8s
+        if (gPlayer[i][pLoggedIn] && gPlayer[i][pCharacter] == CHAR_PICCOLO
+            && GetTickCount() - gPlayer[i][pLastDamagedTick] > 8000)
+        {
+            new Float:hp;
+            GetPlayerHealth(i, hp);
+            if (hp > 0.0 && hp < gPlayer[i][pHealthMax])
+            {
+                hp += 2.0;
+                if (hp > gPlayer[i][pHealthMax]) hp = gPlayer[i][pHealthMax];
+                SetPlayerHealth(i, hp);
+            }
+        }
+
+        // training challenge ticks
+        if (Training_Active(i)) Training_Tick(i);
     }
     return 1;
 }

@@ -1,4 +1,4 @@
-/*  DBZ / players / spawn.inc  —  per-character spawn setup + wish rewards  */
+/*  DBZ / players / spawn.inc  —  per-character spawn setup (level-scaled)  */
 #if defined _dbz_spawn_included
     #endinput
 #endif
@@ -12,42 +12,47 @@ ApplyCharacterSpawn(playerid)
     gPlayer[playerid][pTransform] = 0;
     gPlayer[playerid][pFused]     = false;
 
+    new lvl = GetCharLevel(playerid, ch);
+
     SetPlayerSkinMapped(playerid, gChar[ch][cSkin]);
     SetPlayerFightingStyle(playerid, FIGHT_STYLE:gChar[ch][cStyle]);
     SetPlayerColor(playerid, gChar[ch][cColor]);
 
+    // stats grow with training: +1 max HP and +1 max Ki per level
+    gPlayer[playerid][pHealthMax] = float(gChar[ch][cBaseHp] + lvl);
+    SetPlayerHealth(playerid, gPlayer[playerid][pHealthMax]);
+    SetPlayerArmour(playerid, (gChar[ch][cWeak] || gChar[ch][cAndroid]) ? 0.0 : 100.0);
+
     if (gChar[ch][cAndroid])
     {
-        gPlayer[playerid][pHealthMax] = 50.0;
-        SetPlayerHealth(playerid, 50.0);
-        SetPlayerArmour(playerid, 0.0);
-        SendClientMessage(playerid, COLOR_LIGHTBLUE, "Androids have less health, but they never tire (no Ki needed).");
-    }
-    else if (gChar[ch][cWeak])
-    {
-        gPlayer[playerid][pHealthMax] = 150.0;
-        SetPlayerHealth(playerid, 150.0);
-        SetPlayerArmour(playerid, 0.0);
-        SendClientMessage(playerid, COLOR_PINK, "Weak characters start with 150 HP and no armour.");
+        gPlayer[playerid][pKiMax] = 0.0;
+        SetKi(playerid, 0.0);
+        SendClientMessage(playerid, COLOR_LIGHTBLUE, "Android: no Ki needed - your systems power everything.");
     }
     else
     {
-        gPlayer[playerid][pHealthMax] = 150.0;
-        SetPlayerHealth(playerid, 150.0);
-        SetPlayerArmour(playerid, 150.0);
+        gPlayer[playerid][pKiMax] = float(gChar[ch][cKiCap] + lvl);
+        SetKi(playerid, gPlayer[playerid][pKiMax]);
     }
-
-    gPlayer[playerid][pKiMax] = (gChar[ch][cKiCap] <= 0) ? 100.0 : float(gChar[ch][cKiCap]);
-    SetKi(playerid, gPlayer[playerid][pKiMax]);
 
     UpdateNameLabel(playerid, gChar[ch][cLabel], gChar[ch][cColor]);
 
-    if (gChar[ch][cAbsorb])
-        SendClientMessage(playerid, COLOR_GREEN, "This character can absorb energy - use /absorb near an enemy.");
+    // spawn info: level + power + active move
+    new mi = ch * 4 + GetActiveMoveSlot(playerid);
+    new m[144];
+    format(m, sizeof(m), "%s - Level %d | Power %d | Move: %s {AFAFAF}(/stats /moves /skins /train)",
+        gChar[ch][cLabel], lvl, GetEffPower(playerid, ch), gMoves[mi][mvName]);
+    SendClientMessage(playerid, COLOR_YELLOW, m);
 
-    // wish rewards (granted next spawn to the correct character)
-    if (ch == 2  && gPlayer[playerid][pSword])   GivePlayerWeapon(playerid, WEAPON_KATANA, 1);
-    if (ch == 5  && gPlayer[playerid][pKnife])   GivePlayerWeapon(playerid, WEAPON_KNIFE, 1);
-    if (ch == 10 && gPlayer[playerid][pBazooka]) GivePlayerWeapon(playerid, WEAPON_HEATSEEKER, 20);
+    // uniques
+    if (gChar[ch][cAbsorb])
+        SendClientMessage(playerid, COLOR_VIOLET, "Cell: absorb a nearby fighter's energy with /absorb.");
+    if (ch == CHAR_TRUNKS && lvl >= 10)
+        GivePlayerWeapon(playerid, WEAPON_KATANA, 1);
+
+    // wish rewards (granted to the right character)
+    if (ch == CHAR_TRUNKS && gPlayer[playerid][pSword])   GivePlayerWeapon(playerid, WEAPON_KATANA, 1);
+    if (ch == CHAR_VIDEL  && gPlayer[playerid][pKnife])   GivePlayerWeapon(playerid, WEAPON_KNIFE, 1);
+    if (ch == CHAR_A16    && gPlayer[playerid][pBazooka]) GivePlayerWeapon(playerid, WEAPON_HEATSEEKER, 20);
     return 1;
 }

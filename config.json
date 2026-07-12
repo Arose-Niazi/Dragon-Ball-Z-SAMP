@@ -52,7 +52,7 @@
     "max_players": 50,
     "name": "Dragon Ball Z | 0.3DL | Ki, Transformations & Dragon Balls",
     "network": {
-        "allow_037_clients": false,
+        "allow_037_clients": true,
         "port": 7777,
         "stream_radius": 300.0,
         "stream_rate": 1000,

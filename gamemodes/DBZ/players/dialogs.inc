@@ -32,6 +32,21 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
             HandleWish(playerid, response, listitem);
             return 1;
         }
+        case DIALOG_TRAIN:
+        {
+            if (response) Training_Start(playerid, listitem + 1);
+            return 1;
+        }
+        case DIALOG_MOVES:
+        {
+            if (response) HandleMovePick(playerid, listitem);
+            return 1;
+        }
+        case DIALOG_SKINS:
+        {
+            if (response) HandleSkinPick(playerid, listitem);
+            return 1;
+        }
     }
     return 0;
 }

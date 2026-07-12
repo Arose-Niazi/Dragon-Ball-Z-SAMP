@@ -1,6 +1,6 @@
 /*  DBZ / stuff / skins.inc  —  DBZ character skin ids + combat constants
- *  (Stock GTA:SA ped ids, verbatim from legacy. Goku & Android16 also have
- *   0.3DL custom models mapped in DBZ/players/skinmap.inc.)
+ *  Stock GTA:SA ped ids act as FORM IDENTITY keys; 0.3DL custom models are
+ *  applied on top via SetPlayerSkinMapped (DBZ/players/characters.inc).
  */
 #if defined _dbz_skins_included
     #endinput
@@ -29,21 +29,21 @@
 #define VEGEKU0         46
 #define VEGEKU1         223
 #define GOGETA          98
-// Humans / androids
+// Humans
 #define SATAN           241
 #define VIDEL           56
 #define CRILIN          121
 #define YAMCHA          204
 #define TENSHINSHAN     81
-#define GELO            1
+// Androids / new fighters
 #define ANDROID16       181
-#define ANDROID17       128
-#define ANDROID18       91
-#define ANDROID19       29
+#define PICCOLO         183
+#define CELL            212
+#define CELL_SUPER      213
 
-#define MAX_CHARACTERS  14
+#define MAX_CHARACTERS  12
 
-// Explosion models used by attacks
+// Explosion models used by attack patterns
 #define EXP_SMALL       11      // small ki flash
 #define EXP_BIG         7       // large blast
 #define EXP_MEDIUM      6
@@ -52,6 +52,7 @@
 
 // Ki costs / gameplay tuning
 #define KI_BLAST_COST   5.0     // ALT small blast
-#define KI_RIG_COST     5.0     // /rig
-#define ATTACK_COOLDOWN 10000   // ms between /att uses
-#define ABSORB_AMOUNT   25.0
+#define KI_RIG_COST     5.0     // regen
+#define ATTACK_COOLDOWN 10000   // ms between special attacks
+#define ABSORB_AMOUNT   20.0    // Cell: HP+Ki stolen per absorb
+#define ABSORB_COOLDOWN 15      // seconds

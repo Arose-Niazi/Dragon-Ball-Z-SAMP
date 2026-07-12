@@ -49,19 +49,24 @@
     #include "DBZ\stuff\db_config"
     #include "DBZ\players\data"
     #include "DBZ\players\perms"
+    #include "DBZ\players\database"
     #include "DBZ\players\characters"
     #include "DBZ\players\ki"
+    #include "DBZ\players\progression"
+    #include "DBZ\players\damage"
     #include "DBZ\players\combat"
     #include "DBZ\players\spawn"
     #include "DBZ\players\movement"
-    #include "DBZ\players\database"
     #include "DBZ\players\accounts"
-    #include "DBZ\players\timers"
     #include "DBZ\world\battlegrounds"
     #include "DBZ\world\dragonballs"
+    #include "DBZ\world\bulma"
+    #include "DBZ\players\training"
+    #include "DBZ\players\timers"
     #include "DBZ\cmds\admin"
     #include "DBZ\cmds\moderation"
     #include "DBZ\cmds\combat_cmds"
+    #include "DBZ\cmds\progression_cmds"
     #include "DBZ\players\dialogs"
     #include "DBZ\textdraws\connect"
     #include "DBZ\cmds\cmds"
@@ -75,19 +80,24 @@
     #include "DBZ/stuff/db_config"
     #include "DBZ/players/data"
     #include "DBZ/players/perms"
+    #include "DBZ/players/database"
     #include "DBZ/players/characters"
     #include "DBZ/players/ki"
+    #include "DBZ/players/progression"
+    #include "DBZ/players/damage"
     #include "DBZ/players/combat"
     #include "DBZ/players/spawn"
     #include "DBZ/players/movement"
-    #include "DBZ/players/database"
     #include "DBZ/players/accounts"
-    #include "DBZ/players/timers"
     #include "DBZ/world/battlegrounds"
     #include "DBZ/world/dragonballs"
+    #include "DBZ/world/bulma"
+    #include "DBZ/players/training"
+    #include "DBZ/players/timers"
     #include "DBZ/cmds/admin"
     #include "DBZ/cmds/moderation"
     #include "DBZ/cmds/combat_cmds"
+    #include "DBZ/cmds/progression_cmds"
     #include "DBZ/players/dialogs"
     #include "DBZ/textdraws/connect"
     #include "DBZ/cmds/cmds"
@@ -121,23 +131,34 @@ public OnGameModeInit()
     SetWorldTime(12);
 
     // ---- 0.3DL custom character models (baseid 4 = humanoid skeleton) ----
-    AddCharModel(4, SKIN_CUSTOM_GOKU,        "Goku.dff",       "Goku.txd");
-    AddCharModel(4, SKIN_CUSTOM_ANDROID16,   "16Fighter.dff",  "16Fighter.txd");
-    AddCharModel(4, SKIN_CUSTOM_VEGETA,      "Vegeta.dff",     "Vegeta.txd");
-    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ,  "VegetaSSJ.dff",  "VegetaSSJ.txd");
-    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ2, "VegetaSSJ2.dff", "VegetaSSJ2.txd");
+    AddCharModel(4, SKIN_CUSTOM_GOKU,        "Goku.dff",        "Goku.txd");
+    AddCharModel(4, SKIN_CUSTOM_ANDROID16,   "16Fighter.dff",   "16Fighter.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA,      "Vegeta.dff",      "Vegeta.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ,  "VegetaSSJ.dff",   "VegetaSSJ.txd");
+    AddCharModel(4, SKIN_CUSTOM_VEGETA_SSJ2, "VegetaSSJ2.dff",  "VegetaSSJ2.txd");
+    AddCharModel(4, SKIN_CUSTOM_SATAN,       "Satan.dff",       "Satan.txd");
+    AddCharModel(4, SKIN_CUSTOM_VIDEL,       "Videl.dff",       "Videl.txd");
+    AddCharModel(4, SKIN_CUSTOM_VIDEL2,      "Videl2.dff",      "Videl2.txd");
+    AddCharModel(4, SKIN_CUSTOM_VIDEL3,      "VidelMovie.dff",  "VidelMovie.txd");
+    AddCharModel(4, SKIN_CUSTOM_VIDEL4,      "VidelMovie2.dff", "VidelMovie2.txd");
+    AddCharModel(4, SKIN_CUSTOM_VIDEL5,      "VidelFight.dff",  "VidelFight.txd");
+    AddCharModel(4, SKIN_CUSTOM_YAMCHA,      "Yamcha.dff",      "Yamcha.txd");
+    AddCharModel(4, SKIN_CUSTOM_YAMCHA2,     "Yamcha2.dff",     "Yamcha2.txd");
+    AddCharModel(4, SKIN_CUSTOM_YAMCHA3,     "Yamcha3.dff",     "Yamcha3.txd");
+    AddCharModel(4, SKIN_CUSTOM_PICCOLO,     "Piccolo.dff",     "Piccolo.txd");
+    AddCharModel(4, SKIN_CUSTOM_PICCOLO2,    "Piccolo2.dff",    "Piccolo2.txd");
+    AddCharModel(4, SKIN_CUSTOM_CELL,        "Cell.dff",        "Cell.txd");
 
-    // ---- Class selection: 14 DBZ characters (classid == character index) ----
+    // ---- Class selection: 12 DBZ characters (classid == character index) ----
     for (new i = 0; i < MAX_CHARACTERS; i++)
     {
         new skin = gChar[i][cSkin];
-        if (i == 0)  skin = SKIN_CUSTOM_GOKU;        // Goku custom model
-        if (i == 1)  skin = SKIN_CUSTOM_VEGETA;      // Vegeta custom model
-        if (i == 10) skin = SKIN_CUSTOM_ANDROID16;   // Android 16 custom model
+        if (gSkinVariants[i][0] != 0) skin = gSkinVariants[i][0];   // custom preview
         AddPlayerClass(skin, -249.0, 6.0, 117.0, 0.0);
     }
 
     CreateDragonBalls();
+    CreateBulmaWorkshop();
     return 1;
 }
 
@@ -151,9 +172,18 @@ public OnGameModeExit()
 }
 
 // ===========================================================================
+public OnIncomingConnection(playerid, ip_address[], port)
+{
+    printf("[DBZ][conn] Incoming: id %d from %s:%d", playerid, ip_address, port);
+    return 1;
+}
+
 public OnPlayerConnect(playerid)
 {
+    printf("[DBZ][conn] OnPlayerConnect fired for id %d", playerid);
     ResetPlayerData(playerid);
+    Prog_Reset(playerid);
+    Training_Reset(playerid);
     CreateKiHUD(playerid);
 
     SendClientMessage(playerid, COLOR_YELLOW, "{FFFF00}Welcome to {33AA33}Dragon Ball Z{FFFF00} - the open.mp / 0.3DL rebuild!");
@@ -165,6 +195,7 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerDisconnect(playerid, reason)
 {
+    printf("[DBZ][conn] OnPlayerDisconnect id %d reason %d", playerid, reason);
     StopCharge(playerid);
     StopFly(playerid);
     DestroyKiHUD(playerid);
@@ -210,18 +241,53 @@ public OnPlayerDeath(playerid, killerid, WEAPON:reason)
     #pragma unused reason
     StopCharge(playerid);
     StopFly(playerid);
+    Training_Abort(playerid);
+
+    new ch = gPlayer[playerid][pCharacter];
     gPlayer[playerid][pDeaths]++;
-    if (killerid != INVALID_PLAYER_ID)
+    if (ch >= 0 && ch < MAX_CHARACTERS)
     {
-        gPlayer[killerid][pKills]++;
-        gPlayer[killerid][pScore]++;
-        SetPlayerScore(killerid, gPlayer[killerid][pScore]);
+        gProg[playerid][ch][prDeaths]++;
+        gProg[playerid][ch][prDirty] = true;
     }
+
+    // credit explosion/beam kills via last-hit attribution
+    new killer = GetKillAttribution(playerid, killerid);
+    if (killer != INVALID_PLAYER_ID && killer != playerid)
+    {
+        gPlayer[killer][pKills]++;
+        gPlayer[killer][pScore]++;
+        SetPlayerScore(killer, gPlayer[killer][pScore]);
+
+        new kch = gPlayer[killer][pCharacter];
+        if (kch >= 0 && kch < MAX_CHARACTERS)
+        {
+            gProg[killer][kch][prKills]++;
+            gProg[killer][kch][prDirty] = true;
+        }
+
+        // stronger victims are worth more XP
+        new xp = XP_KILL_BASE + GetEffPower(playerid) / 3;
+        GiveCharXP(killer, xp);
+
+        new m[144];
+        format(m, sizeof(m), "{FF9900}%s {FFFFFF}defeated {FF9900}%s {AFAFAF}(+%d XP)", GetName(killer), GetName(playerid), xp);
+        SendClientMessageToAll(COLOR_WHITE, m);
+    }
+
+    gPlayer[playerid][pLastHitBy] = INVALID_PLAYER_ID;
+    return 1;
+}
+
+public OnPlayerEnterRaceCheckpoint(playerid)
+{
+    Training_OnRaceCP(playerid);
     return 1;
 }
 
 public OnPlayerPickUpPickup(playerid, pickupid)
 {
+    if (HandlePartPickup(playerid, pickupid)) return 1;
     HandleDragonPickup(playerid, pickupid);
     return 1;
 }

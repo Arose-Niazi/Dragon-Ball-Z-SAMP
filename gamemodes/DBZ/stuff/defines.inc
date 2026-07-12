@@ -17,6 +17,18 @@
 #define SKIN_CUSTOM_VEGETA      20020
 #define SKIN_CUSTOM_VEGETA_SSJ  20021
 #define SKIN_CUSTOM_VEGETA_SSJ2 20022
+#define SKIN_CUSTOM_SATAN       20030
+#define SKIN_CUSTOM_VIDEL       20040
+#define SKIN_CUSTOM_VIDEL2      20041
+#define SKIN_CUSTOM_VIDEL3      20042
+#define SKIN_CUSTOM_VIDEL4      20043
+#define SKIN_CUSTOM_VIDEL5      20044
+#define SKIN_CUSTOM_YAMCHA      20050
+#define SKIN_CUSTOM_YAMCHA2     20051
+#define SKIN_CUSTOM_YAMCHA3     20052
+#define SKIN_CUSTOM_PICCOLO     20060
+#define SKIN_CUSTOM_PICCOLO2    20061
+#define SKIN_CUSTOM_CELL        20070
 
 // ---------------------------------------------------------------------------
 //  Default class-selection / spawn camera (classic SA-MP Los Santos spot).

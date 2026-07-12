@@ -5,7 +5,6 @@
 #define _dbz_dragonballs_included
 
 new gDragonBall[7];
-new gRadarPickup;
 
 new const Float:gBallPos[7][3] =
 {
@@ -20,9 +19,10 @@ new const Float:gBallPos[7][3] =
 
 CreateDragonBalls()
 {
+    // The Dragon Radar is no longer a pickup - it is crafted at Bulma's Workshop
+    // from 5 collected parts (see DBZ/world/bulma.inc).
     for (new i = 0; i < 7; i++)
         gDragonBall[i] = CreatePickup(1247, 15, gBallPos[i][0], gBallPos[i][1], gBallPos[i][2]);
-    gRadarPickup = CreatePickup(1252, 15, 2002.766113, 1532.768798, 34.918472);
     return 1;
 }
 
@@ -60,13 +60,6 @@ HandleDragonPickup(playerid, pickupid)
             RemovePlayerMapIcon(playerid, i);
             return 1;
         }
-    }
-    if (pickupid == gRadarPickup)
-    {
-        gPlayer[playerid][pDragonRadar] = true;
-        SendClientMessage(playerid, COLOR_GREEN, "You picked up Bulma's Dragon Radar! Uncollected balls now show on your map.");
-        ShowDragonBallIcons(playerid);
-        return 1;
     }
     return 0;
 }

@@ -13,4 +13,5 @@
 #define COLOR_WHITE         0xFFFFFFAA
 #define COLOR_GREY          0xAFAFAFAA
 #define COLOR_PINK          0xFF66FFAA
+#define COLOR_VIOLET        0x9955DEEE
 #define COLOR_ADMIN         0x24FF0AB9

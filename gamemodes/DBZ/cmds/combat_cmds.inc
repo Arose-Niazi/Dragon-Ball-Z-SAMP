@@ -19,19 +19,18 @@ CMD:wish(playerid)      { return ShowWishDialog(playerid); }
 
 CMD:power(playerid)
 {
+    new ch = gPlayer[playerid][pCharacter];
+    if (ch < 0 || ch >= MAX_CHARACTERS) ch = 0;
     new skin, color, lbl[24], ki, count;
     GetFormInfo(playerid, gPlayer[playerid][pTransform], skin, color, lbl, ki, count);
-    new aname[32];
-    GetAttackName(skin, aname);
+    new mi = ch * 4 + GetActiveMoveSlot(playerid);
 
     new m[144];
-    format(m, sizeof(m), "==== %s ====", lbl);
+    format(m, sizeof(m), "==== %s  |  POWER LEVEL: %d ====", lbl, GetEffPower(playerid));
     SendClientMessage(playerid, COLOR_YELLOW, m);
-    format(m, sizeof(m), "Attack: %s  (Ki cost: %d)", aname, GetAttackKi(skin));
+    format(m, sizeof(m), "Move: %s (Ki %d, Dmg %d)   |   Ki: %.0f / %.0f",
+        gMoves[mi][mvName], gMoves[mi][mvKi], gMoves[mi][mvDmg], gPlayer[playerid][pKi], gPlayer[playerid][pKiMax]);
     SendClientMessage(playerid, COLOR_WHITE, m);
-    format(m, sizeof(m), "Ki: %.0f / %.0f    Charge rate: %d/tick", gPlayer[playerid][pKi], gPlayer[playerid][pKiMax], gChar[gPlayer[playerid][pCharacter]][cCharge]);
-    SendClientMessage(playerid, COLOR_WHITE, m);
-    format(m, sizeof(m), "Self-destruct Ki: %d", GetSelfDestructKi(playerid));
-    SendClientMessage(playerid, COLOR_WHITE, m);
+    SendClientMessage(playerid, COLOR_GREY, "Full breakdown: /stats  |  loadout: /moves /skins  |  level up: /train");
     return 1;
 }
