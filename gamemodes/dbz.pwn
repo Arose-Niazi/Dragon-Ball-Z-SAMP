@@ -132,37 +132,10 @@ public OnGameModeInit()
     SetWeather(1);
     SetWorldTime(12);
 
-    // ---- 0.3DL custom character models (baseid 311, slots from 20001) ----
-    AddCharModel(311, SKIN_CUSTOM_GOKU,        "Goku.dff",        "Goku.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOKU_V2,     "GokuV2.dff",      "GokuV2.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOKU_V3,     "GokuV3.dff",      "GokuV3.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOKU_V4,     "GokuV4.dff",      "GokuV4.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOKU_V5,     "GokuV5.dff",      "GokuV5.txd");
-    AddCharModel(311, SKIN_CUSTOM_ANDROID16,   "16Fighter.dff",   "16Fighter.txd");
-    AddCharModel(311, SKIN_CUSTOM_VEGETA,      "Vegeta.dff",      "Vegeta.txd");
-    AddCharModel(311, SKIN_CUSTOM_VEGETA_V2,   "VegetaV2.dff",    "VegetaV2.txd");
-    AddCharModel(311, SKIN_CUSTOM_VEGETA_V3,   "VegetaV3.dff",    "VegetaV3.txd");
-    AddCharModel(311, SKIN_CUSTOM_VEGETA_V4,   "VegetaV4.dff",    "VegetaV4.txd");
-    AddCharModel(311, SKIN_CUSTOM_VEGETA_V5,   "VegetaV5.dff",    "VegetaV5.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOHAN,       "Gohan.dff",       "Gohan.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOHAN_V2,    "GohanV2.dff",     "GohanV2.txd");
-    AddCharModel(311, SKIN_CUSTOM_GOHAN_V3,    "GohanV3.dff",     "GohanV3.txd");
-    AddCharModel(311, SKIN_CUSTOM_TRUNKS,      "Trunks.dff",      "Trunks.txd");
-    AddCharModel(311, SKIN_CUSTOM_TRUNKS_V2,   "TrunksV2.dff",    "TrunksV2.txd");
-    AddCharModel(311, SKIN_CUSTOM_TRUNKS_V3,   "TrunksV3.dff",    "TrunksV3.txd");
-    AddCharModel(311, SKIN_CUSTOM_BULMA,       "Bulma.dff",       "Bulma.txd");
-    AddCharModel(311, SKIN_CUSTOM_SATAN,       "Satan.dff",       "Satan.txd");
-    AddCharModel(311, SKIN_CUSTOM_VIDEL,       "Videl.dff",       "Videl.txd");
-    AddCharModel(311, SKIN_CUSTOM_VIDEL2,      "Videl2.dff",      "Videl2.txd");
-    AddCharModel(311, SKIN_CUSTOM_VIDEL3,      "VidelMovie.dff",  "VidelMovie.txd");
-    AddCharModel(311, SKIN_CUSTOM_VIDEL4,      "VidelMovie2.dff", "VidelMovie2.txd");
-    AddCharModel(311, SKIN_CUSTOM_VIDEL5,      "VidelFight.dff",  "VidelFight.txd");
-    AddCharModel(311, SKIN_CUSTOM_YAMCHA,      "Yamcha.dff",      "Yamcha.txd");
-    AddCharModel(311, SKIN_CUSTOM_YAMCHA2,     "Yamcha2.dff",     "Yamcha2.txd");
-    AddCharModel(311, SKIN_CUSTOM_YAMCHA3,     "Yamcha3.dff",     "Yamcha3.txd");
-    AddCharModel(311, SKIN_CUSTOM_PICCOLO,     "Piccolo.dff",     "Piccolo.txd");
-    AddCharModel(311, SKIN_CUSTOM_PICCOLO2,    "Piccolo2.dff",    "Piccolo2.txd");
-    AddCharModel(311, SKIN_CUSTOM_CELL,        "Cell.dff",        "Cell.txd");
+    // ---- 0.3DL custom character models ----
+    // Registered via artconfig.txt (server root, loaded at startup) per the
+    // official 0.3DL tutorial - NOT here. Slot map lives in stuff/defines.inc;
+    // keep artconfig.txt and the SKIN_CUSTOM_* defines in sync.
 
     // ---- Class selection: unlocked characters only (classid -> character map) ----
     // Goku is index 0 -> first class. Custom model previews where available.
