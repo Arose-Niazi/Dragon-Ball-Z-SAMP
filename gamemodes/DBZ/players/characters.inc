@@ -55,7 +55,7 @@ new const bool:gCharLocked[MAX_CHARACTERS] =
     true,   // Krillin  — LOCKED (no model yet)
     false,  // Yamcha
     true,   // Tien     — LOCKED (no model yet)
-    false,  // Android 16
+    true,   // Android 16 — LOCKED (model issues; revisit)
     false,  // Piccolo
     false   // Cell
 };
