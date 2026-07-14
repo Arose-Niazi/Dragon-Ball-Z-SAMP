@@ -254,6 +254,7 @@ public OnPlayerSpawn(playerid)
     ApplyCharacterSpawn(playerid);
     ShowDragonBallIcons(playerid);
     ShowBattlegroundDialog(playerid);
+    SetTimerEx("DelayedSkinApply", 3000, false, "i", playerid);   // 0.3DL model-load race
     return 1;
 }
 
@@ -309,6 +310,30 @@ public OnPlayerEnterRaceCheckpoint(playerid)
 public OnPlayerEnterCheckpoint(playerid)
 {
     Training_OnGroundCP(playerid);
+    return 1;
+}
+
+// 0.3DL: custom models finish loading client-side AFTER spawn — re-apply the
+// skin once the download/validation completes, and once more shortly after.
+ReapplyCurrentSkin(playerid)
+{
+    if (!IsPlayerConnected(playerid) || !gPlayer[playerid][pLoggedIn]) return 0;
+    if (GetPlayerState(playerid) != PLAYER_STATE_ONFOOT) return 0;
+    new skin, color, lbl[24], ki, count;
+    GetFormInfo(playerid, gPlayer[playerid][pTransform], skin, color, lbl, ki, count);
+    SetPlayerSkinMapped(playerid, skin);
+    return 1;
+}
+
+forward DelayedSkinApply(playerid);
+public DelayedSkinApply(playerid) { return ReapplyCurrentSkin(playerid); }
+
+public OnPlayerFinishedDownloading(playerid, virtualworld)
+{
+    #pragma unused virtualworld
+    printf("[DBZ][dl] Player %d finished downloading custom models", playerid);
+    ReapplyCurrentSkin(playerid);
+    SetTimerEx("DelayedSkinApply", 2000, false, "i", playerid);
     return 1;
 }
 
