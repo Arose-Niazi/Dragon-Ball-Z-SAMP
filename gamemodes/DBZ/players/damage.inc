@@ -27,11 +27,9 @@ Float:CalcDamage(attacker, victim, Float:base)
 {
     new Float:dmg = base;
 
-    // attacker scaling: effective power + transform bonus
+    // attacker scaling: effective power (form bonus already included in it)
     new attEff = GetEffPower(attacker);
     dmg *= (1.0 + float(attEff) / 150.0);
-    dmg *= (1.0 + 0.25 * float(gPlayer[attacker][pTransform]));
-    if (gPlayer[attacker][pFused]) dmg *= 1.5;
 
     // Goku: Kaioken burst
     if (gPlayer[attacker][pKaiokenUntil] > gettime()) dmg *= 1.5;

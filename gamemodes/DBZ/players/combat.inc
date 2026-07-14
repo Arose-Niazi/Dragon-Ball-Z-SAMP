@@ -11,14 +11,81 @@
 #define SND_ATTACK  1057   // SOUND_RACE_GO
 
 // ---------------------------------------------------------------------------
-//  Attack patterns — each fires visuals AND applies damage per blast point
+//  Traveling attacks — blast points advance along the AIM LINE over time.
+//  Direction comes from the camera, so you shoot where you LOOK (up/down too,
+//  which makes aerial beam duels work). One live beam per player.
 // ---------------------------------------------------------------------------
-static FireStep(playerid, Float:dist, model, Float:visRadius, Float:dmg)
+static bool:bActive[MAX_PLAYERS];
+static bTimer[MAX_PLAYERS];
+static bStep[MAX_PLAYERS];
+static bSteps[MAX_PLAYERS];
+static E_PATTERN:bPat[MAX_PLAYERS];
+static Float:bDmg[MAX_PLAYERS];
+static Float:bStart[MAX_PLAYERS];
+static Float:bGap[MAX_PLAYERS];
+static Float:bOX[MAX_PLAYERS], Float:bOY[MAX_PLAYERS], Float:bOZ[MAX_PLAYERS];
+static Float:bDX[MAX_PLAYERS], Float:bDY[MAX_PLAYERS], Float:bDZ[MAX_PLAYERS];
+
+StopBeam(playerid)
 {
-    new Float:bx, Float:by, Float:bz;
-    CreateExplosionEx(playerid, dist, model, visRadius, bx, by, bz);
-    DealDamageAt(playerid, bx, by, bz, dmg);
-    Training_OnBlast(playerid, bx, by, bz);     // power-strike targets
+    if (!bActive[playerid]) return 0;
+    bActive[playerid] = false;
+    if (bTimer[playerid] != 0) { KillTimer(bTimer[playerid]); bTimer[playerid] = 0; }
+    return 1;
+}
+
+// beams thicken / detonate along their flight
+static StepVisual(E_PATTERN:pat, step, steps, &model, &Float:vr)
+{
+    switch (pat)
+    {
+        case PAT_BEAM_S:  { model = EXP_SMALL;  vr = 5.0; }
+        case PAT_BEAM_M:  { model = EXP_SMALL;  vr = 8.0; }
+        case PAT_BEAM_L:  { if (step < steps / 2) { model = EXP_SMALL; vr = 8.0; } else { model = EXP_BIG; vr = 15.0; } }
+        case PAT_RAPID:   { model = EXP_TINY;   vr = 2.0; }
+        case PAT_DISC:    { model = EXP_MEDIUM; vr = 3.0; }
+        case PAT_BLAST:   { if (step < steps - 1) { model = EXP_TINY; vr = 2.0; } else { model = EXP_BIG; vr = 20.0; } }
+        default:          { model = EXP_SMALL;  vr = 5.0; }
+    }
+}
+
+forward BeamTick(playerid);
+public BeamTick(playerid)
+{
+    if (!IsPlayerConnected(playerid) || !bActive[playerid])
+        return StopBeam(playerid);
+
+    new Float:d = bStart[playerid] + float(bStep[playerid]) * bGap[playerid];
+    new Float:x = bOX[playerid] + bDX[playerid] * d;
+    new Float:y = bOY[playerid] + bDY[playerid] * d;
+    new Float:z = bOZ[playerid] + bDZ[playerid] * d;
+
+    new model, Float:vr;
+    StepVisual(bPat[playerid], bStep[playerid], bSteps[playerid], model, vr);
+    CreateExplosion(x, y, z, model, vr);
+    DealDamageAt(playerid, x, y, z, bDmg[playerid]);
+    Training_OnBlast(playerid, x, y, z);
+
+    bStep[playerid]++;
+    if (bStep[playerid] >= bSteps[playerid]) StopBeam(playerid);
+    return 1;
+}
+
+static StartBeam(playerid, E_PATTERN:pat, Float:dmg, steps, Float:startDist, Float:gap)
+{
+    StopBeam(playerid);
+    GetPlayerPos(playerid, bOX[playerid], bOY[playerid], bOZ[playerid]);
+    bOZ[playerid] += 0.35;
+    GetPlayerCameraFrontVector(playerid, bDX[playerid], bDY[playerid], bDZ[playerid]);
+    bPat[playerid]   = pat;
+    bDmg[playerid]   = dmg;
+    bStep[playerid]  = 0;
+    bSteps[playerid] = steps;
+    bStart[playerid] = startDist;
+    bGap[playerid]   = gap;
+    bActive[playerid] = true;
+    BeamTick(playerid);                                          // muzzle blast now
+    bTimer[playerid] = SetTimerEx("BeamTick", 90, true, "i", playerid);
     return 1;
 }
 
@@ -26,32 +93,12 @@ FirePattern(playerid, E_PATTERN:pat, Float:dmg)
 {
     switch (pat)
     {
-        case PAT_BEAM_S:
-        {
-            for (new Float:d = 5.0; d <= 30.0; d += 5.0) FireStep(playerid, d, EXP_SMALL, 5.0, dmg);
-        }
-        case PAT_BEAM_M:
-        {
-            for (new Float:d = 5.0; d <= 50.0; d += 5.0) FireStep(playerid, d, EXP_SMALL, 8.0, dmg);
-        }
-        case PAT_BEAM_L:
-        {
-            for (new Float:d = 5.0;  d <= 40.0; d += 5.0) FireStep(playerid, d, EXP_SMALL, 8.0, dmg);
-            for (new Float:d = 45.0; d <= 80.0; d += 5.0) FireStep(playerid, d, EXP_BIG, 15.0, dmg);
-        }
-        case PAT_BLAST:
-        {
-            FireStep(playerid, 25.0, EXP_BIG, 20.0, dmg);
-            FireStep(playerid, 32.0, EXP_BIG, 20.0, dmg);
-        }
-        case PAT_RAPID:
-        {
-            for (new Float:d = 4.0; d <= 44.0; d += 4.0) FireStep(playerid, d, EXP_TINY, 2.0, dmg);
-        }
-        case PAT_DISC:
-        {
-            for (new Float:d = 5.0; d <= 70.0; d += 5.0) FireStep(playerid, d, EXP_MEDIUM, 3.0, dmg);
-        }
+        case PAT_BEAM_S: StartBeam(playerid, pat, dmg, 6,  5.0, 5.0);   // 30m
+        case PAT_BEAM_M: StartBeam(playerid, pat, dmg, 10, 5.0, 5.0);   // 50m
+        case PAT_BEAM_L: StartBeam(playerid, pat, dmg, 16, 5.0, 5.0);   // 80m, detonates heavy
+        case PAT_RAPID:  StartBeam(playerid, pat, dmg, 11, 4.0, 4.0);   // 44m burst
+        case PAT_DISC:   StartBeam(playerid, pat, dmg, 14, 5.0, 5.0);   // 70m cutter
+        case PAT_BLAST:  StartBeam(playerid, pat, dmg, 4,  8.0, 8.0);   // projectile -> 32m boom
         case PAT_NOVA:
         {
             new Float:x, Float:y, Float:z;
@@ -67,7 +114,14 @@ FirePattern(playerid, E_PATTERN:pat, Float:dmg)
         }
         case PAT_PUNCH:
         {
-            FireStep(playerid, 3.0, EXP_TINY, 2.0, dmg);
+            new Float:x, Float:y, Float:z, Float:a;
+            GetPlayerPos(playerid, x, y, z);
+            GetPlayerFacingAngle(playerid, a);
+            x += 3.0 * floatsin(-a, degrees);
+            y += 3.0 * floatcos(-a, degrees);
+            CreateExplosion(x, y, z, EXP_TINY, 2.0);
+            DealDamageAt(playerid, x, y, z, dmg);
+            Training_OnBlast(playerid, x, y, z);
             ApplyAnimation(playerid, "FIGHT_C", "FightC_2", 4.0, false, true, true, false, 0, SYNC_ALL);
         }
     }
@@ -117,7 +171,15 @@ DoKiBlast(playerid)
     }
     SpendKi(playerid, KI_BLAST_COST);
     BeginAttack(playerid);
-    FireStep(playerid, 10.0, EXP_TINY, 0.1, 8.0);
+
+    // quick camera-aimed pot shot
+    new Float:x, Float:y, Float:z, Float:dx, Float:dy, Float:dz;
+    GetPlayerPos(playerid, x, y, z);
+    GetPlayerCameraFrontVector(playerid, dx, dy, dz);
+    x += dx * 10.0; y += dy * 10.0; z += dz * 10.0 + 0.35;
+    CreateExplosion(x, y, z, EXP_TINY, 0.5);
+    DealDamageAt(playerid, x, y, z, 8.0);
+    Training_OnBlast(playerid, x, y, z);
     return 1;
 }
 
@@ -254,7 +316,9 @@ DoTransform(playerid)
     // training gate: forms must be earned
     if (next != 0 && !gPlayer[playerid][pFused] && next > MaxFormUnlocked(playerid))
     {
-        new needed = (gPlayer[playerid][pCharacter] == CHAR_CELL) ? 25 : ((next == 1) ? 10 : ((next == 2) ? 20 : 35));
+        new needed;
+        if (gPlayer[playerid][pCharacter] == CHAR_CELL) needed = 25;
+        else needed = (next == 1) ? 10 : ((next == 2) ? 20 : ((next == 3) ? 35 : 50));
         new m[96]; format(m, sizeof(m), "That form unlocks at level %d - you are level %d. Keep training!", needed, GetCharLevel(playerid));
         return SendClientMessage(playerid, COLOR_RED, m);
     }
@@ -289,7 +353,7 @@ DoTransform(playerid)
 
 DoFusion(playerid)
 {
-    if (gTransformsLocked)
+    if (gFusionLocked)
         return SendClientMessage(playerid, COLOR_GREY, "Fusion is being remastered with proper models - locked for now.");
 
     new ch = gPlayer[playerid][pCharacter];

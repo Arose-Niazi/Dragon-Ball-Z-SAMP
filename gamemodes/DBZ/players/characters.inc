@@ -82,31 +82,34 @@ new gClassCount = 0;
 // --- transformation ladders (index 0 = base) ---
 enum E_FORM { fSkin, fColor, fLabel[20], fKi }
 
+// Goku: no per-form models yet — SSJ tiers keep his custom model and express
+// the form through colour/aura/label + the flat form power bonus.
 new const gGokuForms[][E_FORM] =
 {
     {GOKU0, COLOR_WHITE,  "GOKU",       0},
-    {GOKU1, COLOR_YELLOW, "GOKU SSJ",   30},
-    {GOKU2, COLOR_ORANGE, "GOKU SSJ2",  40},
-    {GOKU3, COLOR_RED,    "GOKU SSJ3",  50}
+    {GOKU0, COLOR_YELLOW, "GOKU SSJ",   30},
+    {GOKU0, COLOR_ORANGE, "GOKU SSJ2",  40},
+    {GOKU0, COLOR_RED,    "GOKU SSJ3",  50}
 };
 new const gVegetaForms[][E_FORM] =
 {
-    {VEGETA0, COLOR_WHITE,  "VEGETA",       0},
-    {VEGETA1, COLOR_YELLOW, "VEGETA SSJ",   30},
-    {VEGETAS, COLOR_ORANGE, "SUPER VEGETA", 35},
-    {VEGETA2, COLOR_RED,    "VEGETA SSJ2",  40}
+    {VEGETA0,     COLOR_WHITE,  "VEGETA",      0},
+    {VEGETA1,     COLOR_YELLOW, "VEGETA SSJ",  30},
+    {VEGETA2,     COLOR_ORANGE, "VEGETA SSJ2", 40},
+    {VEGETA_GOD,  COLOR_RED,    "VEGETA GOD",  50},
+    {VEGETA_BLUE, COLOR_BLUE,   "VEGETA BLUE", 60}
 };
 new const gTrunksForms[][E_FORM] =
 {
     {TRUNKS0, COLOR_WHITE,  "TRUNKS",       0},
     {TRUNKS1, COLOR_YELLOW, "TRUNKS SSJ",   30},
-    {TRUNKSS, COLOR_ORANGE, "SUPER TRUNKS", 20}
+    {TRUNKSS, COLOR_ORANGE, "SUPER TRUNKS", 40}
 };
 new const gGohanForms[][E_FORM] =
 {
     {GOHAN0, COLOR_WHITE,  "GOHAN",      0},
     {GOHAN1, COLOR_YELLOW, "GOHAN SSJ",  30},
-    {GOHAN2, COLOR_ORANGE, "GOHAN SSJ2", 20}
+    {GOHAN2, COLOR_ORANGE, "GOHAN SSJ2", 40}
 };
 new const gCellForms[][E_FORM] =
 {
@@ -181,16 +184,3 @@ GetFormInfo(playerid, idx, &skin, &color, label[], &ki, &count)
     return 1;
 }
 
-// Fire an explosion `distance` metres ahead of the player's facing angle,
-// returning the blast coordinates so callers can apply scripted damage there.
-CreateExplosionEx(playerid, Float:distance, type, Float:radius, &Float:bx, &Float:by, &Float:bz)
-{
-    new Float:x, Float:y, Float:z, Float:a;
-    GetPlayerPos(playerid, x, y, z);
-    GetPlayerFacingAngle(playerid, a);
-    bx = x + (distance * floatsin(-a, degrees));
-    by = y + (distance * floatcos(-a, degrees));
-    bz = z;
-    CreateExplosion(bx, by, bz, type, radius);
-    return 1;
-}

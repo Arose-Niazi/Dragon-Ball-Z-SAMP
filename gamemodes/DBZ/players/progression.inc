@@ -115,20 +115,22 @@ new const gMoveSlotLevel[4]    = {1, 8, 18, 30};
 new const gSkinSlotLevel[5]    = {1, 5, 15, 25, 35};
 
 // Alt skin variants per character (custom model ids for the BASE form; 0 = none)
+// Appearances are NON-transformation outfits only; form models (Vegeta SSJ/
+// SSJ2/God/Blue, Gohan SSJ/SSJ2, Trunks SSJ/Super) belong to the /trans ladder.
 new const gSkinVariants[MAX_CHARACTERS][5] =
 {
-    {SKIN_CUSTOM_GOKU,   SKIN_CUSTOM_GOKU_V2,   SKIN_CUSTOM_GOKU_V3,   SKIN_CUSTOM_GOKU_V4,   SKIN_CUSTOM_GOKU_V5},   // Goku (End-of-Z outfits)
-    {SKIN_CUSTOM_VEGETA, SKIN_CUSTOM_VEGETA_V2, SKIN_CUSTOM_VEGETA_V3, SKIN_CUSTOM_VEGETA_V4, SKIN_CUSTOM_VEGETA_V5}, // Vegeta (SSJ/SSJ2/God/Blue looks)
-    {SKIN_CUSTOM_TRUNKS, SKIN_CUSTOM_TRUNKS_V2, SKIN_CUSTOM_TRUNKS_V3, 0, 0},                                        // Trunks
-    {SKIN_CUSTOM_GOHAN,  SKIN_CUSTOM_GOHAN_V2,  SKIN_CUSTOM_GOHAN_V3,  0, 0},                                        // Gohan
-    {SKIN_CUSTOM_SATAN,  0, 0, 0, 0},                                                                                // Mr. Satan
-    {SKIN_CUSTOM_VIDEL,  SKIN_CUSTOM_VIDEL2, SKIN_CUSTOM_VIDEL3, SKIN_CUSTOM_VIDEL4, SKIN_CUSTOM_VIDEL5},            // Videl
-    {0, 0, 0, 0, 0},                                                                                                 // Krillin (LOCKED)
-    {SKIN_CUSTOM_YAMCHA, SKIN_CUSTOM_YAMCHA2, SKIN_CUSTOM_YAMCHA3, 0, 0},                                            // Yamcha
-    {0, 0, 0, 0, 0},                                                                                                 // Tien (LOCKED)
-    {SKIN_CUSTOM_ANDROID16, 0, 0, 0, 0},                                                                             // Android 16
-    {SKIN_CUSTOM_PICCOLO, SKIN_CUSTOM_PICCOLO2, 0, 0, 0},                                                            // Piccolo
-    {SKIN_CUSTOM_CELL,   0, 0, 0, 0}                                                                                 // Cell
+    {SKIN_CUSTOM_GOKU,   SKIN_CUSTOM_GOKU_V2, SKIN_CUSTOM_GOKU_V3, SKIN_CUSTOM_GOKU_V4, SKIN_CUSTOM_GOKU_V5}, // Goku (End-of-Z outfits)
+    {SKIN_CUSTOM_VEGETA, 0, 0, 0, 0},                                                                         // Vegeta (forms via /trans)
+    {SKIN_CUSTOM_TRUNKS, 0, 0, 0, 0},                                                                         // Trunks (forms via /trans)
+    {SKIN_CUSTOM_GOHAN,  0, 0, 0, 0},                                                                         // Gohan  (forms via /trans)
+    {SKIN_CUSTOM_SATAN,  0, 0, 0, 0},                                                                         // Mr. Satan
+    {SKIN_CUSTOM_VIDEL,  SKIN_CUSTOM_VIDEL2, SKIN_CUSTOM_VIDEL3, SKIN_CUSTOM_VIDEL4, SKIN_CUSTOM_VIDEL5},     // Videl
+    {0, 0, 0, 0, 0},                                                                                          // Krillin (LOCKED)
+    {SKIN_CUSTOM_YAMCHA, SKIN_CUSTOM_YAMCHA2, SKIN_CUSTOM_YAMCHA3, 0, 0},                                     // Yamcha
+    {0, 0, 0, 0, 0},                                                                                          // Tien (LOCKED)
+    {SKIN_CUSTOM_ANDROID16, 0, 0, 0, 0},                                                                      // Android 16 (LOCKED)
+    {SKIN_CUSTOM_PICCOLO, SKIN_CUSTOM_PICCOLO2, 0, 0, 0},                                                     // Piccolo
+    {SKIN_CUSTOM_CELL,   0, 0, 0, 0}                                                                          // Cell
 };
 
 // ---------------------------------------------------------------------------
@@ -155,11 +157,33 @@ stock GetCharLevel(playerid, ch = -1)
     return gProg[playerid][ch][prLevel];
 }
 
-// Effective power: lore base + 2 per trained level.
+#define FORM_POWER_BONUS 15   // flat base-stat boost per transformation tier
+
+// Effective power: lore base + 2 per trained level (+15 per active form tier).
 stock GetEffPower(playerid, ch = -1)
 {
     if (ch < 0) ch = gPlayer[playerid][pCharacter];
-    return gChar[ch][cBasePower] + 2 * (gProg[playerid][ch][prLevel] - 1);
+    new eff = gChar[ch][cBasePower] + 2 * (gProg[playerid][ch][prLevel] - 1);
+    if (ch == gPlayer[playerid][pCharacter])
+    {
+        eff += FORM_POWER_BONUS * gPlayer[playerid][pTransform];
+        if (gPlayer[playerid][pFused]) eff += FORM_POWER_BONUS * 2;
+    }
+    return eff;
+}
+
+// Number of transform tiers per character (ladder length incl. base).
+stock GetFormCount(ch)
+{
+    switch (ch)
+    {
+        case CHAR_GOKU:   return 4;
+        case CHAR_VEGETA: return 5;
+        case CHAR_TRUNKS: return 3;
+        case CHAR_GOHAN:  return 3;
+        case CHAR_CELL:   return 2;
+    }
+    return 1;
 }
 
 stock XPNeeded(level)
@@ -168,15 +192,20 @@ stock XPNeeded(level)
 }
 
 // Highest transform index unlocked (0 = base only). Cell unlocks at 25.
+// Milestones: form 1 @ 10, 2 @ 20, 3 @ 35, 4 @ 50.
 stock MaxFormUnlocked(playerid, ch = -1)
 {
     if (ch < 0) ch = gPlayer[playerid][pCharacter];
-    new lvl = gProg[playerid][ch][prLevel];
-    if (ch == CHAR_CELL) return (lvl >= 25) ? 1 : 0;
-    if (lvl >= 35) return 3;
-    if (lvl >= 20) return 2;
-    if (lvl >= 10) return 1;
-    return 0;
+    new lvl = gProg[playerid][ch][prLevel], unlocked;
+    if (ch == CHAR_CELL) unlocked = (lvl >= 25) ? 1 : 0;
+    else if (lvl >= 50) unlocked = 4;
+    else if (lvl >= 35) unlocked = 3;
+    else if (lvl >= 20) unlocked = 2;
+    else if (lvl >= 10) unlocked = 1;
+    else unlocked = 0;
+
+    new maxIdx = GetFormCount(ch) - 1;
+    return (unlocked > maxIdx) ? maxIdx : unlocked;
 }
 
 stock bool:FusionUnlocked(playerid)
@@ -218,10 +247,17 @@ SetPlayerSkinMapped(playerid, skin)
     }
 
     // Transform-form skins with dedicated custom models.
-    // (Transformations are currently locked; Cell's Super Perfect shares his model.)
     switch (skin)
     {
-        case CELL_SUPER: return SetPlayerSkin(playerid, SKIN_CUSTOM_CELL);
+        case VEGETA1:     return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_V2);   // SSJ
+        case VEGETA2:     return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_V3);   // SSJ2
+        case VEGETA_GOD:  return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_V4);   // God
+        case VEGETA_BLUE: return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_V5);   // Blue
+        case GOHAN1:      return SetPlayerSkin(playerid, SKIN_CUSTOM_GOHAN_V2);    // SSJ
+        case GOHAN2:      return SetPlayerSkin(playerid, SKIN_CUSTOM_GOHAN_V3);    // SSJ2
+        case TRUNKS1:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V2);   // SSJ
+        case TRUNKSS:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V3);   // Super
+        case CELL_SUPER:  return SetPlayerSkin(playerid, SKIN_CUSTOM_CELL);        // same model
     }
     return SetPlayerSkin(playerid, skin);
 }
@@ -282,10 +318,14 @@ AnnounceLevelUnlocks(playerid, ch, lvl)
 
     if (!gTransformsLocked)
     {
-        if ((ch == CHAR_CELL && lvl == 25) || (ch != CHAR_CELL && (lvl == 10 || lvl == 20 || lvl == 35)))
+        new formIdx = 0;
+        if (ch == CHAR_CELL) { if (lvl == 25) formIdx = 1; }
+        else if (lvl == 10) formIdx = 1;
+        else if (lvl == 20) formIdx = 2;
+        else if (lvl == 35) formIdx = 3;
+        else if (lvl == 50) formIdx = 4;
+        if (formIdx > 0 && formIdx <= GetFormCount(ch) - 1)
             SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: a new TRANSFORMATION - use /trans!");
-        if (lvl == 30 && (ch == CHAR_GOKU || ch == CHAR_VEGETA))
-            SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: FUSION - use /fus!");
     }
     if (lvl == 10 && ch == CHAR_TRUNKS)
         SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: Trunks' sword - equipped on spawn!");

@@ -189,6 +189,7 @@ public OnPlayerDisconnect(playerid, reason)
     printf("[DBZ][conn] OnPlayerDisconnect id %d reason %d", playerid, reason);
     StopCharge(playerid);
     StopFly(playerid);
+    StopBeam(playerid);
     DestroyKiHUD(playerid);
     if (gPlayer[playerid][pLabel] != Text3D:INVALID_3DTEXT_ID)
     {
@@ -236,6 +237,7 @@ public OnPlayerDeath(playerid, killerid, WEAPON:reason)
     #pragma unused reason
     StopCharge(playerid);
     StopFly(playerid);
+    StopBeam(playerid);
     Training_Abort(playerid);
 
     new ch = gPlayer[playerid][pCharacter];

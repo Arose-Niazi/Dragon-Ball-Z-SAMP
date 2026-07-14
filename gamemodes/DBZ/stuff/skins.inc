@@ -17,6 +17,8 @@
 #define VEGETA1         291
 #define VEGETAS         72
 #define VEGETA2         147
+#define VEGETA_GOD      292
+#define VEGETA_BLUE     293
 // Trunks line
 #define TRUNKS0         217
 #define TRUNKS1         101
