@@ -235,7 +235,8 @@ public OnPlayerRequestClass(playerid, classid)
     SetPlayerFacingAngle(playerid, 0.0);
     SetPlayerCameraPos(playerid, -249.0, 9.0, 117.0);
     SetPlayerCameraLookAt(playerid, -249.0, 6.0, 117.0);
-    SetPlayerSkinMapped(playerid, gChar[ch][cSkin]);    // preview the custom model
+    // NOTE: intentionally NO custom-skin preview here — applying DL models during
+    // class selection crashes clients with stale caches; customs apply on spawn.
 
     new gt[48];
     format(gt, sizeof(gt), "%s%s~n~~w~Lv.%d", gChar[ch][cGt], gChar[ch][cLabel], GetCharLevel(playerid, ch));
