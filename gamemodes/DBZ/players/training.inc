@@ -158,6 +158,8 @@ Training_Start(playerid, mode, tier)
     tTick[playerid] = 0;
     tCP[playerid]   = 0;
 
+    SendClientMessage(playerid, COLOR_GREY, "Training: /stoptrain to give up at any time. Higher tiers pay more XP.");
+
     switch (mode)
     {
         case TRAIN_FLIGHT:
@@ -168,12 +170,17 @@ Training_Start(playerid, mode, tier)
                 gFlightCP[0][0], gFlightCP[0][1], gFlightCP[0][2],
                 gFlightCP[1][0], gFlightCP[1][1], gFlightCP[1][2], radius);
             GameTextForPlayer(playerid, "~b~FLIGHT COURSE~n~~w~Fly through the rings! (Y to fly)", 4000, 3);
+            SendClientMessage(playerid, COLOR_YELLOW, "FLIGHT COURSE: Press Y to fly, then race through the red air rings in order.");
+            SendClientMessage(playerid, COLOR_WHITE,  "Controls in flight: FIRE = up, AIM = down, SPRINT = boost. Faster time = more XP!");
         }
         case TRAIN_METEOR:
         {
             GetPlayerHealth(playerid, tStartHP[playerid]);
             new m[96]; format(m, sizeof(m), "~r~METEOR DODGE~n~~w~Survive %d seconds - keep moving!", MeteorSecs(tier));
             GameTextForPlayer(playerid, m, 4000, 3);
+            SendClientMessage(playerid, COLOR_YELLOW, "METEOR DODGE: Explosions rain around you - SPRINT and keep moving, never stand still!");
+            new m2[128]; format(m2, sizeof(m2), "Survive %d seconds. The more health you keep, the more XP you earn.", MeteorSecs(tier));
+            SendClientMessage(playerid, COLOR_WHITE, m2);
         }
         case TRAIN_KI:
         {
@@ -182,12 +189,18 @@ Training_Start(playerid, mode, tier)
             new band = 10 - tier * 2, hold = 12 + tier * 4, m[144];
             format(m, sizeof(m), "~y~KI CONTROL~n~~w~Hold Ki near %d%% (+/-%d) for %ds~n~(charge MMB, spend ALT)", tTarget[playerid], band, hold);
             GameTextForPlayer(playerid, m, 5000, 3);
+            new m2[144];
+            format(m2, sizeof(m2), "KI CONTROL: Get your Ki bar to %d%% (+/-%d) and HOLD it there for %d seconds total.", tTarget[playerid], band, hold);
+            SendClientMessage(playerid, COLOR_YELLOW, m2);
+            SendClientMessage(playerid, COLOR_WHITE,  "Hold MMB to charge Ki up - tap ALT (ki blast) to burn Ki down. Watch the on-screen hints.");
         }
         case TRAIN_SPEED:
         {
             tStart[playerid] = gettime();
             SetPlayerCheckpoint(playerid, gSpeedCP[0][0], gSpeedCP[0][1], gSpeedCP[0][2], 3.0);
             GameTextForPlayer(playerid, "~g~SPEED RUN~n~~w~Race between the markers!", 4000, 3);
+            SendClientMessage(playerid, COLOR_YELLOW, "SPEED RUN: Sprint to the red checkpoint marker; each one you reach reveals the next.");
+            SendClientMessage(playerid, COLOR_WHITE,  "Stay on foot and be quick - faster circuit = more XP!");
         }
         case TRAIN_STRIKE:
         {
@@ -195,6 +208,10 @@ Training_Start(playerid, mode, tier)
             SetPlayerCheckpoint(playerid, gStrikeCP[0][0], gStrikeCP[0][1], gStrikeCP[0][2], 4.0);
             new m[112]; format(m, sizeof(m), "~r~POWER STRIKES~n~~w~Blast %d marked targets with your attacks!", StrikeSteps(tier));
             GameTextForPlayer(playerid, m, 4000, 3);
+            new m2[144];
+            format(m2, sizeof(m2), "POWER STRIKES: Fire your attack (FIRE key or /att) so the blast lands INSIDE the marker - %d targets.", StrikeSteps(tier));
+            SendClientMessage(playerid, COLOR_YELLOW, m2);
+            SendClientMessage(playerid, COLOR_WHITE,  "Aim your character at the marker before firing. Attack cooldown is 10s - line your shots up!");
         }
     }
     return 1;
@@ -309,13 +326,22 @@ Training_Tick(playerid)
         case TRAIN_METEOR:
         {
             tTick[playerid]++;
+
+            // 3-second head start to read the instructions and get moving
+            if (tTick[playerid] <= 3)
+            {
+                new cd[48]; format(cd, sizeof(cd), "~y~Meteors in %d...", 4 - tTick[playerid]);
+                GameTextForPlayer(playerid, cd, 900, 3);
+                return 1;
+            }
+
             new Float:x, Float:y, Float:z;
             GetPlayerPos(playerid, x, y, z);
-            // density scales with tier
+            // density scales with tier; wide scatter keeps it dodgeable if you move
             for (new n = 0; n <= tTier[playerid]; n++)
-                CreateExplosion(x + float(random(15)) - 7.0, y + float(random(15)) - 7.0, z, EXP_BIG, 5.0);
-            if (tTick[playerid] % 2 == 0)
-                CreateExplosion(x + float(random(11)) - 5.0, y + float(random(11)) - 5.0, z + 2.0, EXP_SMALL, 4.0);
+                CreateExplosion(x + float(random(23)) - 11.0, y + float(random(23)) - 11.0, z, EXP_BIG, 4.0);
+            if (tTier[playerid] == 2 && tTick[playerid] % 3 == 0)
+                CreateExplosion(x + float(random(13)) - 6.0, y + float(random(13)) - 6.0, z + 2.0, EXP_SMALL, 4.0);
 
             if (tTick[playerid] >= MeteorSecs(tTier[playerid]))
             {
