@@ -165,13 +165,13 @@ public OnGameModeInit()
     AddCharModel(4, SKIN_CUSTOM_CELL,        "Cell.dff",        "Cell.txd");
 
     // ---- Class selection: unlocked characters only (classid -> character map) ----
+    // NOTE: AddPlayerClass only accepts stock skin ids (0-311); custom 0.3DL
+    // models are applied via SetPlayerSkin in OnPlayerRequestClass / on spawn.
     gClassCount = 0;
     for (new i = 0; i < MAX_CHARACTERS; i++)
     {
         if (gCharLocked[i]) continue;
-        new skin = gChar[i][cSkin];
-        if (gSkinVariants[i][0] != 0) skin = gSkinVariants[i][0];   // custom preview
-        AddPlayerClass(skin, -249.0, 6.0, 117.0, 0.0);
+        AddPlayerClass(gChar[i][cSkin], -249.0, 6.0, 117.0, 0.0);
         gClassToChar[gClassCount++] = i;
     }
 
@@ -235,6 +235,7 @@ public OnPlayerRequestClass(playerid, classid)
     SetPlayerFacingAngle(playerid, 0.0);
     SetPlayerCameraPos(playerid, -249.0, 9.0, 117.0);
     SetPlayerCameraLookAt(playerid, -249.0, 6.0, 117.0);
+    SetPlayerSkinMapped(playerid, gChar[ch][cSkin]);    // preview the custom model
 
     new gt[48];
     format(gt, sizeof(gt), "%s%s~n~~w~Lv.%d", gChar[ch][cGt], gChar[ch][cLabel], GetCharLevel(playerid, ch));
