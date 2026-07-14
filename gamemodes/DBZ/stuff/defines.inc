@@ -12,11 +12,12 @@
 //  MUST be >= 20000 and MUST NOT collide with any stock GTA skin id or any
 //  transform-state skin id used by the combat logic (see legacy GOKU2=100 etc.).
 // ---------------------------------------------------------------------------
-#define SKIN_CUSTOM_GOKU        20000
-#define SKIN_CUSTOM_GOKU_V2     20001
-#define SKIN_CUSTOM_GOKU_V3     20002
-#define SKIN_CUSTOM_GOKU_V4     20003
-#define SKIN_CUSTOM_GOKU_V5     20004
+// NOTE: slots start at 20001 — id 20000 misbehaves on some 0.3DL clients.
+#define SKIN_CUSTOM_GOKU        20001
+#define SKIN_CUSTOM_GOKU_V2     20002
+#define SKIN_CUSTOM_GOKU_V3     20003
+#define SKIN_CUSTOM_GOKU_V4     20004
+#define SKIN_CUSTOM_GOKU_V5     20005
 #define SKIN_CUSTOM_ANDROID16   20010
 #define SKIN_CUSTOM_VEGETA      20020
 #define SKIN_CUSTOM_VEGETA_V2   20021
