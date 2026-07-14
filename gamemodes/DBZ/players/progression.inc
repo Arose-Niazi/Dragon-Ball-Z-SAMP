@@ -191,19 +191,34 @@ stock XPNeeded(level)
     return 75 + 25 * level;
 }
 
-// Highest transform index unlocked (0 = base only). Cell unlocks at 25.
-// Milestones: form 1 @ 10, 2 @ 20, 3 @ 35, 4 @ 50.
+// Per-character unlock level for form index 1..4 (0 = no such form).
+// God/Blue tiers are ENDGAME: Vegeta God @ 60, Blue @ 80.
+new const gFormUnlockLvl[MAX_CHARACTERS][4] =
+{
+    {10, 20, 35, 0},    // Goku   (SSJ/SSJ2/SSJ3)
+    {10, 20, 60, 80},   // Vegeta (SSJ/SSJ2/GOD/BLUE)
+    {10, 20, 0, 0},     // Trunks
+    {10, 20, 0, 0},     // Gohan
+    {0, 0, 0, 0},       // Mr. Satan
+    {0, 0, 0, 0},       // Videl
+    {0, 0, 0, 0},       // Krillin
+    {0, 0, 0, 0},       // Yamcha
+    {0, 0, 0, 0},       // Tien
+    {0, 0, 0, 0},       // Android 16
+    {0, 0, 0, 0},       // Piccolo
+    {25, 0, 0, 0}       // Cell (Super Perfect)
+};
+
+// Highest transform index unlocked (0 = base only).
 stock MaxFormUnlocked(playerid, ch = -1)
 {
     if (ch < 0) ch = gPlayer[playerid][pCharacter];
-    new lvl = gProg[playerid][ch][prLevel], unlocked;
-    if (ch == CHAR_CELL) unlocked = (lvl >= 25) ? 1 : 0;
-    else if (lvl >= 50) unlocked = 4;
-    else if (lvl >= 35) unlocked = 3;
-    else if (lvl >= 20) unlocked = 2;
-    else if (lvl >= 10) unlocked = 1;
-    else unlocked = 0;
-
+    new lvl = gProg[playerid][ch][prLevel], unlocked = 0;
+    for (new i = 0; i < 4; i++)
+    {
+        if (gFormUnlockLvl[ch][i] == 0 || lvl < gFormUnlockLvl[ch][i]) break;
+        unlocked = i + 1;
+    }
     new maxIdx = GetFormCount(ch) - 1;
     return (unlocked > maxIdx) ? maxIdx : unlocked;
 }
@@ -318,14 +333,12 @@ AnnounceLevelUnlocks(playerid, ch, lvl)
 
     if (!gTransformsLocked)
     {
-        new formIdx = 0;
-        if (ch == CHAR_CELL) { if (lvl == 25) formIdx = 1; }
-        else if (lvl == 10) formIdx = 1;
-        else if (lvl == 20) formIdx = 2;
-        else if (lvl == 35) formIdx = 3;
-        else if (lvl == 50) formIdx = 4;
-        if (formIdx > 0 && formIdx <= GetFormCount(ch) - 1)
-            SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: a new TRANSFORMATION - use /trans!");
+        for (new i = 0; i < 4; i++)
+            if (gFormUnlockLvl[ch][i] == lvl && i <= GetFormCount(ch) - 2)
+            {
+                SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: a new TRANSFORMATION - use /trans!");
+                break;
+            }
     }
     if (lvl == 10 && ch == CHAR_TRUNKS)
         SendClientMessage(playerid, COLOR_GREEN, "UNLOCKED: Trunks' sword - equipped on spawn!");

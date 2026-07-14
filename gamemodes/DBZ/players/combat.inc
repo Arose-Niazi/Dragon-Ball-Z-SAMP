@@ -316,9 +316,7 @@ DoTransform(playerid)
     // training gate: forms must be earned
     if (next != 0 && !gPlayer[playerid][pFused] && next > MaxFormUnlocked(playerid))
     {
-        new needed;
-        if (gPlayer[playerid][pCharacter] == CHAR_CELL) needed = 25;
-        else needed = (next == 1) ? 10 : ((next == 2) ? 20 : ((next == 3) ? 35 : 50));
+        new needed = gFormUnlockLvl[gPlayer[playerid][pCharacter]][next - 1];
         new m[96]; format(m, sizeof(m), "That form unlocks at level %d - you are level %d. Keep training!", needed, GetCharLevel(playerid));
         return SendClientMessage(playerid, COLOR_RED, m);
     }
