@@ -1,26 +1,32 @@
+# Reference production compose for the Dragon Ball Z open.mp server.
+#
+# The live server on Hetzner is driven by the infra repo
+# (my-server-infra/samp/dragon-ball-z/docker-compose.yaml, host networking).
+# This file mirrors that setup for local prod-style testing on Windows/Mac,
+# where host networking is unavailable so a UDP port mapping is used instead.
 services:
-  # SA-MP/OpenMP Game Server
   samp-server:
-    # Option 1: Build from local Dockerfile (for local development)
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # Option 2: Use pre-built image from registry (for production)
-    # Uncomment and set your GitHub username/image name:
-    # image: ghcr.io/YOUR_USERNAME/minimissions:latest
-    container_name: minimissions-server
+    # Production: pull the pre-built image from GHCR (built by GitHub Actions).
+    image: ghcr.io/arose-niazi/dragon-ball-z-samp:latest
+    # Local development: build from the Dockerfile instead (comment out `image`).
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    container_name: dragon-ball-z-server
     restart: unless-stopped
-    # Use port mapping for Windows compatibility (host network mode doesn't work on Windows Docker)
     ports:
-      - "7777:7777/udp"
+      - "7778:7778/udp"
     volumes:
-      # Persist logs
+      # Persist logs and saves
       - ./logs:/samp/logs
-      # Persist saves/backups
       - ./saves:/samp/saves
-      # Mount .amx files so they can be updated without rebuilding image
+      # Gamemode .amx (+ filterscripts) mounted so updates need only a git pull + restart
       - ./gamemodes:/samp/gamemodes:ro
       - ./filterscripts:/samp/filterscripts:ro
+      # Server-only secret overrides (never in the image/repo):
+      #   real rcon + port 7778 in config.json, real DB creds in dbz_db.cfg
+      - ./runtime/config.json:/samp/config.json:ro
+      - ./runtime/dbz_db.cfg:/samp/scriptfiles/dbz_db.cfg:ro
     healthcheck:
       test: ["CMD", "pgrep", "omp-server"]
       interval: 30s
@@ -30,4 +36,4 @@ services:
 
 networks:
   default:
-    name: minimissions-net
+    name: dragon-ball-z-net
