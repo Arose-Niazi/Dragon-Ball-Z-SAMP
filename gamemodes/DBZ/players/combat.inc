@@ -162,8 +162,30 @@ DoAttack(playerid)
     return 1;
 }
 
+// A short physical strike for Ki-less humans (Hercule / Videl) - no energy.
+DoHumanStrike(playerid)
+{
+    new Float:x, Float:y, Float:z, Float:a;
+    GetPlayerPos(playerid, x, y, z);
+    GetPlayerFacingAngle(playerid, a);
+    x += 2.6 * floatsin(-a, degrees);
+    y += 2.6 * floatcos(-a, degrees);
+    CreateExplosion(x, y, z, EXP_TINY, 2.0);
+    DealDamageAt(playerid, x, y, z, 12.0);
+    Training_OnBlast(playerid, x, y, z);
+    if (gPlayer[playerid][pCharacter] == CHAR_SATAN)
+        ApplyAnimation(playerid, "FIGHT_B", "FightB_1", 4.0, false, true, true, false, 0, SYNC_ALL);
+    else
+        ApplyAnimation(playerid, "FIGHT_C", "FightC_2", 4.0, false, true, true, false, 0, SYNC_ALL);
+    return 1;
+}
+
 DoKiBlast(playerid)
 {
+    // Hercule and Videl have no real Ki - they throw hands instead of energy.
+    if (gPlayer[playerid][pCharacter] == CHAR_SATAN || gPlayer[playerid][pCharacter] == CHAR_VIDEL)
+        return DoHumanStrike(playerid);
+
     if (!HasKi(playerid, KI_BLAST_COST))
     {
         GameTextForPlayer(playerid, "~r~Not enough Ki!", 1000, 3);

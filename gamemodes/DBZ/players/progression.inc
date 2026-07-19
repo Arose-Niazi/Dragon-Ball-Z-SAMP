@@ -75,10 +75,10 @@ new const gMoves[MAX_CHARACTERS * 4][E_MOVE] =
     {"Megaton Punch",           20, 32, PAT_PUNCH},
     {"Present For You",         30, 45, PAT_BLAST},
     // Videl
-    {"Ki Blast",                15, 20, PAT_BEAM_S},
+    {"Straight Right",          15, 20, PAT_PUNCH},
     {"Eagle Kick",              20, 26, PAT_PUNCH},
-    {"Great Ki Bomb",           30, 34, PAT_BLAST},
-    {"Justice Combination",     45, 48, PAT_RAPID},
+    {"Flying Knee",             30, 34, PAT_PUNCH},
+    {"Justice Combination",     45, 48, PAT_PUNCH},
     // Krillin
     {"Kamehameha",              25, 22, PAT_BEAM_M},
     {"Scatter Shot",            30, 26, PAT_RAPID},
@@ -119,7 +119,7 @@ new const gSkinSlotLevel[5]    = {1, 5, 15, 25, 35};
 // SSJ2/God/Blue, Gohan SSJ/SSJ2, Trunks SSJ/Super) belong to the /trans ladder.
 new const gSkinVariants[MAX_CHARACTERS][5] =
 {
-    {SKIN_CUSTOM_GOKU,   SKIN_CUSTOM_GOKU_V2, SKIN_CUSTOM_GOKU_V3, SKIN_CUSTOM_GOKU_V4, SKIN_CUSTOM_GOKU_V5}, // Goku (End-of-Z outfits)
+    {SKIN_CUSTOM_GOKU,   0, 0, 0, 0},                                                                         // Goku (V2-V5 reserved for SSJ/SSJ2/SSJ3 transform skins)
     {SKIN_CUSTOM_VEGETA, 0, 0, 0, 0},                                                                         // Vegeta (forms via /trans)
     {SKIN_CUSTOM_TRUNKS, 0, 0, 0, 0},                                                                         // Trunks (forms via /trans)
     {SKIN_CUSTOM_GOHAN,  0, 0, 0, 0},                                                                         // Gohan  (forms via /trans)
@@ -273,6 +273,9 @@ SetPlayerSkinMapped(playerid, skin)
         case TRUNKS1:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V2);   // SSJ
         case TRUNKSS:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V3);   // Super
         case CELL_SUPER:  return SetPlayerSkin(playerid, SKIN_CUSTOM_CELL);        // same model
+        case GOKU1:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V2);     // SSJ
+        case GOKU2:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V3);     // SSJ2
+        case GOKU3:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V4);     // SSJ3
     }
     return SetPlayerSkin(playerid, skin);
 }

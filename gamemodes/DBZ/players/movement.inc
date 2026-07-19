@@ -9,6 +9,14 @@ StartFly(playerid)
     if (gPlayer[playerid][pFlying]) return 0;
     gPlayer[playerid][pFlying] = true;
 
+    // Mr. Satan has no Ki - he can't fly, so he straps on a jetpack instead.
+    if (gPlayer[playerid][pCharacter] == CHAR_SATAN)
+    {
+        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_USEJETPACK);
+        GameTextForPlayer(playerid, "~y~Jetpack ~g~ON", 1200, 3);
+        return 1;
+    }
+
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
     SetPlayerPos(playerid, x, y, z + 3.0);
@@ -23,6 +31,15 @@ StopFly(playerid)
 {
     if (!gPlayer[playerid][pFlying]) return 0;
     gPlayer[playerid][pFlying] = false;
+
+    // Mr. Satan: take the jetpack off.
+    if (gPlayer[playerid][pCharacter] == CHAR_SATAN)
+    {
+        SetPlayerSpecialAction(playerid, SPECIAL_ACTION_NONE);
+        GameTextForPlayer(playerid, "~y~Jetpack ~r~OFF", 1200, 3);
+        return 1;
+    }
+
     if (gPlayer[playerid][pFlyTimer] != 0)
     {
         KillTimer(gPlayer[playerid][pFlyTimer]);

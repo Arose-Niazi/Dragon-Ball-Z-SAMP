@@ -87,15 +87,15 @@ enum E_FORM { fSkin, fColor, fLabel[20], fKi }
 new const gGokuForms[][E_FORM] =
 {
     {GOKU0, COLOR_WHITE,  "GOKU",       0},
-    {GOKU0, COLOR_YELLOW, "GOKU SSJ",   30},
-    {GOKU0, COLOR_ORANGE, "GOKU SSJ2",  40},
-    {GOKU0, COLOR_RED,    "GOKU SSJ3",  50}
+    {GOKU1, COLOR_YELLOW, "GOKU SSJ",   30},
+    {GOKU2, COLOR_ORANGE, "GOKU SSJ2",  40},
+    {GOKU3, COLOR_RED,    "GOKU SSJ3",  50}
 };
 new const gVegetaForms[][E_FORM] =
 {
     {VEGETA0,     COLOR_WHITE,  "VEGETA",      0},
     {VEGETA1,     COLOR_YELLOW, "VEGETA SSJ",  30},
-    {VEGETA2,     COLOR_ORANGE, "VEGETA SSJ2", 40},
+    {VEGETA2,     COLOR_ORANGE, "SUPER VEGETA", 40},
     {VEGETA_GOD,  COLOR_RED,    "VEGETA GOD",  50},
     {VEGETA_BLUE, COLOR_BLUE,   "VEGETA BLUE", 60}
 };
