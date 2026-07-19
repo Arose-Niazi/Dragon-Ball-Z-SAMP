@@ -12,6 +12,7 @@ saves/*.db
 saves/*.db-journal
 scriptfiles/*.db
 scriptfiles/*.db-journal
+scriptfiles/dbz_db.cfg
 
 # Compiled debug symbols (kept out to slim the repo)
 *.pdb

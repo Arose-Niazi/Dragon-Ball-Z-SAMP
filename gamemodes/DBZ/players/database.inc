@@ -12,10 +12,44 @@
 new MySQL:g_SQL;
 new bool:gDBConnected = false;
 
+// Runtime credentials: scriptfiles/dbz_db.cfg (4 lines: host, user, password,
+// database) overrides the compiled defines. The file is gitignored — secrets
+// never live in the repo or the committed .amx; production volume-mounts it.
+static stock bool:LoadDBConfigFile(host[], user[], pass[], db[], size)
+{
+    new File:f = fopen("dbz_db.cfg", io_read);
+    if (!f) return false;
+
+    new line[128], n = 0;
+    while (n < 4 && fread(f, line, sizeof(line)))
+    {
+        new len = strlen(line);
+        while (len > 0 && (line[len - 1] == '\n' || line[len - 1] == '\r')) line[--len] = EOS;
+        if (len == 0) continue;
+        switch (n)
+        {
+            case 0: format(host, size, "%s", line);
+            case 1: format(user, size, "%s", line);
+            case 2: format(pass, size, "%s", line);
+            case 3: format(db,   size, "%s", line);
+        }
+        n++;
+    }
+    fclose(f);
+    return (n >= 4);
+}
+
 ConnectDatabase()
 {
     mysql_log(ERROR | WARNING);
-    g_SQL = mysql_connect(SQL_HOST, SQL_USER, SQL_PASS, SQL_DB);
+
+    new host[64] = SQL_HOST, user[64] = SQL_USER, pass[64] = SQL_PASS, db[64] = SQL_DB;
+    if (LoadDBConfigFile(host, user, pass, db, 64))
+        print("[DBZ][MySQL] Using credentials from scriptfiles/dbz_db.cfg");
+    else
+        print("[DBZ][MySQL] No scriptfiles/dbz_db.cfg - using compiled defaults");
+
+    g_SQL = mysql_connect(host, user, pass, db);
 
     if (mysql_errno(g_SQL) != 0)
     {
