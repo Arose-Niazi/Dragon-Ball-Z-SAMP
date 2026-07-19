@@ -192,12 +192,12 @@ stock XPNeeded(level)
 }
 
 // Per-character unlock level for form index 1..4 (0 = no such form).
-// God/Blue tiers are ENDGAME: Vegeta God @ 60, Blue @ 80.
+// Vegeta Blue is ENDGAME @ 80.
 new const gFormUnlockLvl[MAX_CHARACTERS][4] =
 {
     {10, 20, 35, 0},    // Goku   (SSJ/SSJ2/SSJ3)
-    {10, 20, 60, 80},   // Vegeta (SSJ/SSJ2/GOD/BLUE)
-    {10, 20, 0, 0},     // Trunks
+    {10, 20, 80, 0},    // Vegeta (SSJ/Super Vegeta/Blue)
+    {10, 0, 0, 0},      // Trunks (SSJ only)
     {10, 20, 0, 0},     // Gohan
     {0, 0, 0, 0},       // Mr. Satan
     {0, 0, 0, 0},       // Videl

@@ -96,14 +96,12 @@ new const gVegetaForms[][E_FORM] =
     {VEGETA0,     COLOR_WHITE,  "VEGETA",      0},
     {VEGETA1,     COLOR_YELLOW, "VEGETA SSJ",  30},
     {VEGETA2,     COLOR_ORANGE, "SUPER VEGETA", 40},
-    {VEGETA_GOD,  COLOR_RED,    "VEGETA GOD",  50},
     {VEGETA_BLUE, COLOR_BLUE,   "VEGETA BLUE", 60}
 };
 new const gTrunksForms[][E_FORM] =
 {
     {TRUNKS0, COLOR_WHITE,  "TRUNKS",       0},
-    {TRUNKS1, COLOR_YELLOW, "TRUNKS SSJ",   30},
-    {TRUNKSS, COLOR_ORANGE, "SUPER TRUNKS", 40}
+    {TRUNKS1, COLOR_YELLOW, "TRUNKS SSJ",   30}
 };
 new const gGohanForms[][E_FORM] =
 {
