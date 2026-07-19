@@ -25,7 +25,7 @@ sessions read it so nothing is missed.
 | **Game UDP port** | **7778** (7777 is Mini-Missions) |
 | Container name (game) | `dragon-ball-z-server` |
 | Webhook secret (game) | `Deploy@DragonBallZ` |
-| Website repo | `Arose-Niazi/dbz-website` (new), local `D:\Projects\php\dbz-website` |
+| Website repo | `Arose-Niazi/dbz-omp-website`, local `D:\Projects\php\dbz-website` |
 | Website domain | `dbz-omp.arose-niazi.me` (DNS already forwarded) |
 | Website dir (server) | `/opt/websites/dbz-omp.arose-niazi.me/{repo,data,.env}` |
 | Website infra dir | `my-server-infra/websites/dbz-omp.arose-niazi.me/` |
@@ -251,7 +251,7 @@ templates exactly, changing only names/ports/paths.
 - [x] T13 Server provisioning — `dbz` DB+user, compose (host net, 7778),
       UFW 7778 udp+tcp, deploy-runner hook + GitHub webhook. Game LIVE on
       `95.216.9.233:7778` (external query OK, MySQL connected).
-- [x] T14 Website build — `Arose-Niazi/dbz-website` (mm-website speed layer, DBZ theme)
+- [x] T14 Website build — `Arose-Niazi/dbz-omp-website` (mm-website speed layer, DBZ theme)
 - [x] T15 Website deploy + SSL — https://dbz-omp.arose-niazi.me (LE cert 61, forced
       SSL + HTTP/2), live status working, models CDN serving, deploy webhook wired
 - [x] T16 E2E verify — UCP login confirmed against real open.mp hash (302→welcome,
@@ -268,4 +268,4 @@ templates exactly, changing only names/ports/paths.
 
 ### Auto-deploy
 - `git push` → `openmp`  → deploys the game (git reset + `docker compose restart`)
-- `git push` → `dbz-website` `main` → deploys the site (git reset + OPcache reset)
+- `git push` → `dbz-omp-website` `main` → deploys the site (git reset + OPcache reset)

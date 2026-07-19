@@ -116,7 +116,7 @@ Full runbook: `DEPLOY-PLAN.md`. Infra-as-code: `../../others/my-server-infra`.
 - **Database:** MySQL `dbz` on the shared MariaDB 11 container (user `dbz`).
 - **Admin:** owner is granted **by name** to `Arose_Niazi` (`gOwnerNames` /
   `IsOwnerName`) — register that name on prod to claim it. No name-based backdoors.
-- **Website:** https://dbz-omp.arose-niazi.me (repo `Arose-Niazi/dbz-website`,
+- **Website:** https://dbz-omp.arose-niazi.me (repo `Arose-Niazi/dbz-omp-website`,
   infra `websites/dbz-omp.arose-niazi.me/`). PHP 8.3-fpm+nginx container, NPM proxy
   + Let's Encrypt SSL. Reuses mm-website's speed layer (HTTP cache headers, hover
   prefetch, deferred `api/*.php` JSON). Live status, rankings, profiles, UCP.
