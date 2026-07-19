@@ -192,9 +192,11 @@ function dbz_pass_hash($password, $salt) {
     return strtoupper(hash('sha256', $password . $salt)); // VERIFY vs server ground-truth
 }
 ```
-> ⚠️ This exact construction is **UNVERIFIED** — Fable will produce a ground-truth
-> (password,salt)→hash pair from the running open.mp server and confirm/patch this
-> one function before UCP login is trusted. Keep it isolated so only this line changes.
+> ✅ **VERIFIED** against the real open.mp binary (2026-07-19). Ground truth:
+> `SHA256_PassHash("test1234","ABCDEFGH12345678")` =
+> `F8D3F5C89900DA3148AE01A8AFAEAE10329BCD84049A9A74E395B65224FC7D74`, which equals
+> `strtoupper(sha256("test1234"."ABCDEFGH12345678"))`. So the construction above is
+> correct: `strtoupper(hash('sha256', $password . $salt))`, password-then-salt.
 UCP pages v1: `welcome.php` (own profile + characters), `change-password.php`
 (re-hash with same fn), `player-search.php`. Admin panels (ban/warn) optional v1 —
 gate on `admin_level`/`is_owner`. Container-control panels (scp/dcp/lcp) optional.
