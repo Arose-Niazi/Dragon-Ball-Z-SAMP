@@ -96,3 +96,32 @@ sscanf2 · foreach · Pawn.RakNet · crashdetect · CustomModels component (0.3D
   `.dll` + `.so` only).
 - Vendored toolchains (`qawno/`, `components/`, `plugins/`, `legacy/`) are marked
   `linguist-vendored`.
+
+## Deployment (production)
+
+Live the same way as `../Mini-Missions` (Docker → GHCR → server volume-mount).
+Full runbook: `DEPLOY-PLAN.md`. Infra-as-code: `../../others/my-server-infra`.
+
+- **Server:** Hetzner `95.216.9.233`, game on **UDP 7778** (7777 is Mini-Missions).
+  Public: `95.216.9.233:7778` — 0.3DL clients only.
+- **Image:** `ghcr.io/arose-niazi/dragon-ball-z-samp:latest`, built by GitHub Actions
+  (`.github/workflows/docker-build-push.yml`, no PAT — uses `GITHUB_TOKEN`). The
+  image bakes binaries/components/models + a **placeholder** `config.json`; it holds
+  no secrets, so it is public and the server pulls without login.
+- **`.amx` updates:** `git push` to `openmp` → GitHub webhook → deploy-runner →
+  `deploy-dragon-ball-z.sh` (git reset --hard + `docker compose restart`). No rebuild.
+- **Secrets live only on the server**, volume-mounted over the image:
+  `/opt/samp/dragon-ball-z/runtime/config.json` (real rcon, port 7778, artwork CDN)
+  and `runtime/dbz_db.cfg` (real MySQL creds). Never commit either.
+- **Database:** MySQL `dbz` on the shared MariaDB 11 container (user `dbz`).
+- **Admin:** owner is granted **by name** to `Arose_Niazi` (`gOwnerNames` /
+  `IsOwnerName`) — register that name on prod to claim it. No name-based backdoors.
+- **Website:** https://dbz-omp.arose-niazi.me (repo `Arose-Niazi/dbz-website`,
+  infra `websites/dbz-omp.arose-niazi.me/`). PHP 8.3-fpm+nginx container, NPM proxy
+  + Let's Encrypt SSL. Reuses mm-website's speed layer (HTTP cache headers, hover
+  prefetch, deferred `api/*.php` JSON). Live status, rankings, profiles, UCP.
+  - UCP login verifies open.mp `SHA256_Hash` = `strtoupper(sha256(password.salt))`.
+  - Serves the game's custom models at `/models` (0.3DL artwork CDN).
+  - The website container queries the game via its Docker gateway, not the public
+    IP (host-networked server isn't reachable via NAT hairpin) — see
+    `SAMP_QUERY_USE_GATEWAY` in `assets/config/connection.php`.

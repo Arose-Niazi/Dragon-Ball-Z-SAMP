@@ -244,11 +244,28 @@ templates exactly, changing only names/ports/paths.
 
 ---
 
-## 6. Status
+## 6. Status — ALL COMPLETE ✅ (2026-07-19)
 
 - [x] T11 Admin lockdown + runtime DB creds (commit 42df907)
-- [ ] T12 GHCR image (Fable)
-- [ ] T13 Server provisioning (Fable) + scaffold (Sonnet)
-- [ ] T14 Website build (Opus)
-- [ ] T15 Website deploy + SSL (Fable)
-- [ ] T16 E2E verify + docs (Fable)
+- [x] T12 GHCR image — built by GitHub Actions, server pulls `:latest`
+- [x] T13 Server provisioning — `dbz` DB+user, compose (host net, 7778),
+      UFW 7778 udp+tcp, deploy-runner hook + GitHub webhook. Game LIVE on
+      `95.216.9.233:7778` (external query OK, MySQL connected).
+- [x] T14 Website build — `Arose-Niazi/dbz-website` (mm-website speed layer, DBZ theme)
+- [x] T15 Website deploy + SSL — https://dbz-omp.arose-niazi.me (LE cert 61, forced
+      SSL + HTTP/2), live status working, models CDN serving, deploy webhook wired
+- [x] T16 E2E verify — UCP login confirmed against real open.mp hash (302→welcome,
+      wrong pw rejected); all pages 200; docs updated
+
+### Live endpoints
+- Game: `95.216.9.233:7778` (0.3DL only)
+- Web:  https://dbz-omp.arose-niazi.me  (stats · rankings · profiles · UCP)
+
+### Where the secrets live (server only, never in repo)
+- Game rcon + real config: `/opt/samp/dragon-ball-z/runtime/config.json`
+- Game DB creds: `/opt/samp/dragon-ball-z/runtime/dbz_db.cfg`
+- Website DB creds: `/opt/websites/dbz-omp.arose-niazi.me/.env`
+
+### Auto-deploy
+- `git push` → `openmp`  → deploys the game (git reset + `docker compose restart`)
+- `git push` → `dbz-website` `main` → deploys the site (git reset + OPcache reset)
