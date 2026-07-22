@@ -132,6 +132,12 @@ ShowAdminCmds(playerid)
     SendClientMessage(playerid, COLOR_YELLOW, "==== Admin Commands ====");
     SendClientMessage(playerid, COLOR_WHITE, "/kick /warn /jail /unjail /freeze /unfreeze /goto /get /admins");
     SendClientMessage(playerid, COLOR_WHITE, "/ban /unban  (lvl 5+)   /setvip (lvl 8+)   /setlevel (owner)");
+    if (gPlayer[playerid][pIsOwner])
+    {
+        SendClientMessage(playerid, COLOR_YELLOW, "==== Owner Test Commands ====");
+        SendClientMessage(playerid, COLOR_WHITE, "/setcharlevel [1-100] /givexp [n] /resetchar /refill /traincd");
+        SendClientMessage(playerid, COLOR_WHITE, "/giveballs /giveparts /transtoggle /tpt /tpbulma /tpbg [0-7] /testhelp");
+    }
     return 1;
 }
 

@@ -50,7 +50,8 @@ enum E_PLAYER_DATA
     pLastDamagedTick,           // for Piccolo out-of-combat regen
     pKaiokenUntil,              // unix time Kaioken expires (Goku)
     pAbsorbCd,                  // seconds left on absorb cooldown (Cell)
-    pTrainCd                    // seconds left on training cooldown
+    pTrainCd,                   // seconds left on training cooldown
+    pTransformCd                // unix time you can power up from base again
 }
 new gPlayer[MAX_PLAYERS][E_PLAYER_DATA];
 
@@ -97,5 +98,6 @@ ResetPlayerData(playerid)
     gPlayer[playerid][pKaiokenUntil]= 0;
     gPlayer[playerid][pAbsorbCd]    = 0;
     gPlayer[playerid][pTrainCd]     = 0;
+    gPlayer[playerid][pTransformCd] = 0;
     return 1;
 }

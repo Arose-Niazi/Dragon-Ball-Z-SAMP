@@ -186,19 +186,42 @@ stock GetCharLevel(playerid, ch = -1)
     return gProg[playerid][ch][prLevel];
 }
 
-#define FORM_POWER_BONUS 25   // flat base-stat boost per transformation tier
+#define FORM_POWER_BONUS 25   // (legacy) forms now MULTIPLY stats - see FormType
+
+// Transformation families: Super Saiyan tiers MULTIPLY stats and drain Ki over
+// time; Mystic (Gohan) and Cell are sustainable boosts with NO Ki drain.
+#define FT_NONE     0
+#define FT_SAIYAN   1
+#define FT_MYSTIC   2
+#define FT_CELL     3
+#define TRANSFORM_COOLDOWN 600   // sec before you can power up from base again
+
+stock FormType(ch, tf)
+{
+    if (tf <= 0) return FT_NONE;
+    if (ch == CHAR_GOHAN && tf == 3) return FT_MYSTIC;   // Mystic Gohan
+    if (ch == CHAR_CELL) return FT_CELL;                 // Cell's Super Perfect
+    return FT_SAIYAN;
+}
+stock bool:FormDrains(ch, tf) { return (FormType(ch, tf) == FT_SAIYAN); }
 
 // Effective power: lore base + 2 per trained level (+15 per active form tier).
 stock GetEffPower(playerid, ch = -1)
 {
     if (ch < 0) ch = gPlayer[playerid][pCharacter];
-    new eff = gChar[ch][cBasePower] + 2 * (gProg[playerid][ch][prLevel] - 1);
+    new Float:eff = float(gChar[ch][cBasePower] + 2 * (gProg[playerid][ch][prLevel] - 1));
     if (ch == gPlayer[playerid][pCharacter])
     {
-        eff += FORM_POWER_BONUS * gPlayer[playerid][pTransform];
-        if (gPlayer[playerid][pFused]) eff += FORM_POWER_BONUS * 2;
+        new tf = gPlayer[playerid][pTransform];
+        if (tf > 0) switch (FormType(ch, tf))
+        {
+            case FT_SAIYAN: eff *= (1.0 + 0.5 * float(tf));   // SSJ x1.5 / SSJ2 x2.0 / SSJ3 x2.5
+            case FT_MYSTIC: eff *= 2.2;                        // sustainable, no drain
+            case FT_CELL:   eff *= (1.0 + 0.6 * float(tf));
+        }
+        if (gPlayer[playerid][pFused]) eff *= 2.5;
     }
-    return eff;
+    return floatround(eff);
 }
 
 // Max HP / Ki including level growth AND transformation multipliers.
@@ -210,8 +233,13 @@ RecalcMaxStats(playerid)
     new lvl = gProg[playerid][ch][prLevel];
     new tf  = gPlayer[playerid][pTransform];
 
-    new Float:hmul = 1.0 + 0.18 * float(tf);          // +18% max HP per form
-    new Float:kmul = 1.0 + 0.30 * float(tf);          // +30% Ki storage per form
+    new Float:hmul = 1.0, Float:kmul = 1.0;
+    if (tf > 0) switch (FormType(ch, tf))
+    {
+        case FT_SAIYAN: { hmul = 1.0 + 0.30 * float(tf); kmul = 1.0 + 0.40 * float(tf); }
+        case FT_MYSTIC: { hmul = 1.60;                   kmul = 1.40; }   // sustainable, tanky
+        case FT_CELL:   { hmul = 1.0 + 0.30 * float(tf); kmul = 1.0 + 0.40 * float(tf); }
+    }
     if (gPlayer[playerid][pFused]) { hmul += 0.60; kmul += 0.75; }
 
     gPlayer[playerid][pHealthMax] = float(gChar[ch][cBaseHp] + lvl) * hmul;
@@ -251,7 +279,7 @@ new const gFormUnlockLvl[MAX_CHARACTERS][4] =
     {10, 20, 35, 0},    // Goku   (SSJ/SSJ2/SSJ3)
     {10, 20, 80, 0},    // Vegeta (SSJ/Super Vegeta/Blue)
     {10, 0, 0, 0},      // Trunks (SSJ only)
-    {10, 20, 0, 0},     // Gohan
+    {10, 20, 35, 0},    // Gohan (SSJ/SSJ2/Mystic)
     {0, 0, 0, 0},       // Mr. Satan
     {0, 0, 0, 0},       // Videl
     {0, 0, 0, 0},       // Krillin
@@ -323,6 +351,7 @@ SetPlayerSkinMapped(playerid, skin)
         case VEGETA_BLUE: return SetPlayerSkin(playerid, SKIN_CUSTOM_VEGETA_V5);   // Blue
         case GOHAN1:      return SetPlayerSkin(playerid, SKIN_CUSTOM_GOHAN_V2);    // SSJ
         case GOHAN2:      return SetPlayerSkin(playerid, SKIN_CUSTOM_GOHAN_V3);    // SSJ2
+        case GOHAN3:      return SetPlayerSkin(playerid, SKIN_CUSTOM_GOHAN_V4);    // Mystic
         case TRUNKS1:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V2);   // SSJ
         case TRUNKSS:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V3);   // Super
         case CELL_SUPER:  return SetPlayerSkin(playerid, SKIN_CUSTOM_CELL);        // same model

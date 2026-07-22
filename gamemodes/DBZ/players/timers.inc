@@ -80,6 +80,20 @@ public SecondTimer()
 
         // training challenge ticks
         if (Training_Active(i)) Training_Tick(i);
+
+        // Saiyan transformations drain Ki over time (higher form = faster); Mystic/Cell don't
+        if (gPlayer[i][pLoggedIn] && gPlayer[i][pTransform] > 0
+            && FormDrains(gPlayer[i][pCharacter], gPlayer[i][pTransform]) && !IsAndroid(i))
+        {
+            new Float:drain = 2.0 + 2.0 * float(gPlayer[i][pTransform]);   // SSJ 4/s, SSJ2 6/s, SSJ3 8/s
+            new Float:ki = GetKi(i);
+            if (ki <= drain)
+            {
+                SendClientMessage(i, COLOR_RED, "Your Ki ran dry - you power down!");
+                DoDetransform(i);
+            }
+            else SetKi(i, ki - drain);
+        }
     }
     return 1;
 }

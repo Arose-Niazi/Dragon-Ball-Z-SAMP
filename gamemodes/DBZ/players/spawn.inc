@@ -11,6 +11,7 @@ ApplyCharacterSpawn(playerid)
 
     gPlayer[playerid][pTransform] = 0;
     gPlayer[playerid][pFused]     = false;
+    gPlayer[playerid][pTransformCd] = 0;   // death/respawn resets the power-up cooldown
 
     new lvl = GetCharLevel(playerid, ch);
 

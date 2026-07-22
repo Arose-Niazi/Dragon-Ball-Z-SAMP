@@ -27,6 +27,7 @@
 #define GOHAN0          176
 #define GOHAN1          177
 #define GOHAN2          154
+#define GOHAN3          179     // Mystic/Ultimate Gohan identity
 // Fusions
 #define VEGEKU0         46
 #define VEGEKU1         223

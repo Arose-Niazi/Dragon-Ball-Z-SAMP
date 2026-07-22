@@ -329,29 +329,44 @@ DoTransform(playerid)
     if (gTransformsLocked)
         return SendClientMessage(playerid, COLOR_GREY, "Transformations are being remastered with proper form models - locked for now. Your training still counts!");
 
+    new ch = gPlayer[playerid][pCharacter];
     new skin, color, lbl[24], ki, count;
     GetFormInfo(playerid, gPlayer[playerid][pTransform], skin, color, lbl, ki, count);
     if (count <= 1)
         return SendClientMessage(playerid, COLOR_GREY, "This character can't transform.");
 
-    new next = gPlayer[playerid][pTransform] + 1;
-    if (next >= count) next = 0;
+    new cur = gPlayer[playerid][pTransform];
+    new next = cur + 1;
+
+    // /trans only climbs the ladder - at the top it stays (power down with /base)
+    if (next >= count)
+        return SendClientMessage(playerid, COLOR_GREY, "This is your final form! Use /base to power down.");
+
+    new bool:free = (GetPlayerInterior(playerid) == 3);
 
     // training gate: forms must be earned
-    if (next != 0 && !gPlayer[playerid][pFused] && next > MaxFormUnlocked(playerid))
+    if (!gPlayer[playerid][pFused] && next > MaxFormUnlocked(playerid))
     {
-        new needed = gFormUnlockLvl[gPlayer[playerid][pCharacter]][next - 1];
+        new needed = gFormUnlockLvl[ch][next - 1];
         new m[96]; format(m, sizeof(m), "That form unlocks at level %d - you are level %d. Keep training!", needed, GetCharLevel(playerid));
+        return SendClientMessage(playerid, COLOR_RED, m);
+    }
+
+    // power-up cooldown: powering up FROM BASE again after a power-down is gated
+    if (cur == 0 && !free && gPlayer[playerid][pTransformCd] > gettime())
+    {
+        new secs = gPlayer[playerid][pTransformCd] - gettime();
+        new m[112]; format(m, sizeof(m), "You're still drained - %d min %d sec until you can power up (or die to reset).", secs / 60, secs % 60);
         return SendClientMessage(playerid, COLOR_RED, m);
     }
 
     new nskin, ncolor, nlbl[24], nki, ncount;
     GetFormInfo(playerid, next, nskin, ncolor, nlbl, nki, ncount);
 
-    new bool:free = (GetPlayerInterior(playerid) == 3);
-    if (!free && next != 0 && !HasKi(playerid, float(nki)))
+    if (!free && !HasKi(playerid, float(nki)))
         return SendClientMessage(playerid, COLOR_RED, "Not enough Ki to transform!");
 
+    new Float:oldMax = gPlayer[playerid][pHealthMax];
     gPlayer[playerid][pTransform] = next;
 
     new Float:x, Float:y, Float:z;
@@ -359,22 +374,45 @@ DoTransform(playerid)
     CreateExplosion(x, y, z + 5.0, EXP_SMALL, 3.0);
     SetPlayerSkinMapped(playerid, nskin);
     SetPlayerColor(playerid, ncolor);
+    if (!free) SpendKi(playerid, float(nki));
 
-    if (next == 0)
-    {
-        if (!free) SetKi(playerid, 0.0);
-    }
-    else if (!free)
-    {
-        SpendKi(playerid, float(nki));
-    }
-    // transformations are a real power spike: recompute HP/Ki, full-heal on power-up
+    // powering up ADDS the bonus HP to your current health (no full heal)
     RecalcMaxStats(playerid);
-    if (next != 0)
-        SetPlayerHealth(playerid, gPlayer[playerid][pHealthMax]);
+    new Float:hp; GetPlayerHealth(playerid, hp);
+    new Float:gain = gPlayer[playerid][pHealthMax] - oldMax;
+    if (gain > 0.0) SetPlayerHealth(playerid, hp + gain);
 
     UpdateNameLabel(playerid, nlbl, ncolor);
     ShowAttackName(playerid, nlbl);
+    return 1;
+}
+
+// Power down to base form at will (/base) or when Ki runs dry. Starts the cooldown.
+DoDetransform(playerid)
+{
+    if (gPlayer[playerid][pTransform] == 0 && !gPlayer[playerid][pFused])
+        return SendClientMessage(playerid, COLOR_GREY, "You are already in your base form.");
+
+    new bool:free = (GetPlayerInterior(playerid) == 3);
+    gPlayer[playerid][pFused]     = false;
+    gPlayer[playerid][pTransform] = 0;
+
+    new bskin, bcolor, blbl[24], bki, bcount;
+    GetFormInfo(playerid, 0, bskin, bcolor, blbl, bki, bcount);
+    SetPlayerSkinMapped(playerid, bskin);
+    SetPlayerColor(playerid, bcolor);
+
+    RecalcMaxStats(playerid);
+    new Float:hp; GetPlayerHealth(playerid, hp);
+    if (hp > gPlayer[playerid][pHealthMax]) SetPlayerHealth(playerid, gPlayer[playerid][pHealthMax]);
+    UpdateNameLabel(playerid, blbl, bcolor);
+
+    if (!free)
+    {
+        gPlayer[playerid][pTransformCd] = gettime() + TRANSFORM_COOLDOWN;
+        SendClientMessage(playerid, COLOR_YELLOW, "You powered down to base. Wait 10 min (or die) before powering up again.");
+    }
+    else SendClientMessage(playerid, COLOR_YELLOW, "You powered down to base.");
     return 1;
 }
 

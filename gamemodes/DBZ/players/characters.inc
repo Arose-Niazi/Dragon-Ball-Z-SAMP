@@ -105,9 +105,10 @@ new const gTrunksForms[][E_FORM] =
 };
 new const gGohanForms[][E_FORM] =
 {
-    {GOHAN0, COLOR_WHITE,  "GOHAN",      0},
-    {GOHAN1, COLOR_YELLOW, "GOHAN SSJ",  30},
-    {GOHAN2, COLOR_ORANGE, "GOHAN SSJ2", 40}
+    {GOHAN0, COLOR_WHITE,     "GOHAN",        0},
+    {GOHAN1, COLOR_YELLOW,    "GOHAN SSJ",   30},
+    {GOHAN2, COLOR_ORANGE,    "GOHAN SSJ2",  40},
+    {GOHAN3, COLOR_LIGHTBLUE, "MYSTIC GOHAN", 45}
 };
 new const gCellForms[][E_FORM] =
 {

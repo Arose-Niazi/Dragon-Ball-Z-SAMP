@@ -13,6 +13,20 @@ CMD:ping(playerid)
     return 1;
 }
 
+// Pawn.CMD: tell the player when a command doesn't exist (result -1 = no handler matched).
+public OnPlayerCommandPerformed(playerid, cmd[], params[], result, flags)
+{
+    #pragma unused params
+    #pragma unused flags
+    if (result == -1)
+    {
+        new m[96];
+        format(m, sizeof(m), "Unknown command: /%s  -  type /cmds for the command list.", cmd);
+        SendClientMessage(playerid, COLOR_GREY, m);
+    }
+    return 1;
+}
+
 CMD:cmds(playerid)
 {
     SendClientMessage(playerid, COLOR_YELLOW, "==== Dragon Ball Z Commands ====");

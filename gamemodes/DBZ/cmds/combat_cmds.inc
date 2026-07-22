@@ -8,6 +8,8 @@ CMD:att(playerid)       { return DoAttack(playerid); }
 CMD:attack(playerid)    { return DoAttack(playerid); }
 CMD:trans(playerid)     { return DoTransform(playerid); }
 CMD:transform(playerid) { return DoTransform(playerid); }
+CMD:base(playerid)      { return DoDetransform(playerid); }
+CMD:powerdown(playerid) { return DoDetransform(playerid); }
 CMD:fus(playerid)       { return DoFusion(playerid); }
 CMD:fusion(playerid)    { return DoFusion(playerid); }
 CMD:fly(playerid)       { return ToggleFly(playerid); }
