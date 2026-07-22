@@ -326,9 +326,9 @@ SetPlayerSkinMapped(playerid, skin)
         case TRUNKS1:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V2);   // SSJ
         case TRUNKSS:     return SetPlayerSkin(playerid, SKIN_CUSTOM_TRUNKS_V3);   // Super
         case CELL_SUPER:  return SetPlayerSkin(playerid, SKIN_CUSTOM_CELL);        // same model
-        case GOKU1:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V2);     // SSJ
-        case GOKU2:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V3);     // SSJ2
-        case GOKU3:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V4);     // SSJ3
+        case GOKU1:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V3);     // SSJ  (V2 was the wrong model)
+        case GOKU2:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V4);     // SSJ2
+        case GOKU3:       return SetPlayerSkin(playerid, SKIN_CUSTOM_GOKU_V5);     // SSJ3 (was unused/not loaded)
     }
     return SetPlayerSkin(playerid, skin);
 }
