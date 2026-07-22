@@ -256,13 +256,14 @@ RecalcMaxStats(playerid)
 // Number of transform tiers per character (ladder length incl. base).
 stock GetFormCount(ch)
 {
+    // derive from the actual ladders so it never drifts out of sync
     switch (ch)
     {
-        case CHAR_GOKU:   return 4;
-        case CHAR_VEGETA: return 5;
-        case CHAR_TRUNKS: return 3;
-        case CHAR_GOHAN:  return 3;
-        case CHAR_CELL:   return 2;
+        case CHAR_GOKU:   return sizeof(gGokuForms);
+        case CHAR_VEGETA: return sizeof(gVegetaForms);
+        case CHAR_TRUNKS: return sizeof(gTrunksForms);
+        case CHAR_GOHAN:  return sizeof(gGohanForms);
+        case CHAR_CELL:   return sizeof(gCellForms);
     }
     return 1;
 }
