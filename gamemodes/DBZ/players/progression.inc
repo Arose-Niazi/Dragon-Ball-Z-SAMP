@@ -157,7 +157,7 @@ stock GetCharLevel(playerid, ch = -1)
     return gProg[playerid][ch][prLevel];
 }
 
-#define FORM_POWER_BONUS 15   // flat base-stat boost per transformation tier
+#define FORM_POWER_BONUS 25   // flat base-stat boost per transformation tier
 
 // Effective power: lore base + 2 per trained level (+15 per active form tier).
 stock GetEffPower(playerid, ch = -1)
@@ -170,6 +170,30 @@ stock GetEffPower(playerid, ch = -1)
         if (gPlayer[playerid][pFused]) eff += FORM_POWER_BONUS * 2;
     }
     return eff;
+}
+
+// Max HP / Ki including level growth AND transformation multipliers.
+// Training (levels) makes you store much more Ki; each form is a real stat spike.
+RecalcMaxStats(playerid)
+{
+    new ch = gPlayer[playerid][pCharacter];
+    if (ch < 0 || ch >= MAX_CHARACTERS) return 0;
+    new lvl = gProg[playerid][ch][prLevel];
+    new tf  = gPlayer[playerid][pTransform];
+
+    new Float:hmul = 1.0 + 0.18 * float(tf);          // +18% max HP per form
+    new Float:kmul = 1.0 + 0.30 * float(tf);          // +30% Ki storage per form
+    if (gPlayer[playerid][pFused]) { hmul += 0.60; kmul += 0.75; }
+
+    gPlayer[playerid][pHealthMax] = float(gChar[ch][cBaseHp] + lvl) * hmul;
+
+    if (gChar[ch][cAndroid])
+        gPlayer[playerid][pKiMax] = 0.0;
+    else
+        gPlayer[playerid][pKiMax] = float(gChar[ch][cKiCap] + lvl * 2) * kmul;  // store much more with training
+
+    UpdateKiBar(playerid);
+    return 1;
 }
 
 // Number of transform tiers per character (ladder length incl. base).
@@ -313,10 +337,7 @@ GiveCharXP(playerid, amount)
         PlayerPlaySound(playerid, 1058, 0.0, 0.0, 0.0);
 
         // stats grow with training
-        gPlayer[playerid][pHealthMax] = float(gChar[ch][cBaseHp] + gProg[playerid][ch][prLevel]);
-        if (!gChar[ch][cAndroid])
-            gPlayer[playerid][pKiMax] = float(gChar[ch][cKiCap] + gProg[playerid][ch][prLevel]);
-        UpdateKiBar(playerid);
+        RecalcMaxStats(playerid);
     }
     return 1;
 }

@@ -366,6 +366,11 @@ DoTransform(playerid)
     {
         SpendKi(playerid, float(nki));
     }
+    // transformations are a real power spike: recompute HP/Ki, full-heal on power-up
+    RecalcMaxStats(playerid);
+    if (next != 0)
+        SetPlayerHealth(playerid, gPlayer[playerid][pHealthMax]);
+
     UpdateNameLabel(playerid, nlbl, ncolor);
     ShowAttackName(playerid, nlbl);
     return 1;

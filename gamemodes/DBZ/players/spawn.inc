@@ -18,20 +18,18 @@ ApplyCharacterSpawn(playerid)
     SetPlayerFightingStyle(playerid, FIGHT_STYLE:gChar[ch][cStyle]);
     SetPlayerColor(playerid, gChar[ch][cColor]);
 
-    // stats grow with training: +1 max HP and +1 max Ki per level
-    gPlayer[playerid][pHealthMax] = float(gChar[ch][cBaseHp] + lvl);
+    // level-scaled max HP / Ki (transform = 0 at spawn, so these are base values)
+    RecalcMaxStats(playerid);
     SetPlayerHealth(playerid, gPlayer[playerid][pHealthMax]);
     SetPlayerArmour(playerid, (gChar[ch][cWeak] || gChar[ch][cAndroid]) ? 0.0 : 100.0);
 
     if (gChar[ch][cAndroid])
     {
-        gPlayer[playerid][pKiMax] = 0.0;
         SetKi(playerid, 0.0);
         SendClientMessage(playerid, COLOR_LIGHTBLUE, "Android: no Ki needed - your systems power everything.");
     }
     else
     {
-        gPlayer[playerid][pKiMax] = float(gChar[ch][cKiCap] + lvl);
         SetKi(playerid, gPlayer[playerid][pKiMax]);
     }
 

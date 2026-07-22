@@ -9,7 +9,8 @@
 // ------------------------------- HUD ---------------------------------------
 CreateKiHUD(playerid)
 {
-    gPlayer[playerid][pKiBar] = CreatePlayerProgressBar(playerid, 549.0, 25.0, 55.5, 3.2, 0x0000FFFF, 100.0);
+    // Bottom-centre, clear of the money/clock/health HUD cluster.
+    gPlayer[playerid][pKiBar] = CreatePlayerProgressBar(playerid, 240.0, 420.0, 160.0, 6.0, 0x00BFFFFF, 100.0);
     ShowPlayerProgressBar(playerid, gPlayer[playerid][pKiBar]);
     UpdateKiBar(playerid);
     return 1;
@@ -92,7 +93,11 @@ public ChargeKiTimer(playerid)
     new Float:x, Float:y, Float:z;
     GetPlayerPos(playerid, x, y, z);
     CreateExplosion(x, y, z + 5.0, 11, 1.0);
-    GiveKi(playerid, float(gChar[ch][cCharge]));
+    // charge more as you train (level) and transform (form)
+    new Float:amt = float(gChar[ch][cCharge])
+        * (1.0 + float(GetCharLevel(playerid)) / 40.0)
+        * (1.0 + 0.30 * float(gPlayer[playerid][pTransform]));
+    GiveKi(playerid, amt);
 
     if (gPlayer[playerid][pKi] >= gPlayer[playerid][pKiMax])
         GameTextForPlayer(playerid, "~b~Ki Full", 700, 3);
