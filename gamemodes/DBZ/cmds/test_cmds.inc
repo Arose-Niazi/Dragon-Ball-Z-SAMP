@@ -66,7 +66,7 @@ CMD:refill(playerid)
 CMD:giveballs(playerid)
 {
     if (!TestGate(playerid)) return 1;
-    gPlayer[playerid][pBallsMask] = 0x7F;
+    DragonBalls_GiveAll(playerid);
     SendClientMessage(playerid, COLOR_ADMIN, "[TEST] All 7 Dragon Balls granted - try /wish.");
     return 1;
 }

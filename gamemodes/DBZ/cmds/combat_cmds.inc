@@ -16,6 +16,7 @@ CMD:kill(playerid)      { return DoKill(playerid); }
 CMD:absorb(playerid)    { return DoAbsorb(playerid); }
 CMD:absrob(playerid)    { return DoAbsorb(playerid); }  // legacy typo alias
 CMD:wish(playerid)      { return ShowWishDialog(playerid); }
+CMD:steal(playerid)     { return DragonBalls_Steal(playerid); }
 
 CMD:power(playerid)
 {

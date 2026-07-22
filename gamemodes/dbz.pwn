@@ -196,6 +196,7 @@ public OnPlayerDisconnect(playerid, reason)
         Delete3DTextLabel(gPlayer[playerid][pLabel]);
         gPlayer[playerid][pLabel] = Text3D:INVALID_3DTEXT_ID;
     }
+    DragonBalls_OnDisconnect(playerid);   // held balls scatter to random spots
     SavePlayerData(playerid);
     ResetPlayerData(playerid);
     return 1;
@@ -226,6 +227,8 @@ public OnPlayerSpawn(playerid)
         return 1;
     }
     ApplyCharacterSpawn(playerid);
+    DragonBalls_MarkActive(playerid);
+    DragonBalls_SyncMask(playerid);
     ShowDragonBallIcons(playerid);
     ShowBattlegroundDialog(playerid);
     SetTimerEx("DelayedSkinApply", 3000, false, "i", playerid);   // 0.3DL model-load race
@@ -239,6 +242,7 @@ public OnPlayerDeath(playerid, killerid, WEAPON:reason)
     StopFly(playerid);
     StopBeam(playerid);
     Training_Abort(playerid);
+    DragonBalls_OnDeath(playerid);   // drop held balls where you fell
 
     new ch = gPlayer[playerid][pCharacter];
     gPlayer[playerid][pDeaths]++;

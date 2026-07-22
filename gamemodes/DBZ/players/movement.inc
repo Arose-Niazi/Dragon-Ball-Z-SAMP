@@ -93,6 +93,8 @@ public OnPlayerKeyStateChange(playerid, KEY:newkeys, KEY:oldkeys)
     if (!gPlayer[playerid][pLoggedIn])
         return 1;
 
+    DragonBalls_MarkActive(playerid);   // any key input = not AFK
+
     // Charge Ki: hold Middle Mouse Button (LOOK_BEHIND / SUBMISSION)
     if ((newkeys & KEY_SUBMISSION) && !(oldkeys & KEY_SUBMISSION)) StartCharge(playerid);
     if (!(newkeys & KEY_SUBMISSION) && (oldkeys & KEY_SUBMISSION)) StopCharge(playerid);
