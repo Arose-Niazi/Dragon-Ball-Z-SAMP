@@ -56,6 +56,7 @@ Account_Check(playerid)
     {
         SendClientMessage(playerid, COLOR_RED, "[!] Database offline - you are playing as an unsaved guest.");
         gPlayer[playerid][pLoggedIn] = true;
+        TogglePlayerSpectating(playerid, false);   // release to class selection
         return 1;
     }
 
@@ -135,6 +136,7 @@ public OnAccountRegister(playerid)
     gPlayer[playerid][pHealthMax]= 100.0;
     ApplyOwnerSeed(playerid);
 
+    TogglePlayerSpectating(playerid, false);   // release to class selection (fresh data)
     SendClientMessage(playerid, COLOR_GREEN, "Account created and logged in! Pick a character to spawn.");
     return 1;
 }

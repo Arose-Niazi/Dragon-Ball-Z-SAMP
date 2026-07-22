@@ -175,7 +175,10 @@ public OnPlayerConnect(playerid)
     ResetPlayerData(playerid);
     Prog_Reset(playerid);
     Training_Reset(playerid);
-    CreateKiHUD(playerid);
+
+    // Hold the player in spectate (no class selection) until they log in and their
+    // data loads, so a character never previews an incorrect level.
+    TogglePlayerSpectating(playerid, true);
 
     SendClientMessage(playerid, COLOR_YELLOW, "{FFFF00}Welcome to {33AA33}Dragon Ball Z{FFFF00} - the open.mp / 0.3DL rebuild!");
     SendClientMessage(playerid, COLOR_WHITE,  "Type {33AA33}/keys{FFFFFF} to see the action shortcuts.");
@@ -204,6 +207,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 public OnPlayerRequestClass(playerid, classid)
 {
+    if (!gPlayer[playerid][pLoggedIn]) return 0;   // no class selection until logged in + loaded
     new ch = (classid >= 0 && classid < gClassCount) ? gClassToChar[classid] : 0;
     gPlayer[playerid][pCharacter] = ch;
     SetPlayerPos(playerid, -249.0, 6.0, 117.0);
@@ -227,6 +231,8 @@ public OnPlayerSpawn(playerid)
         return 1;
     }
     ApplyCharacterSpawn(playerid);
+    DestroyKiHUD(playerid);           // Ki bar only exists while spawned
+    CreateKiHUD(playerid);
     DragonBalls_MarkActive(playerid);
     DragonBalls_SyncMask(playerid);
     ShowDragonBallIcons(playerid);
@@ -242,6 +248,7 @@ public OnPlayerDeath(playerid, killerid, WEAPON:reason)
     StopFly(playerid);
     StopBeam(playerid);
     Training_Abort(playerid);
+    DestroyKiHUD(playerid);          // hide the Ki bar until respawn
     DragonBalls_OnDeath(playerid);   // drop held balls where you fell
 
     new ch = gPlayer[playerid][pCharacter];

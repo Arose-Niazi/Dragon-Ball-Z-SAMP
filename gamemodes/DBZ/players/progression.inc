@@ -466,6 +466,9 @@ public OnCharProgLoad(playerid)
         cache_get_value_name_int(i, "tr_ki",       gProg[playerid][ch][prTrKi]);
         if (gProg[playerid][ch][prLevel] < 1) gProg[playerid][ch][prLevel] = 1;
     }
+
+    // per-character levels are now loaded - release the player to class selection
+    TogglePlayerSpectating(playerid, false);
     return 1;
 }
 
