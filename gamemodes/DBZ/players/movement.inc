@@ -4,10 +4,13 @@
 #endif
 #define _dbz_movement_included
 
+new Float:gFlyHealth[MAX_PLAYERS];   // tracks HP to cancel collision/fall damage while flying
+
 StartFly(playerid)
 {
     if (gPlayer[playerid][pFlying]) return 0;
     gPlayer[playerid][pFlying] = true;
+    GetPlayerHealth(playerid, gFlyHealth[playerid]);
 
     // Mr. Satan has no Ki - he can't fly, so he straps on a jetpack instead.
     if (gPlayer[playerid][pCharacter] == CHAR_SATAN)
@@ -62,6 +65,14 @@ public FlyTimer(playerid)
 {
     if (!IsPlayerConnected(playerid) || !gPlayer[playerid][pFlying])
         return 0;
+
+    // Undo collision/fall damage while flying, but let scripted combat hits land.
+    new Float:hp; GetPlayerHealth(playerid, hp);
+    if (gFlyHealth[playerid] > 0.0 && hp > 0.0 && hp < gFlyHealth[playerid] - 0.5
+        && GetTickCount() - gPlayer[playerid][pLastDamagedTick] > 700)
+        SetPlayerHealth(playerid, gFlyHealth[playerid]);
+    else
+        gFlyHealth[playerid] = hp;
 
     new Float:cx, Float:cy, Float:cz;
     GetPlayerCameraFrontVector(playerid, cx, cy, cz);
