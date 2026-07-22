@@ -26,9 +26,33 @@ enum E_PROG
     prActiveSkin,       // chosen skin variant 0-4
     prKills,
     prDeaths,
+    prTrStrike,         // Power Strikes  -> +attack damage
+    prTrGuard,          // Meteor Dodge   -> +defense (damage taken)
+    prTrFlight,         // Flight Course  -> +flight speed
+    prTrSpeed,          // Speed Run      -> +attack speed (cooldown)
+    prTrKi,             // Ki Control     -> +Ki storage & charge
     bool:prDirty        // needs DB save
 }
 new gProg[MAX_PLAYERS][MAX_CHARACTERS][E_PROG];
+
+#define TRAIN_STAT_CAP  50   // max points per trained stat (per character)
+
+// Trained-stat accessors for the player's CURRENT character.
+stock TrStrike(playerid) { new c=gPlayer[playerid][pCharacter]; return (c>=0&&c<MAX_CHARACTERS)?gProg[playerid][c][prTrStrike]:0; }
+stock TrGuard(playerid)  { new c=gPlayer[playerid][pCharacter]; return (c>=0&&c<MAX_CHARACTERS)?gProg[playerid][c][prTrGuard]:0; }
+stock TrFlight(playerid) { new c=gPlayer[playerid][pCharacter]; return (c>=0&&c<MAX_CHARACTERS)?gProg[playerid][c][prTrFlight]:0; }
+stock TrSpeed(playerid)  { new c=gPlayer[playerid][pCharacter]; return (c>=0&&c<MAX_CHARACTERS)?gProg[playerid][c][prTrSpeed]:0; }
+stock TrKi(playerid)     { new c=gPlayer[playerid][pCharacter]; return (c>=0&&c<MAX_CHARACTERS)?gProg[playerid][c][prTrKi]:0; }
+
+// Add trained-stat points (capped) to a character and flag for saving.
+AddTrainStat(playerid, ch, E_PROG:field, pts)
+{
+    new v = gProg[playerid][ch][field] + pts;
+    if (v > TRAIN_STAT_CAP) v = TRAIN_STAT_CAP;
+    gProg[playerid][ch][field] = v;
+    gProg[playerid][ch][prDirty] = true;
+    return v;
+}
 
 // ---------------------------------------------------------------------------
 //  Move table: 4 moves per character (index = character*4 + slot)
@@ -146,6 +170,11 @@ Prog_Reset(playerid)
         gProg[playerid][c][prActiveSkin] = 0;
         gProg[playerid][c][prKills]      = 0;
         gProg[playerid][c][prDeaths]     = 0;
+        gProg[playerid][c][prTrStrike]   = 0;
+        gProg[playerid][c][prTrGuard]    = 0;
+        gProg[playerid][c][prTrFlight]   = 0;
+        gProg[playerid][c][prTrSpeed]    = 0;
+        gProg[playerid][c][prTrKi]       = 0;
         gProg[playerid][c][prDirty]      = false;
     }
     return 1;
@@ -190,7 +219,7 @@ RecalcMaxStats(playerid)
     if (gChar[ch][cAndroid])
         gPlayer[playerid][pKiMax] = 0.0;
     else
-        gPlayer[playerid][pKiMax] = float(gChar[ch][cKiCap] + lvl * 2) * kmul;  // store much more with training
+        gPlayer[playerid][pKiMax] = float(gChar[ch][cKiCap] + lvl * 2) * kmul * (1.0 + float(gProg[playerid][ch][prTrKi]) * 0.02);  // level + form + Ki Control training
 
     UpdateKiBar(playerid);
     return 1;
@@ -400,6 +429,11 @@ public OnCharProgLoad(playerid)
         cache_get_value_name_int(i, "active_skin", gProg[playerid][ch][prActiveSkin]);
         cache_get_value_name_int(i, "kills",       gProg[playerid][ch][prKills]);
         cache_get_value_name_int(i, "deaths",      gProg[playerid][ch][prDeaths]);
+        cache_get_value_name_int(i, "tr_strike",   gProg[playerid][ch][prTrStrike]);
+        cache_get_value_name_int(i, "tr_guard",    gProg[playerid][ch][prTrGuard]);
+        cache_get_value_name_int(i, "tr_flight",   gProg[playerid][ch][prTrFlight]);
+        cache_get_value_name_int(i, "tr_speed",    gProg[playerid][ch][prTrSpeed]);
+        cache_get_value_name_int(i, "tr_ki",       gProg[playerid][ch][prTrKi]);
         if (gProg[playerid][ch][prLevel] < 1) gProg[playerid][ch][prLevel] = 1;
     }
     return 1;
@@ -413,12 +447,14 @@ Prog_SaveAll(playerid)
     {
         if (!gProg[playerid][c][prDirty]) continue;
         mysql_format(g_SQL, q, sizeof(q),
-            "INSERT INTO `player_characters` (`account_id`,`character_id`,`level`,`xp`,`active_move`,`active_skin`,`kills`,`deaths`) VALUES (%d,%d,%d,%d,%d,%d,%d,%d) ON DUPLICATE KEY UPDATE `level`=%d,`xp`=%d,`active_move`=%d,`active_skin`=%d,`kills`=%d,`deaths`=%d",
+            "INSERT INTO `player_characters` (`account_id`,`character_id`,`level`,`xp`,`active_move`,`active_skin`,`kills`,`deaths`,`tr_strike`,`tr_guard`,`tr_flight`,`tr_speed`,`tr_ki`) VALUES (%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d) ON DUPLICATE KEY UPDATE `level`=%d,`xp`=%d,`active_move`=%d,`active_skin`=%d,`kills`=%d,`deaths`=%d,`tr_strike`=%d,`tr_guard`=%d,`tr_flight`=%d,`tr_speed`=%d,`tr_ki`=%d",
             gPlayer[playerid][pDBID], c,
             gProg[playerid][c][prLevel], gProg[playerid][c][prXP], gProg[playerid][c][prActiveMove],
             gProg[playerid][c][prActiveSkin], gProg[playerid][c][prKills], gProg[playerid][c][prDeaths],
+            gProg[playerid][c][prTrStrike], gProg[playerid][c][prTrGuard], gProg[playerid][c][prTrFlight], gProg[playerid][c][prTrSpeed], gProg[playerid][c][prTrKi],
             gProg[playerid][c][prLevel], gProg[playerid][c][prXP], gProg[playerid][c][prActiveMove],
-            gProg[playerid][c][prActiveSkin], gProg[playerid][c][prKills], gProg[playerid][c][prDeaths]);
+            gProg[playerid][c][prActiveSkin], gProg[playerid][c][prKills], gProg[playerid][c][prDeaths],
+            gProg[playerid][c][prTrStrike], gProg[playerid][c][prTrGuard], gProg[playerid][c][prTrFlight], gProg[playerid][c][prTrSpeed], gProg[playerid][c][prTrKi]);
         mysql_pquery(g_SQL, q);
         gProg[playerid][c][prDirty] = false;
     }

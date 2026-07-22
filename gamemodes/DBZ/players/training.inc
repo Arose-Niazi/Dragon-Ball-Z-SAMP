@@ -225,6 +225,29 @@ Training_Finish(playerid, baseXp, const result[])
     GameTextForPlayer(playerid, m, 4000, 3);
     if (xp > 0) GiveCharXP(playerid, xp);
 
+    // each discipline permanently trains a specific stat for this character
+    new tch = gPlayer[playerid][pCharacter];
+    if (tch >= 0 && tch < MAX_CHARACTERS && tMode[playerid] != TRAIN_NONE)
+    {
+        new pts = tTier[playerid] + 1, sname[16], bool:has = true;
+        new E_PROG:field;
+        switch (tMode[playerid])
+        {
+            case TRAIN_STRIKE: { field = prTrStrike; sname = "Attack"; }
+            case TRAIN_METEOR: { field = prTrGuard;  sname = "Defense"; }
+            case TRAIN_FLIGHT: { field = prTrFlight; sname = "Flight Speed"; }
+            case TRAIN_SPEED:  { field = prTrSpeed;  sname = "Attack Speed"; }
+            case TRAIN_KI:     { field = prTrKi;     sname = "Ki Power"; }
+            default:           { has = false; }
+        }
+        if (has)
+        {
+            new nv = AddTrainStat(playerid, tch, field, pts), sm[96];
+            format(sm, sizeof(sm), "Trained %s: +%d (now %d/%d)", sname, pts, nv, TRAIN_STAT_CAP);
+            SendClientMessage(playerid, COLOR_GREEN, sm);
+        }
+    }
+
     DisablePlayerRaceCheckpoint(playerid);
     DisablePlayerCheckpoint(playerid);
     gPlayer[playerid][pTrainCd] = TRAIN_COOLDOWN;

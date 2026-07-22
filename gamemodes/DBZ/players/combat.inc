@@ -131,9 +131,11 @@ FirePattern(playerid, E_PATTERN:pat, Float:dmg)
 // ---------------------------------------------------------------------------
 DoAttack(playerid)
 {
-    if (GetTickCount() - gPlayer[playerid][pLastAttack] < ATTACK_COOLDOWN && gPlayer[playerid][pLastAttack] != 0)
+    new cd = ATTACK_COOLDOWN * (100 - TrSpeed(playerid)) / 100;   // Speed Run training cuts the cooldown
+    if (cd < ATTACK_COOLDOWN * 6 / 10) cd = ATTACK_COOLDOWN * 6 / 10;
+    if (GetTickCount() - gPlayer[playerid][pLastAttack] < cd && gPlayer[playerid][pLastAttack] != 0)
     {
-        new secs = (ATTACK_COOLDOWN - (GetTickCount() - gPlayer[playerid][pLastAttack])) / 1000 + 1;
+        new secs = (cd - (GetTickCount() - gPlayer[playerid][pLastAttack])) / 1000 + 1;
         new m[32]; format(m, sizeof(m), "~r~Wait %d sec", secs);
         GameTextForPlayer(playerid, m, 1200, 3);
         return 0;

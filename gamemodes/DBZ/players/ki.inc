@@ -96,7 +96,8 @@ public ChargeKiTimer(playerid)
     // charge more as you train (level) and transform (form)
     new Float:amt = float(gChar[ch][cCharge])
         * (1.0 + float(GetCharLevel(playerid)) / 40.0)
-        * (1.0 + 0.30 * float(gPlayer[playerid][pTransform]));
+        * (1.0 + 0.30 * float(gPlayer[playerid][pTransform]))
+        * (1.0 + float(TrKi(playerid)) * 0.02);
     GiveKi(playerid, amt);
 
     if (gPlayer[playerid][pKi] >= gPlayer[playerid][pKiMax])

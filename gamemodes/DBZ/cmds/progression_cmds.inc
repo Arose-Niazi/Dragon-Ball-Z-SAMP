@@ -130,6 +130,10 @@ CMD:stats(playerid)
     format(m, sizeof(m), "Active move: %s   |   Forms unlocked: %d   |   Radar parts: %d/5",
         gMoves[mi][mvName], MaxFormUnlocked(playerid), CountRadarParts(playerid));
     SendClientMessage(playerid, COLOR_WHITE, m);
-    SendClientMessage(playerid, COLOR_GREY, "Train with /train - switch characters any time, each levels separately!");
+    format(m, sizeof(m), "Trained: Atk %d | Def %d | Flight %d | Speed %d | Ki %d  (max %d each)",
+        gProg[playerid][ch][prTrStrike], gProg[playerid][ch][prTrGuard], gProg[playerid][ch][prTrFlight],
+        gProg[playerid][ch][prTrSpeed], gProg[playerid][ch][prTrKi], TRAIN_STAT_CAP);
+    SendClientMessage(playerid, COLOR_WHITE, m);
+    SendClientMessage(playerid, COLOR_GREY, "Each /train discipline raises a different stat - grind them all!");
     return 1;
 }

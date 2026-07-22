@@ -30,6 +30,7 @@ Float:CalcDamage(attacker, victim, Float:base)
     // attacker scaling: effective power (form bonus already included in it)
     new attEff = GetEffPower(attacker);
     dmg *= (1.0 + float(attEff) / 150.0);
+    dmg *= (1.0 + float(TrStrike(attacker)) * 0.015);   // Power Strikes training
 
     // Goku: Kaioken burst
     if (gPlayer[attacker][pKaiokenUntil] > gettime()) dmg *= 1.5;
@@ -48,8 +49,9 @@ Float:CalcDamage(attacker, victim, Float:base)
         GameTextForPlayer(attacker, "~r~CRITICAL!", 1200, 3);
     }
 
-    // defender mitigation: power + passives
+    // defender mitigation: power + passives + Meteor Dodge training
     dmg /= (1.0 + float(GetEffPower(victim)) / 300.0);
+    dmg /= (1.0 + float(TrGuard(victim)) * 0.01);
     if (gPlayer[victim][pCharacter] == CHAR_TIEN) dmg *= 0.85;   // Discipline
 
     return dmg;
